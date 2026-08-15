@@ -4,22 +4,32 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="AkisunCreate — UI/UX × 業務設計 × AI活用。複雑な仕事を、迷わず使える仕組みに。" />
+  <meta name="theme-color" content="#ffc928" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="AkisunCreate | UI/UX × 業務設計 × AI活用" />
+  <meta property="og:description" content="複雑な仕事を、迷わず使える仕組みに。UI/UXデザイン、業務設計、AI活用を横断して支援します。" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta name="twitter:card" content="summary_large_image" />
   <title>AkisunCreate | UI/UX × 業務設計 × AI活用</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <a class="skip-link" href="#main-content">本文へスキップ</a>
   <div class="noise" aria-hidden="true"></div>
   <header class="site-header">
     <a class="brand" href="#top" aria-label="AkisunCreate Home"><span class="brand-mark" aria-hidden="true">☀</span><span>AkisunCreate</span></a>
-    <nav class="nav" aria-label="メインナビゲーション"><a href="#services">Services</a><a href="#works">Works</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="メニューを開く"><span></span><span></span></button>
+    <nav id="main-nav" class="nav" aria-label="メインナビゲーション"><a href="#services">Services</a><a href="#works">Works</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
   </header>
-  <main id="top">
+  <main id="main-content">
+    <div id="top" class="anchor-target" aria-hidden="true"></div>
     <section class="hero section-pad">
       <div class="hero-copy"><p class="eyebrow">DESIGN / SYSTEM / AI</p><h1>複雑な仕事を、<br><span>迷わず使える仕組み</span>に。</h1><p class="lead">UI/UXデザイン、業務設計、AI活用を横断して。<br>「画面を作る」だけで終わらない、仕事そのものが前に進む体験を設計します。</p><div class="hero-actions"><a class="btn btn-primary" href="#contact">相談する</a><a class="btn btn-ghost" href="#works">実績を見る</a></div></div>
-      <div class="hero-art" aria-label="AkisunCreate mascot illustration"><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="sun-rays"></div><div class="sun-face"><div class="glasses"><span></span><i></i><span></span></div><div class="smile"></div></div><div class="sticker sticker-a">MAKE IT<br>WORK.</div><div class="sticker sticker-b">AI × UX</div></div>
+      <div class="hero-art" role="img" aria-label="サングラスをかけたAkisunCreateの太陽マスコット"><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="sun-rays"></div><div class="sun-face"><div class="glasses"><span></span><i></i><span></span></div><div class="smile"></div></div><div class="sticker sticker-a">MAKE IT<br>WORK.</div><div class="sticker sticker-b">AI × UX</div></div>
     </section>
     <section class="manifesto marquee-wrap" aria-label="brand statement"><div class="marquee">DESIGN THE FLOW — BUILD THE SYSTEM — MAKE AI USEFUL — DESIGN THE FLOW — BUILD THE SYSTEM — MAKE AI USEFUL —</div></section>
     <section id="services" class="section-pad services"><div class="section-heading"><p class="eyebrow">WHAT I DO</p><h2>できること</h2><p>見た目だけでも、仕組みだけでもない。ユーザー・業務・技術をつないで、実装可能な形まで落とし込みます。</p></div><div class="service-grid"><article class="service-card"><span class="num">01</span><h3>UI / UX Design</h3><p>情報設計、画面設計、プロトタイプ、ユーザーテスト。複雑な業務を、迷いにくい体験へ。</p><ul><li>新規サービス設計</li><li>既存UI改善</li><li>デザインシステム</li></ul></article><article class="service-card featured"><span class="num">02</span><h3>Business Design</h3><p>要件定義、業務フロー整理、運用設計。曖昧な課題を「誰が・何を・どうするか」まで構造化します。</p><ul><li>業務フロー可視化</li><li>要件定義</li><li>部門間の認識整理</li></ul></article><article class="service-card"><span class="num">03</span><h3>AI Enablement</h3><p>ChatGPT / Claudeなどを、単発の便利ツールではなく、再現可能な業務プロセスとして組み込みます。</p><ul><li>AI導入設計</li><li>プロンプト設計</li><li>業務自動化</li></ul></article></div></section>
