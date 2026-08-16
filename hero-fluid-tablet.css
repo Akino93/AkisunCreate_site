@@ -12,6 +12,28 @@
   .hero-art .mane{width:clamp(43%,calc(58.9% - 1.77vw),49%)}
   .hero-art .face{width:clamp(31.5%,calc(44.77% - 1.48vw),36.5%)}
 
+  /* Upper/decorative collage also flows continuously through the old 700/701px seam. */
+  .hero-art .ray-accent{
+    width:22%;
+    left:clamp(4%,calc(-.965% + .885vw),7%);
+    top:clamp(7%,calc(5.345% + .295vw),8%);
+  }
+  .hero-art .stars{
+    width:clamp(21%,calc(23.655% - .295vw),22%);
+    left:clamp(4%,calc(.690% + .590vw),6%);
+    top:clamp(11%,calc(7.690% + .590vw),13%);
+  }
+  .hero-art .stars-secondary{
+    width:13%;
+    right:clamp(2%,calc(-2.965% + .885vw),5%);
+    top:35%;
+  }
+  .hero-art .crows{
+    width:clamp(14%,calc(16.655% - .295vw),15%);
+    left:clamp(29%,calc(25.690% + .590vw),31%);
+    top:clamp(20%,calc(18.345% + .295vw),21%);
+  }
+
   /* Main lower collage: interpolate from mobile density into tablet density. */
   .hero-art .city{
     width:clamp(56%,calc(87.8% - 3.53vw),68%);
@@ -21,6 +43,11 @@
   .hero-art .sunflower{
     width:clamp(34%,calc(41.97% - .886vw),37%);
     right:clamp(-4%,calc(-10.62% + 1.18vw),2%);
+  }
+  .hero-art .flower{
+    width:15%;
+    left:clamp(2%,calc(-2.965% + .885vw),5%);
+    bottom:clamp(28%,calc(26.345% + .295vw),29%);
   }
   .hero-art .sign{
     width:clamp(21%,calc(28.97% - .886vw),24%);
@@ -39,6 +66,58 @@
     left:clamp(3%,calc(-1.97% + .886vw),6%);
   }
   .hero-art .orange{width:clamp(12%,calc(17.31% - .59vw),14%)}
+
+  /* Small stickers and text snippets retain their relative rhythm while scaling. */
+  .hero-art .smiley{
+    width:8%;
+    left:clamp(28%,calc(24.690% + .590vw),30%);
+    top:clamp(42%,calc(40.345% + .295vw),43%);
+  }
+  .hero-art .smiley-two{
+    width:clamp(6%,calc(8.655% - .295vw),7%);
+    right:clamp(27%,calc(23.690% + .590vw),29%);
+    top:clamp(36%,calc(32.690% + .590vw),38%);
+  }
+  .hero-art .heart{
+    width:clamp(5.5%,calc(6.827% - .147vw),6%);
+    left:clamp(44%,calc(42.345% + .295vw),45%);
+    top:clamp(31%,calc(29.345% + .295vw),32%);
+  }
+  .hero-art .star-badge{
+    width:clamp(6.5%,calc(7.827% - .147vw),7%);
+    right:29%;
+    bottom:clamp(32%,calc(28.690% + .590vw),34%);
+  }
+  .hero-art .mini-star{
+    width:clamp(5.5%,calc(6.827% - .147vw),6%);
+    left:clamp(16%,calc(12.690% + .590vw),18%);
+    top:clamp(31%,calc(29.345% + .295vw),32%);
+  }
+  .hero-art .mini-star-two{
+    width:clamp(5%,calc(6.327% - .147vw),5.5%);
+    right:clamp(4%,calc(.690% + .590vw),6%);
+    top:clamp(41%,calc(37.690% + .590vw),43%);
+  }
+  .hero-art .mini-text-one{
+    width:clamp(13%,calc(15.655% - .295vw),14%);
+    left:clamp(3%,calc(-3.619% + 1.180vw),7%);
+    top:clamp(50%,calc(46.690% + .590vw),52%);
+  }
+  .hero-art .mini-text-two{
+    width:clamp(13%,calc(15.655% - .295vw),14%);
+    left:clamp(20%,calc(15.035% + .885vw),23%);
+    top:clamp(58%,calc(56.345% + .295vw),59%);
+  }
+  .hero-art .mini-text-three{
+    width:clamp(12%,calc(14.655% - .295vw),13%);
+    left:clamp(6%,calc(-.619% + 1.180vw),10%);
+    bottom:clamp(16%,calc(12.690% + .590vw),18%);
+  }
+  .hero-art .sentence{
+    width:23%;
+    left:clamp(4%,calc(-.965% + .885vw),7%);
+    top:clamp(69%,calc(71.655% - .295vw),70%);
+  }
 
   /* Bottom badges shrink gradually instead of snapping at 700/701px. */
   .hero-art .badge-ai{
