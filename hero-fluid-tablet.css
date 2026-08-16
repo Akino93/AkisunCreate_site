@@ -1,0 +1,56 @@
+@media (min-width:561px) and (max-width:900px){
+  .hero-art{
+    min-height:clamp(540px,calc(358px + 32.4vw),650px);
+    margin-top:8px;
+  }
+
+  /* Keep the approved sun lockup intact while scaling it continuously. */
+  .hero-art .mane,.hero-art .face{
+    left:clamp(69%,calc(76.97% - .886vw),72%);
+    top:clamp(26.5%,calc(29.15% - .295vw),27.5%);
+  }
+  .hero-art .mane{width:clamp(43%,calc(58.9% - 1.77vw),49%)}
+  .hero-art .face{width:clamp(31.5%,calc(44.77% - 1.48vw),36.5%)}
+
+  /* Main lower collage: interpolate from mobile density into tablet density. */
+  .hero-art .city{
+    width:clamp(56%,calc(87.8% - 3.53vw),68%);
+    right:clamp(-8%,calc(-14.62% + 1.18vw),0%);
+    top:clamp(45%,calc(43.35% + .295vw),46%);
+  }
+  .hero-art .sunflower{
+    width:clamp(34%,calc(41.97% - .886vw),37%);
+    right:clamp(-4%,calc(-10.62% + 1.18vw),2%);
+  }
+  .hero-art .sign{
+    width:clamp(21%,calc(28.97% - .886vw),24%);
+    right:clamp(1%,calc(-3.97% + .886vw),4%);
+  }
+  .hero-art .skate{
+    width:clamp(27%,calc(40.25% - 1.47vw),32%);
+    right:clamp(26%,calc(24.34% + .295vw),27%);
+  }
+  .hero-art .spray{
+    width:clamp(14%,calc(19.31% - .59vw),16%);
+    right:clamp(3%,calc(.34% + .295vw),5%);
+  }
+  .hero-art .glasses{
+    width:clamp(23%,calc(28.31% - .59vw),25%);
+    left:clamp(3%,calc(-1.97% + .886vw),6%);
+  }
+  .hero-art .orange{width:clamp(12%,calc(17.31% - .59vw),14%)}
+
+  /* Bottom badges shrink gradually instead of snapping at 700/701px. */
+  .hero-art .badge-ai{
+    width:clamp(15.5%,calc(26.12% - 1.18vw),19.5%);
+    left:clamp(4.5%,calc(2.01% + .443vw),6%);
+  }
+  .hero-art .badge-design{
+    width:clamp(16.5%,calc(27.12% - 1.18vw),20.5%);
+    left:clamp(27%,calc(29.49% - .443vw),28.5%);
+  }
+  .hero-art .badge-system{
+    width:clamp(16.5%,calc(27.12% - 1.18vw),20.5%);
+    left:clamp(48%,calc(54.64% - .738vw),52%);
+  }
+}
