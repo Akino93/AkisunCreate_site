@@ -1,6 +1,6 @@
-/* Mobile Hero Rebuild 7 — reference-derived macro composition
+/* Mobile Hero Rebuild 8 — deliberate macro reset from owner reference
    Single source of truth for <=560px hero placement.
-   Goal: one poster composition, not stacked text + art sections.
+   Goal: title + art read as one poster composition, not stacked sections.
    Source PNGs remain untouched. */
 
 /* Decorative assets intentionally removed from the hero for later reuse. */
@@ -19,18 +19,18 @@
 @media (max-width: 560px) {
   .hero {
     /* Five macro groups: title / sun / city / sunflower / right cluster. */
-    --poster-art-height: 600px;
-    --sun-x: 74%;
-    --sun-y: 22%;
-    --radial-size: 142%;
-    --mane-size: 52%;
-    --face-size: 37%;
-    --city-size: 122%;
-    --sunflower-size: 50%;
-    --sign-size: 30%;
-    --skate-size: 48%;
-    --spray-size: 18%;
-    --orange-size: 20%;
+    --poster-art-height: 640px;
+    --sun-x: 77%;
+    --sun-y: 23%;
+    --radial-size: 160%;
+    --mane-size: 58%;
+    --face-size: 41%;
+    --city-size: 145%;
+    --sunflower-size: 61%;
+    --sign-size: 37%;
+    --skate-size: 58%;
+    --spray-size: 22%;
+    --orange-size: 24%;
     position: relative;
     display: block;
     min-height: 0;
@@ -39,7 +39,7 @@
   }
 
   /* MACRO 1 — TITLE
-     Keep the title readable while letting the sun/radial intrude from the right. */
+     Reference is text-heavy on the left, but the sun/radial visibly invades its right edge. */
   .hero-copy {
     position: relative;
     z-index: 7;
@@ -49,20 +49,20 @@
   .hero-copy .slogan {
     position: relative;
     z-index: 12;
-    width: 64%;
-    margin: 0 0 10px 2px;
+    width: 58%;
+    margin: 0 0 8px 2px;
     font-size: 12px;
-    line-height: 1.48;
+    line-height: 1.45;
   }
 
   .hero-copy h1 {
     position: relative;
     z-index: 12;
-    width: 76%;
+    width: 72%;
     max-width: none;
-    margin: 0 0 330px;
-    font-size: clamp(36px, 10vw, 44px);
-    line-height: 1.01;
+    margin: 0 0 375px;
+    font-size: clamp(36px, 10.2vw, 45px);
+    line-height: .99;
     letter-spacing: -.06em;
   }
 
@@ -77,7 +77,7 @@
 
   .hero-copy .lead {
     margin-top: 0;
-    background: linear-gradient(to bottom, rgba(242,221,178,.97), rgba(242,221,178,.87));
+    background: linear-gradient(to bottom, rgba(242,221,178,.98), rgba(242,221,178,.9));
   }
 
   /* Shared poster field begins inside the title area. */
@@ -85,7 +85,7 @@
     position: absolute;
     left: -4.5vw;
     right: -4.5vw;
-    top: 20px;
+    top: 18px;
     height: var(--poster-art-height);
     min-height: 0;
     margin: 0;
@@ -94,7 +94,8 @@
     pointer-events: none;
   }
 
-  /* MACRO 2 — SUN + RADIAL */
+  /* MACRO 2 — SUN + RADIAL
+     Make the sun the dominant visual mass, with radial sharing its exact center. */
   .hero-art .mane,
   .hero-art .face,
   .hero-art .ray-accent {
@@ -110,13 +111,13 @@
   .hero-art .mane { width: var(--mane-size); z-index: 4; }
   .hero-art .face { width: var(--face-size); z-index: 5; }
 
-  /* Keep stars as a tiny accent only. */
+  /* Stars are punctuation, never a competing cluster. */
   .hero-art .stars {
     display: block;
-    width: 2.2%;
-    left: 42%;
+    width: 3.2%;
+    left: 43%;
     right: auto;
-    top: 10%;
+    top: 9%;
     z-index: 6;
   }
 
@@ -128,24 +129,24 @@
   }
 
   /* MACRO 3 — CITY
-     Full-width lower horizon behind the foreground cluster. */
+     Use it as a continuous horizon spanning beyond both viewport edges. */
   .hero-art .city {
     width: var(--city-size);
     left: 50%;
     right: auto;
     top: auto;
-    bottom: 1%;
+    bottom: -1%;
     transform: translateX(-50%);
     z-index: 2;
   }
 
   /* MACRO 4 — SUNFLOWER
-     Reference places the botanical mass directly beneath the sun, not on the floor line. */
+     Pull the botanical mass up directly beneath the sun, as in the reference. */
   .hero-art .sunflower {
     width: var(--sunflower-size);
-    left: 20%;
+    left: 21%;
     right: auto;
-    top: 43%;
+    top: 37%;
     bottom: auto;
     z-index: 7;
   }
@@ -153,12 +154,12 @@
   .hero-art .flower { display: none !important; }
 
   /* MACRO 5 — RIGHT CLUSTER
-     High crows -> sign -> diagonal skateboard -> spray/orange at the floor. */
+     Crows high -> sign mid-right -> large diagonal board -> spray/orange on floor. */
   .hero-art .crows {
-    width: 11%;
+    width: 14%;
     left: auto;
-    right: 3%;
-    top: 11%;
+    right: 2%;
+    top: 7%;
     bottom: auto;
     z-index: 8;
   }
@@ -166,7 +167,7 @@
   .hero-art .sign {
     width: var(--sign-size);
     left: auto;
-    right: -1%;
+    right: -3%;
     top: 40%;
     bottom: auto;
     z-index: 9;
@@ -175,10 +176,10 @@
   .hero-art .skate {
     width: var(--skate-size);
     left: auto;
-    right: 8%;
+    right: 4%;
     top: auto;
-    bottom: -2%;
-    transform: rotate(-21deg);
+    bottom: -5%;
+    transform: rotate(-27deg);
     transform-origin: 50% 50%;
     z-index: 10;
   }
@@ -186,28 +187,28 @@
   .hero-art .spray {
     width: var(--spray-size);
     left: auto;
-    right: -1%;
+    right: -2%;
     top: auto;
-    bottom: 0;
+    bottom: -1%;
     z-index: 11;
   }
 
   .hero-art .orange {
     width: var(--orange-size);
     left: auto;
-    right: 22%;
+    right: 23%;
     top: auto;
-    bottom: -1%;
+    bottom: -2%;
     z-index: 11;
   }
 
   .hero-art .smiley {
     display: block;
-    width: 5%;
+    width: 6%;
     left: auto;
-    right: 39%;
+    right: 43%;
     top: auto;
-    bottom: 20%;
+    bottom: 19%;
     z-index: 12;
   }
 
@@ -220,33 +221,33 @@
 
 @media (max-width: 390px) {
   .hero {
-    --poster-art-height: 585px;
-    --sun-x: 75%;
-    --sun-y: 22%;
-    --radial-size: 146%;
-    --mane-size: 54%;
-    --face-size: 38.5%;
-    --city-size: 126%;
-    --sunflower-size: 52%;
-    --sign-size: 31%;
-    --skate-size: 50%;
-    --spray-size: 18.5%;
-    --orange-size: 20.5%;
+    --poster-art-height: 620px;
+    --sun-x: 78%;
+    --sun-y: 23%;
+    --radial-size: 166%;
+    --mane-size: 60%;
+    --face-size: 42.5%;
+    --city-size: 150%;
+    --sunflower-size: 63%;
+    --sign-size: 38%;
+    --skate-size: 60%;
+    --spray-size: 22.5%;
+    --orange-size: 24.5%;
   }
 
-  .hero-copy .slogan { width: 66%; }
+  .hero-copy .slogan { width: 60%; }
 
   .hero-copy h1 {
-    width: 78%;
-    margin-bottom: 316px;
+    width: 74%;
+    margin-bottom: 355px;
     font-size: 36px;
   }
 
-  .hero-art { top: 18px; }
-  .hero-art .sunflower { left: 18%; top: 44%; }
-  .hero-art .crows { width: 11.5%; right: 2%; top: 11%; }
-  .hero-art .sign { right: -2%; top: 40%; }
-  .hero-art .skate { right: 7%; bottom: -2%; }
-  .hero-art .spray { right: -1.5%; }
-  .hero-art .orange { right: 21%; }
+  .hero-art { top: 16px; }
+  .hero-art .sunflower { left: 19%; top: 38%; }
+  .hero-art .crows { width: 14.5%; right: 1%; top: 7%; }
+  .hero-art .sign { right: -4%; top: 40%; }
+  .hero-art .skate { right: 3%; bottom: -5%; }
+  .hero-art .spray { right: -2.5%; }
+  .hero-art .orange { right: 22%; }
 }
