@@ -1,0 +1,45 @@
+name: Mobile Hero Preview
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'styles.css'
+      - 'hero-*.css'
+      - 'assets/**'
+      - '.github/workflows/mobile-hero-preview.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  screenshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: browser-actions/setup-chrome@v1
+      - name: Start local site
+        run: |
+          python3 -m http.server 4173 > /tmp/akisun-http.log 2>&1 &
+          echo $! > /tmp/akisun-http.pid
+          for i in {1..20}; do
+            if curl -fsS http://127.0.0.1:4173/ >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/akisun-http.log
+          exit 1
+      - name: Capture mobile hero
+        run: |
+          google-chrome --headless=new --no-sandbox --disable-gpu --hide-scrollbars \
+            --window-size=390,1400 --screenshot=mobile-390.png \
+            http://127.0.0.1:4173/
+          test -s mobile-390.png
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mobile-hero-preview
+          path: mobile-390.png
+          if-no-files-found: error
+          retention-days: 7
