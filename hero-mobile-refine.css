@@ -1,7 +1,8 @@
-/* Mobile Hero Rebuild 2 — reference-first macro composition
-   Single mobile source of truth: older mobile coordinates in styles.css / hero-fix.css
-   are intentionally superseded here. This pass resets the five macro groups from the
-   reference instead of nudging Pass 20 / Rebuild 1 positions. */
+/* Mobile Hero Rebuild 3 — reference-derived macro composition
+   This file is the single source of truth for mobile hero placement.
+   Older mobile coordinates in styles.css / hero-fix.css are intentionally superseded.
+   Rebuild 3 makes material scale/position changes from the supplied poster reference
+   rather than continuing small coordinate nudges. */
 
 /* Decorative items intentionally removed from the hero for later reuse. */
 .hero-art .glasses,
@@ -24,16 +25,14 @@
 .hero-art .mini-star-two { width: 4.5%; }
 
 @media (max-width: 560px) {
-  /*
-    MACRO GROUP 1 — TITLE
-    The title owns the upper-left, but leaves an intentional bite on the right so the
-    sun/radial group can intrude into it like the reference poster.
-  */
+  /* MACRO 1 — TITLE / POSTER FIELD
+     The left copy and right artwork share one field. The title deliberately leaves a
+     right-side bite so the sun/radial mass visually enters the text composition. */
   .hero {
     position: relative;
     display: block;
     min-height: 0;
-    padding: 24px 4.5vw 26px;
+    padding: 22px 4.5vw 24px;
     overflow: hidden;
   }
 
@@ -45,22 +44,22 @@
 
   .hero-copy .slogan {
     position: relative;
-    z-index: 10;
-    width: 62%;
-    margin: 0 0 14px 2px;
+    z-index: 12;
+    width: 58%;
+    margin: 0 0 12px 2px;
     font-size: 12px;
-    line-height: 1.55;
+    line-height: 1.5;
   }
 
   .hero-copy h1 {
     position: relative;
-    z-index: 10;
-    width: 69%;
+    z-index: 12;
+    width: 63%;
     max-width: none;
-    margin: 0;
-    font-size: clamp(38px, 10.4vw, 46px);
-    line-height: 1.02;
-    letter-spacing: -.06em;
+    margin: 0 0 392px;
+    font-size: clamp(38px, 10.5vw, 46px);
+    line-height: 1.01;
+    letter-spacing: -.062em;
   }
 
   .hero-copy h1 span,
@@ -68,27 +67,25 @@
     white-space: nowrap;
   }
 
-  /* Reserve one poster field for the artwork instead of stacking a separate art box. */
-  .hero-copy h1 { margin-bottom: 392px; }
-
   .hero-copy .lead,
   .hero-copy .actions {
     position: relative;
-    z-index: 14;
+    z-index: 16;
   }
 
   .hero-copy .lead {
     margin-top: 0;
-    background: linear-gradient(to bottom, rgba(242,221,178,.92), rgba(242,221,178,.74));
+    background: linear-gradient(to bottom, rgba(242,221,178,.94), rgba(242,221,178,.78));
   }
 
-  /* Main poster field. */
+  /* One shared poster field. Moving this field upward is intentional: the artwork
+     begins behind the title instead of below it. */
   .hero-art {
     position: absolute;
     left: -4.5vw;
     right: -4.5vw;
-    top: 58px;
-    height: 590px;
+    top: 18px;
+    height: 575px;
     min-height: 0;
     margin: 0;
     z-index: 2;
@@ -96,17 +93,15 @@
     pointer-events: none;
   }
 
-  /*
-    MACRO GROUP 2 — SUN + LARGE RADIAL ACCENT
-    One exact center. The radial field is intentionally oversized and clipped by the
-    viewport; the face stays fixed while the mane keeps its approved rotation.
-  */
+  /* MACRO 2 — SUN + LARGE RADIAL ACCENT
+     Exact shared center. The group is substantially larger and higher than Rebuild 2,
+     matching the reference where the sun dominates the upper-right poster quadrant. */
   .hero-art .mane,
   .hero-art .face,
   .hero-art .ray-accent {
-    left: 77%;
+    left: 73%;
     right: auto;
-    top: 24%;
+    top: 20%;
     transform: translate(-50%, -50%);
     transform-origin: 50% 50%;
   }
@@ -114,37 +109,32 @@
   .hero-art .rays { display: none !important; }
 
   .hero-art .ray-accent {
-    width: 130%;
+    width: 146%;
     z-index: 1;
   }
 
   .hero-art .mane {
-    width: 52%;
+    width: 61%;
     z-index: 4;
   }
 
   .hero-art .face {
-    width: 38%;
+    width: 44%;
     z-index: 5;
   }
 
-  /* Tiny accents only — they should never compete with the title or sun. */
+  /* Tiny poster accents only. */
   .hero-art .stars {
     display: block;
-    width: 4.5%;
-    left: 43%;
+    width: 3.8%;
+    left: 38%;
     right: auto;
-    top: 9%;
+    top: 7%;
     z-index: 6;
   }
 
   .hero-art .stars-secondary {
-    display: block;
-    width: 2.2%;
-    left: auto;
-    right: 2.5%;
-    top: 37%;
-    z-index: 6;
+    display: none !important;
   }
 
   .hero-art .mini-star,
@@ -153,100 +143,94 @@
     display: none !important;
   }
 
-  /*
-    MACRO GROUP 3 — CITY
-    A continuous lower-right skyline band, not a floating object. It spans beyond both
-    edges and sits behind every foreground object.
-  */
+  /* MACRO 3 — CITY
+     The skyline is a broad background band, filling the mobile width and climbing into
+     the right-side object cluster instead of floating as a small lower sticker. */
   .hero-art .city {
-    width: 124%;
+    width: 138%;
     left: 50%;
     right: auto;
     top: auto;
-    bottom: 19%;
+    bottom: 22%;
     transform: translateX(-50%);
     z-index: 2;
   }
 
-  /*
-    MACRO GROUP 4 — SUNFLOWER
-    The flower becomes the lower-middle anchor under the sun, matching the reference's
-    dense botanical bridge from sun to skateboard cluster.
-  */
+  /* MACRO 4 — SUNFLOWER
+     Enlarged into the botanical bridge directly beneath the sun and partly behind the
+     skateboard, closer to the reference hierarchy. */
   .hero-art .sunflower {
-    width: 44%;
-    left: 32%;
+    width: 53%;
+    left: 27%;
     right: auto;
     top: auto;
-    bottom: 9%;
+    bottom: 10%;
     z-index: 7;
   }
 
   .hero-art .flower { display: none !important; }
 
-  /*
-    MACRO GROUP 5 — RIGHT-SIDE OBJECT FLOW
-    Crows → sign → skateboard → spray/orange. The objects form one diagonal/vertical
-    mass on the right instead of several unrelated bottom-row stickers.
-  */
+  /* MACRO 5 — RIGHT-SIDE FLOW
+     Crows → signs → skateboard → spray/orange form one continuous descending mass.
+     These are intentionally much larger / higher than Rebuild 2. */
   .hero-art .crows {
-    width: 11%;
+    width: 15%;
     left: auto;
-    right: 4%;
-    top: 34%;
+    right: 0;
+    top: 23%;
     bottom: auto;
     z-index: 8;
   }
 
   .hero-art .sign {
-    width: 31%;
+    width: 35%;
     left: auto;
-    right: -2%;
-    top: 45%;
+    right: -3%;
+    top: 36%;
     bottom: auto;
     z-index: 9;
   }
 
   .hero-art .skate {
-    width: 37%;
+    width: 47%;
     left: auto;
     right: 7%;
     top: auto;
-    bottom: 2%;
-    transform: rotate(-15deg);
+    bottom: 1%;
+    transform: rotate(-18deg);
     transform-origin: 50% 50%;
     z-index: 10;
   }
 
   .hero-art .spray {
-    width: 15%;
+    width: 19%;
     left: auto;
-    right: -1%;
+    right: -2%;
     top: auto;
     bottom: 1%;
     z-index: 11;
   }
 
   .hero-art .orange {
-    width: 15%;
+    width: 19%;
     left: auto;
-    right: 24%;
+    right: 23%;
     top: auto;
-    bottom: 0;
+    bottom: -1%;
     z-index: 11;
   }
 
   .hero-art .smiley {
     display: block;
-    width: 4.6%;
+    width: 5.8%;
     left: auto;
-    right: 34%;
+    right: 40%;
     top: auto;
-    bottom: 12%;
+    bottom: 17%;
     z-index: 12;
   }
 
-  /* Service badges are useful UI, but not part of the reference hero silhouette. */
+  /* Service badges are not part of the reference hero silhouette. */
   .hero-art .badge-ai,
   .hero-art .badge-design,
   .hero-art .badge-system {
@@ -255,34 +239,34 @@
 }
 
 @media (max-width: 390px) {
-  .hero-copy .slogan { width: 64%; }
+  .hero-copy .slogan { width: 60%; }
 
   .hero-copy h1 {
-    width: 72%;
-    margin-bottom: 370px;
+    width: 66%;
+    margin-bottom: 372px;
     font-size: 37px;
   }
 
   .hero-art {
-    top: 56px;
+    top: 16px;
     height: 555px;
   }
 
   .hero-art .mane,
   .hero-art .face,
   .hero-art .ray-accent {
-    left: 78%;
-    top: 24%;
+    left: 74%;
+    top: 20%;
   }
 
-  .hero-art .ray-accent { width: 134%; }
-  .hero-art .mane { width: 54%; }
-  .hero-art .face { width: 39.5%; }
-  .hero-art .city { width: 128%; bottom: 19%; }
-  .hero-art .sunflower { width: 46%; left: 30%; bottom: 9%; }
-  .hero-art .crows { width: 11%; right: 3%; top: 34%; }
-  .hero-art .sign { width: 32%; right: -3%; top: 45%; }
-  .hero-art .skate { width: 39%; right: 6%; bottom: 2%; }
-  .hero-art .spray { width: 15.5%; right: -1.5%; bottom: 1%; }
-  .hero-art .orange { width: 15.5%; right: 23%; bottom: 0; }
+  .hero-art .ray-accent { width: 150%; }
+  .hero-art .mane { width: 63%; }
+  .hero-art .face { width: 45.5%; }
+  .hero-art .city { width: 142%; bottom: 22%; }
+  .hero-art .sunflower { width: 55%; left: 25%; bottom: 10%; }
+  .hero-art .crows { width: 15.5%; right: -1%; top: 23%; }
+  .hero-art .sign { width: 36%; right: -4%; top: 36%; }
+  .hero-art .skate { width: 49%; right: 6%; bottom: 1%; }
+  .hero-art .spray { width: 19.5%; right: -2.5%; bottom: 1%; }
+  .hero-art .orange { width: 19.5%; right: 22%; bottom: -1%; }
 }
