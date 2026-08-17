@@ -1,0 +1,22 @@
+/* PROJECT-001 Pass 12: mobile edge-safety polish.
+   Derived from the owner's latest mobile screenshot: keep the approved collage,
+   but pull edge-hugging objects slightly inward so they read as intentional
+   overlap rather than accidental clipping. Source PNGs remain untouched. */
+@media (max-width:560px){
+  .hero-art .ray-accent{left:6%}
+  .hero-art .stars{left:5%}
+  .hero-art .city{right:-8%}
+  .hero-art .sunflower{right:-3%}
+  .hero-art .flower{left:3.5%}
+  .hero-art .sign{right:3%}
+  .hero-art .spray{right:5%}
+  .hero-art .glasses{left:4%}
+  .hero-art .mini-star-two{right:5%}
+}
+
+@media (max-width:390px){
+  .hero-art .city{right:-10%}
+  .hero-art .sunflower{right:-4%}
+  .hero-art .sign{right:2.5%}
+  .hero-art .spray{right:4%}
+}
