@@ -1,7 +1,9 @@
-/* Mobile Hero Rebuild — reference-first composition
-   This file is the single mobile source of truth. Earlier mobile values in
-   styles.css / hero-fix.css are intentionally overridden here rather than nudged. */
+/* Mobile Hero Rebuild 2 — reference-first macro composition
+   Single mobile source of truth: older mobile coordinates in styles.css / hero-fix.css
+   are intentionally superseded here. This pass resets the five macro groups from the
+   reference instead of nudging Pass 20 / Rebuild 1 positions. */
 
+/* Decorative items intentionally removed from the hero for later reuse. */
 .hero-art .glasses,
 .hero-art .heart,
 .hero-art .mini-text-one,
@@ -14,7 +16,7 @@
 
 .slogan span { display: none !important; }
 
-/* Keep non-mobile decorative stars restrained too. */
+/* Keep secondary accents restrained outside mobile too. */
 .hero-art .stars { width: 18%; }
 .hero-art .stars-secondary { width: 10%; }
 .hero-art .star-badge { width: 6%; }
@@ -22,12 +24,16 @@
 .hero-art .mini-star-two { width: 4.5%; }
 
 @media (max-width: 560px) {
-  /* Macro layout: title + artwork are one poster block; body copy starts below. */
+  /*
+    MACRO GROUP 1 — TITLE
+    The title owns the upper-left, but leaves an intentional bite on the right so the
+    sun/radial group can intrude into it like the reference poster.
+  */
   .hero {
     position: relative;
     display: block;
     min-height: 0;
-    padding: 30px 4.5vw 22px;
+    padding: 24px 4.5vw 26px;
     overflow: hidden;
   }
 
@@ -39,18 +45,22 @@
 
   .hero-copy .slogan {
     position: relative;
-    z-index: 9;
-    margin-bottom: 18px;
+    z-index: 10;
+    width: 62%;
+    margin: 0 0 14px 2px;
+    font-size: 12px;
+    line-height: 1.55;
   }
 
   .hero-copy h1 {
     position: relative;
-    z-index: 9;
-    max-width: 76%;
-    margin: 0 0 430px;
-    font-size: clamp(38px, 10.2vw, 46px);
-    line-height: 1.06;
-    letter-spacing: -.055em;
+    z-index: 10;
+    width: 69%;
+    max-width: none;
+    margin: 0;
+    font-size: clamp(38px, 10.4vw, 46px);
+    line-height: 1.02;
+    letter-spacing: -.06em;
   }
 
   .hero-copy h1 span,
@@ -58,23 +68,27 @@
     white-space: nowrap;
   }
 
+  /* Reserve one poster field for the artwork instead of stacking a separate art box. */
+  .hero-copy h1 { margin-bottom: 392px; }
+
   .hero-copy .lead,
   .hero-copy .actions {
     position: relative;
-    z-index: 12;
+    z-index: 14;
   }
 
   .hero-copy .lead {
     margin-top: 0;
+    background: linear-gradient(to bottom, rgba(242,221,178,.92), rgba(242,221,178,.74));
   }
 
-  /* The artwork is rebuilt from the reference, not from Pass 20 coordinates. */
+  /* Main poster field. */
   .hero-art {
     position: absolute;
-    left: -4vw;
-    right: -4vw;
-    top: 92px;
-    height: 560px;
+    left: -4.5vw;
+    right: -4.5vw;
+    top: 58px;
+    height: 590px;
     min-height: 0;
     margin: 0;
     z-index: 2;
@@ -82,11 +96,15 @@
     pointer-events: none;
   }
 
-  /* Approved sun system: one center for rays / mane / face. */
+  /*
+    MACRO GROUP 2 — SUN + LARGE RADIAL ACCENT
+    One exact center. The radial field is intentionally oversized and clipped by the
+    viewport; the face stays fixed while the mane keeps its approved rotation.
+  */
   .hero-art .mane,
   .hero-art .face,
   .hero-art .ray-accent {
-    left: 79%;
+    left: 77%;
     right: auto;
     top: 24%;
     transform: translate(-50%, -50%);
@@ -96,181 +114,175 @@
   .hero-art .rays { display: none !important; }
 
   .hero-art .ray-accent {
-    width: 118%;
+    width: 130%;
     z-index: 1;
   }
 
   .hero-art .mane {
-    width: 55%;
-    z-index: 3;
-  }
-
-  .hero-art .face {
-    width: 40%;
+    width: 52%;
     z-index: 4;
   }
 
-  /* Small accents stay secondary. */
+  .hero-art .face {
+    width: 38%;
+    z-index: 5;
+  }
+
+  /* Tiny accents only — they should never compete with the title or sun. */
   .hero-art .stars {
     display: block;
-    width: 5.5%;
-    left: 46%;
+    width: 4.5%;
+    left: 43%;
     right: auto;
-    top: 8%;
-    z-index: 5;
+    top: 9%;
+    z-index: 6;
   }
 
   .hero-art .stars-secondary {
     display: block;
-    width: 2.5%;
-    left: auto;
-    right: 3%;
-    top: 42%;
-    z-index: 5;
-  }
-
-  .hero-art .mini-star {
-    width: 2.4%;
-    left: 15%;
-    top: 40%;
-  }
-
-  .hero-art .mini-star-two {
     width: 2.2%;
-    right: 4%;
-    top: 48%;
+    left: auto;
+    right: 2.5%;
+    top: 37%;
+    z-index: 6;
   }
 
+  .hero-art .mini-star,
+  .hero-art .mini-star-two,
   .hero-art .star-badge {
-    width: 4.2%;
-    right: 12%;
-    top: auto;
-    bottom: 6%;
-    z-index: 11;
+    display: none !important;
   }
 
-  /* Background layer: intentionally wider than viewport, spanning edge-to-edge. */
+  /*
+    MACRO GROUP 3 — CITY
+    A continuous lower-right skyline band, not a floating object. It spans beyond both
+    edges and sits behind every foreground object.
+  */
   .hero-art .city {
-    width: 132%;
+    width: 124%;
     left: 50%;
     right: auto;
     top: auto;
-    bottom: 10%;
+    bottom: 19%;
     transform: translateX(-50%);
     z-index: 2;
   }
 
-  /* Reference cluster: one large sunflower anchors the lower middle-right. */
+  /*
+    MACRO GROUP 4 — SUNFLOWER
+    The flower becomes the lower-middle anchor under the sun, matching the reference's
+    dense botanical bridge from sun to skateboard cluster.
+  */
   .hero-art .sunflower {
-    width: 51%;
-    left: 34%;
+    width: 44%;
+    left: 32%;
     right: auto;
     top: auto;
-    bottom: -1%;
+    bottom: 9%;
     z-index: 7;
   }
 
-  /* Not part of the reference macro silhouette; remove from mobile hero for now. */
   .hero-art .flower { display: none !important; }
 
-  /* Right-side vertical cluster: crows → sign → skateboard → spray/orange. */
+  /*
+    MACRO GROUP 5 — RIGHT-SIDE OBJECT FLOW
+    Crows → sign → skateboard → spray/orange. The objects form one diagonal/vertical
+    mass on the right instead of several unrelated bottom-row stickers.
+  */
   .hero-art .crows {
-    width: 14%;
+    width: 11%;
     left: auto;
     right: 4%;
-    top: 46%;
+    top: 34%;
     bottom: auto;
     z-index: 8;
   }
 
   .hero-art .sign {
-    width: 34%;
+    width: 31%;
     left: auto;
-    right: -3%;
-    top: auto;
-    bottom: 27%;
+    right: -2%;
+    top: 45%;
+    bottom: auto;
     z-index: 9;
   }
 
   .hero-art .skate {
-    width: 43%;
+    width: 37%;
     left: auto;
-    right: 6%;
+    right: 7%;
     top: auto;
-    bottom: 0;
-    transform: rotate(-12deg);
+    bottom: 2%;
+    transform: rotate(-15deg);
+    transform-origin: 50% 50%;
     z-index: 10;
   }
 
   .hero-art .spray {
-    width: 18%;
+    width: 15%;
     left: auto;
-    right: -2%;
+    right: -1%;
     top: auto;
-    bottom: -1%;
-    z-index: 10;
+    bottom: 1%;
+    z-index: 11;
   }
 
   .hero-art .orange {
-    width: 17%;
+    width: 15%;
     left: auto;
-    right: 25%;
+    right: 24%;
     top: auto;
-    bottom: -2%;
-    z-index: 10;
+    bottom: 0;
+    z-index: 11;
   }
 
   .hero-art .smiley {
     display: block;
-    width: 5%;
+    width: 4.6%;
     left: auto;
-    right: 36%;
+    right: 34%;
     top: auto;
-    bottom: 10%;
-    z-index: 11;
+    bottom: 12%;
+    z-index: 12;
   }
 
-  /* Keep the three service badges readable, but outside the main object hierarchy. */
+  /* Service badges are useful UI, but not part of the reference hero silhouette. */
   .hero-art .badge-ai,
   .hero-art .badge-design,
   .hero-art .badge-system {
-    width: 19%;
-    bottom: -5%;
-    z-index: 11;
+    display: none !important;
   }
-
-  .hero-art .badge-ai { left: 4%; }
-  .hero-art .badge-design { left: 26%; }
-  .hero-art .badge-system { left: 48%; }
 }
 
 @media (max-width: 390px) {
+  .hero-copy .slogan { width: 64%; }
+
   .hero-copy h1 {
-    max-width: 78%;
-    margin-bottom: 405px;
+    width: 72%;
+    margin-bottom: 370px;
     font-size: 37px;
   }
 
   .hero-art {
-    top: 88px;
-    height: 535px;
+    top: 56px;
+    height: 555px;
   }
 
   .hero-art .mane,
   .hero-art .face,
   .hero-art .ray-accent {
-    left: 80%;
+    left: 78%;
     top: 24%;
   }
 
-  .hero-art .ray-accent { width: 122%; }
-  .hero-art .mane { width: 57%; }
-  .hero-art .face { width: 41.5%; }
-  .hero-art .city { width: 136%; bottom: 10%; }
-  .hero-art .sunflower { width: 53%; left: 32%; bottom: -1%; }
-  .hero-art .crows { width: 14%; right: 3%; top: 46%; }
-  .hero-art .sign { width: 35%; right: -4%; bottom: 27%; }
-  .hero-art .skate { width: 45%; right: 5%; bottom: 0; }
-  .hero-art .spray { width: 18.5%; right: -2.5%; bottom: -1%; }
-  .hero-art .orange { width: 17.5%; right: 24%; bottom: -2%; }
+  .hero-art .ray-accent { width: 134%; }
+  .hero-art .mane { width: 54%; }
+  .hero-art .face { width: 39.5%; }
+  .hero-art .city { width: 128%; bottom: 19%; }
+  .hero-art .sunflower { width: 46%; left: 30%; bottom: 9%; }
+  .hero-art .crows { width: 11%; right: 3%; top: 34%; }
+  .hero-art .sign { width: 32%; right: -3%; top: 45%; }
+  .hero-art .skate { width: 39%; right: 6%; bottom: 2%; }
+  .hero-art .spray { width: 15.5%; right: -1.5%; bottom: 1%; }
+  .hero-art .orange { width: 15.5%; right: 23%; bottom: 0; }
 }
