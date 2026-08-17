@@ -1,4 +1,4 @@
-/* Mobile Hero Rebuild 9 — macro rebuild from owner reference
+/* Mobile Hero Rebuild 10 — reference-geometry pass
    Single source of truth for <=560px hero placement.
    Source PNGs remain untouched. */
 
@@ -24,26 +24,41 @@
 
 @media (max-width: 560px) {
   .hero {
-    --poster-art-height: clamp(540px, 145vw, 650px);
+    /* Macro geometry only: use these values for future visual passes. */
+    --poster-art-height: clamp(560px, 152vw, 690px);
+
+    --title-width: 70%;
+
     --sun-x: 78%;
     --sun-y: 24%;
-    --radial-size: 138%;
-    --mane-size: 55%;
-    --face-size: 39%;
-    --city-size: 124%;
-    --sunflower-size: 55%;
-    --sign-size: 32%;
-    --skate-size: 50%;
-    --spray-size: 20%;
-    --orange-size: 22%;
+    --radial-size: 154%;
+    --mane-size: 60%;
+    --face-size: 43%;
+
+    --city-size: 134%;
+    --city-y: 38%;
+
+    --sunflower-size: 59%;
+    --sunflower-x: 25%;
+    --sunflower-y: 40%;
+
+    --crows-size: 11%;
+    --crows-y: 11%;
+    --sign-size: 35%;
+    --sign-y: 38%;
+    --skate-size: 55%;
+    --skate-y: 48%;
+    --spray-size: 21%;
+    --orange-size: 23%;
+
     position: relative;
     display: block;
     min-height: 0;
-    padding: 18px 4.5vw 24px;
+    padding: 16px 4.5vw 24px;
     overflow: hidden;
   }
 
-  /* 1. TITLE — broad left block; art visibly intrudes into its right edge. */
+  /* 1. TITLE — narrower poster block so the sun/radial visibly cuts into it. */
   .hero-copy {
     position: relative;
     z-index: 7;
@@ -53,8 +68,8 @@
   .hero-copy .slogan {
     position: relative;
     z-index: 12;
-    width: 61%;
-    margin: 0 0 10px 2px;
+    width: 58%;
+    margin: 0 0 8px 2px;
     font-size: 12px;
     line-height: 1.45;
   }
@@ -62,12 +77,12 @@
   .hero-copy h1 {
     position: relative;
     z-index: 12;
-    width: 76%;
+    width: var(--title-width);
     max-width: none;
-    margin: 0 0 clamp(300px, 82vw, 365px);
-    font-size: clamp(36px, 10.2vw, 45px);
-    line-height: 1;
-    letter-spacing: -.06em;
+    margin: 0 0 clamp(330px, 88vw, 400px);
+    font-size: clamp(36px, 10vw, 44px);
+    line-height: .98;
+    letter-spacing: -.065em;
   }
 
   .hero-copy h1 span,
@@ -81,15 +96,15 @@
 
   .hero-copy .lead {
     margin-top: 0;
-    background: linear-gradient(to bottom, rgba(242,221,178,.98), rgba(242,221,178,.9));
+    background: linear-gradient(to bottom, rgba(242,221,178,.98), rgba(242,221,178,.92));
   }
 
-  /* Shared poster field. */
+  /* Shared poster field: intentionally overlaps the title area. */
   .hero-art {
     position: absolute;
     left: -4.5vw;
     right: -4.5vw;
-    top: 34px;
+    top: 18px;
     height: var(--poster-art-height);
     min-height: 0;
     margin: 0;
@@ -98,7 +113,7 @@
     pointer-events: none;
   }
 
-  /* 2. SUN + RADIAL — dominant but not oversized beyond the poster field. */
+  /* 2. SUN + RADIAL — dominant visual anchor. */
   .hero-art .mane,
   .hero-art .face,
   .hero-art .ray-accent {
@@ -116,40 +131,40 @@
 
   .hero-art .stars {
     display: block;
-    width: 3%;
-    left: 46%;
+    width: 2.6%;
+    left: 45%;
     right: auto;
-    top: 11%;
+    top: 10%;
     z-index: 6;
   }
 
-  /* 3. CITY — full-width horizon, pushed into the rear layer. */
+  /* 3. CITY — continuous full-width horizon behind foreground objects. */
   .hero-art .city {
     width: var(--city-size);
     left: 50%;
     right: auto;
-    top: 45%;
+    top: var(--city-y);
     bottom: auto;
     transform: translateX(-50%);
     z-index: 2;
   }
 
-  /* 4. SUNFLOWER — botanical bridge between title and right cluster. */
+  /* 4. SUNFLOWER — large bridge from title into the right-side cluster. */
   .hero-art .sunflower {
     width: var(--sunflower-size);
-    left: 27%;
+    left: var(--sunflower-x);
     right: auto;
-    top: 39%;
+    top: var(--sunflower-y);
     bottom: auto;
     z-index: 7;
   }
 
-  /* 5. RIGHT CLUSTER — clear descending diagonal like the reference. */
+  /* 5. RIGHT CLUSTER — one strong descending diagonal, not scattered stickers. */
   .hero-art .crows {
-    width: 12%;
+    width: var(--crows-size);
     left: auto;
-    right: 3%;
-    top: 9%;
+    right: 4%;
+    top: var(--crows-y);
     bottom: auto;
     z-index: 8;
   }
@@ -157,8 +172,8 @@
   .hero-art .sign {
     width: var(--sign-size);
     left: auto;
-    right: -1%;
-    top: 34%;
+    right: -4%;
+    top: var(--sign-y);
     bottom: auto;
     z-index: 9;
   }
@@ -166,10 +181,10 @@
   .hero-art .skate {
     width: var(--skate-size);
     left: auto;
-    right: 7%;
-    top: 47%;
+    right: 5%;
+    top: var(--skate-y);
     bottom: auto;
-    transform: rotate(-24deg);
+    transform: rotate(-27deg);
     transform-origin: 50% 50%;
     z-index: 10;
   }
@@ -177,27 +192,27 @@
   .hero-art .spray {
     width: var(--spray-size);
     left: auto;
-    right: -1%;
+    right: -2%;
     top: auto;
-    bottom: 0;
+    bottom: -1%;
     z-index: 11;
   }
 
   .hero-art .orange {
     width: var(--orange-size);
     left: auto;
-    right: 18%;
+    right: 17%;
     top: auto;
-    bottom: -1%;
+    bottom: -2%;
     z-index: 11;
   }
 
   .hero-art .smiley {
     display: block;
-    width: 5.5%;
+    width: 5%;
     left: auto;
-    right: 42%;
-    top: 66%;
+    right: 40%;
+    top: 67%;
     bottom: auto;
     z-index: 12;
   }
