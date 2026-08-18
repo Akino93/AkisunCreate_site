@@ -58,17 +58,17 @@
       "transform": "matrix(1, 0, 0, 1, -242.297, -227.742)"
     },
     "mane": {
-      "x": 185,
-      "y": 108.9,
-      "width": 207,
-      "height": 201.9,
-      "right": 392,
-      "bottom": 310.8,
+      "x": 185.4,
+      "y": 109.3,
+      "width": 206.2,
+      "height": 201,
+      "right": 391.6,
+      "bottom": 310.3,
       "display": "block",
       "visibility": "visible",
       "opacity": "1",
       "zIndex": "4",
-      "transform": "matrix(0.926364, 0.376629, -0.376629, 0.926364, -80.7656, -76.1641)"
+      "transform": "matrix(0.930026, 0.367494, -0.367494, 0.930026, -80.7656, -76.1641)"
     },
     "face": {
       "x": 231.1,
@@ -149,11 +149,11 @@
       "transform": "matrix(0.961262, -0.275637, 0.275637, 0.961262, -68.0078, 0)"
     },
     "spray": {
-      "x": 335.3,
+      "x": 314,
       "y": 483,
       "width": 51,
       "height": 92,
-      "right": 386.3,
+      "right": 365,
       "bottom": 574.9,
       "display": "block",
       "visibility": "visible",
@@ -162,12 +162,12 @@
       "transform": "none"
     },
     "orange": {
-      "x": 271.5,
-      "y": 500.4,
+      "x": 275.8,
+      "y": 488.8,
       "width": 59.5,
       "height": 53.7,
-      "right": 331,
-      "bottom": 554.1,
+      "right": 335.3,
+      "bottom": 542.5,
       "display": "block",
       "visibility": "visible",
       "opacity": "1",
