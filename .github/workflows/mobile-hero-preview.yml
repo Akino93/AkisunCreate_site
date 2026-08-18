@@ -12,7 +12,7 @@ on:
       - '.github/workflows/mobile-hero-preview.yml'
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   screenshot:
@@ -21,6 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: browser-actions/setup-chrome@v1
+
       - name: Start local site
         run: |
           python3 -m http.server 4173 > /tmp/akisun-http.log 2>&1 &
@@ -31,15 +32,87 @@ jobs:
           done
           cat /tmp/akisun-http.log
           exit 1
+
       - name: Capture mobile hero
         run: |
           google-chrome --headless=new --no-sandbox --disable-gpu --hide-scrollbars \
             --window-size=390,1400 --screenshot=mobile-390.png \
             http://127.0.0.1:4173/
           test -s mobile-390.png
+
+      - name: Capture mobile layout metrics
+        run: |
+          cp index.html /tmp/index.original.html
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          html = p.read_text()
+          script = r'''
+          <script>
+          window.addEventListener('load', () => {
+            setTimeout(() => {
+              const selectors = {
+                hero: '.hero', title: '.hero-copy h1', heroArt: '.hero-art',
+                radial: '.hero-art .ray-accent', mane: '.hero-art .mane', face: '.hero-art .face',
+                city: '.hero-art .city', sunflower: '.hero-art .sunflower', crows: '.hero-art .crows',
+                sign: '.hero-art .sign', skateboard: '.hero-art .skate', spray: '.hero-art .spray',
+                orange: '.hero-art .orange', smiley: '.hero-art .smiley', stars: '.hero-art .stars'
+              };
+              const out = {viewport:{width:innerWidth,height:innerHeight}, scrollHeight:document.documentElement.scrollHeight, elements:{}};
+              for (const [name, selector] of Object.entries(selectors)) {
+                const el = document.querySelector(selector);
+                if (!el) { out.elements[name] = null; continue; }
+                const r = el.getBoundingClientRect();
+                const s = getComputedStyle(el);
+                out.elements[name] = {
+                  x:+r.x.toFixed(1), y:+r.y.toFixed(1), width:+r.width.toFixed(1), height:+r.height.toFixed(1),
+                  right:+r.right.toFixed(1), bottom:+r.bottom.toFixed(1),
+                  display:s.display, visibility:s.visibility, opacity:s.opacity, zIndex:s.zIndex,
+                  transform:s.transform
+                };
+              }
+              document.body.innerHTML = '<pre id="qa-metrics">' + JSON.stringify(out, null, 2).replace(/&/g,'&amp;').replace(/</g,'&lt;') + '</pre>';
+            }, 1200);
+          });
+          </script>
+          '''
+          p.write_text(html.replace('</body>', script + '</body>'))
+          PY
+
+          google-chrome --headless=new --no-sandbox --disable-gpu --hide-scrollbars \
+            --window-size=390,1400 --virtual-time-budget=3000 --dump-dom \
+            http://127.0.0.1:4173/ > /tmp/mobile-dom.html
+
+          python3 - <<'PY'
+          from pathlib import Path
+          import html, re, json
+          text = Path('/tmp/mobile-dom.html').read_text()
+          m = re.search(r'<pre id="qa-metrics">(.*?)</pre>', text, re.S)
+          if not m:
+              raise SystemExit('qa metrics not found in dumped DOM')
+          data = json.loads(html.unescape(m.group(1)))
+          Path('qa').mkdir(exist_ok=True)
+          Path('qa/mobile-layout.json').write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n')
+          PY
+
+          cp /tmp/index.original.html index.html
+          test -s qa/mobile-layout.json
+
       - uses: actions/upload-artifact@v4
         with:
           name: mobile-hero-preview
           path: mobile-390.png
           if-no-files-found: error
           retention-days: 7
+
+      - name: Persist layout metrics
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add qa/mobile-layout.json
+          if git diff --cached --quiet; then
+            echo "Layout metrics unchanged"
+            exit 0
+          fi
+          git commit -m "Update mobile hero QA metrics"
+          git push
