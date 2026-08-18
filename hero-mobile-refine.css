@@ -36,7 +36,7 @@
     --face-size: 38%;
 
     /* 2) City becomes a higher, thinner rear horizon like the reference. */
-    --city-size: 112%;
+    --city-size: 50%;
     --city-y: 38%;
 
     /* 3) Sunflower becomes a secondary bridge instead of a central wall. */
