@@ -1,4 +1,4 @@
-/* Mobile Hero Rebuild 11 — measured macro reset
+/* Mobile Hero Rebuild 12 — exact-390 macro composition
    Single source of truth for <=560px hero placement.
    Source PNGs remain untouched. */
 
@@ -24,36 +24,35 @@
 
 @media (max-width: 560px) {
   .hero {
-    /* Macro geometry derived from the reference + measured render bounds. */
+    /* Macro geometry rebuilt from the owner's reference and exact 390px QA. */
     --poster-art-height: clamp(550px, 145vw, 640px);
-
     --title-width: 72%;
 
-    /* Reference hierarchy: sun is dominant, but not pinned to the far-right edge. */
-    --sun-x: 70%;
+    /* 1) Sun is the dominant upper-right mass and deliberately overlaps title. */
+    --sun-x: 75%;
     --sun-y: 23%;
-    --radial-size: 145%;
-    --mane-size: 52%;
-    --face-size: 37%;
+    --radial-size: 150%;
+    --mane-size: 54%;
+    --face-size: 38%;
 
-    /* City is a rear horizon, not a foreground object. */
-    --city-size: 118%;
-    --city-y: 44%;
+    /* 2) City becomes a higher, thinner rear horizon like the reference. */
+    --city-size: 112%;
+    --city-y: 38%;
 
-    /* Botanical bridge is substantial but clearly secondary to the sun. */
-    --sunflower-size: 45%;
-    --sunflower-x: 31%;
-    --sunflower-y: 45%;
+    /* 3) Sunflower becomes a secondary bridge instead of a central wall. */
+    --sunflower-size: 36%;
+    --sunflower-x: 20%;
+    --sunflower-y: 47%;
 
-    /* Right cluster follows the reference scale hierarchy. */
-    --crows-size: 12%;
-    --crows-y: 12%;
-    --sign-size: 24%;
-    --sign-y: 43%;
-    --skate-size: 36%;
-    --skate-y: 49%;
-    --spray-size: 14%;
-    --orange-size: 16%;
+    /* 4) Right-hand foreground follows a descending reference rhythm. */
+    --crows-size: 13%;
+    --crows-y: 31%;
+    --sign-size: 25%;
+    --sign-y: 46%;
+    --skate-size: 32%;
+    --skate-y: 61%;
+    --spray-size: 13%;
+    --orange-size: 15%;
 
     position: relative;
     display: block;
@@ -62,7 +61,7 @@
     overflow: hidden;
   }
 
-  /* 1. TITLE — stays readable while the artwork cuts into its right edge. */
+  /* TITLE — readable, but visually interlocked with the poster field. */
   .hero-copy {
     position: relative;
     z-index: 7;
@@ -117,7 +116,7 @@
     pointer-events: none;
   }
 
-  /* 2. SUN + RADIAL — one exact shared center. */
+  /* SUN + RADIAL — exact shared center. */
   .hero-art .mane,
   .hero-art .face,
   .hero-art .ray-accent {
@@ -142,7 +141,7 @@
     z-index: 6;
   }
 
-  /* 3. CITY — continuous full-width horizon behind foreground objects. */
+  /* CITY — full-width rear horizon, raised so it sits under the sun. */
   .hero-art .city {
     width: var(--city-size);
     left: 50%;
@@ -153,7 +152,7 @@
     z-index: 2;
   }
 
-  /* 4. SUNFLOWER — bridge from title to the right-hand object cluster. */
+  /* SUNFLOWER — smaller left/center bridge like the reference. */
   .hero-art .sunflower {
     width: var(--sunflower-size);
     left: var(--sunflower-x);
@@ -163,11 +162,11 @@
     z-index: 7;
   }
 
-  /* 5. RIGHT CLUSTER — compact descending diagonal like the reference. */
+  /* RIGHT CLUSTER — high crows, tall sign, then skateboard and small objects. */
   .hero-art .crows {
     width: var(--crows-size);
     left: auto;
-    right: 6%;
+    right: 12%;
     top: var(--crows-y);
     bottom: auto;
     z-index: 8;
@@ -176,7 +175,7 @@
   .hero-art .sign {
     width: var(--sign-size);
     left: auto;
-    right: 1%;
+    right: -1%;
     top: var(--sign-y);
     bottom: auto;
     z-index: 9;
@@ -185,7 +184,7 @@
   .hero-art .skate {
     width: var(--skate-size);
     left: auto;
-    right: 10%;
+    right: 8%;
     top: var(--skate-y);
     bottom: auto;
     transform: rotate(-20deg);
@@ -196,18 +195,18 @@
   .hero-art .spray {
     width: var(--spray-size);
     left: auto;
-    right: 1%;
+    right: 0;
     top: auto;
-    bottom: 3%;
+    bottom: 5%;
     z-index: 11;
   }
 
   .hero-art .orange {
     width: var(--orange-size);
     left: auto;
-    right: 18%;
+    right: 23%;
     top: auto;
-    bottom: 2%;
+    bottom: 2.5%;
     z-index: 11;
   }
 
@@ -215,8 +214,8 @@
     display: block;
     width: 4.5%;
     left: auto;
-    right: 34%;
-    top: 64%;
+    right: 35%;
+    top: 66%;
     bottom: auto;
     z-index: 12;
   }
