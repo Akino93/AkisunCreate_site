@@ -21,6 +21,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: browser-actions/setup-chrome@v1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
 
       - name: Start local site
         run: |
@@ -33,70 +36,120 @@ jobs:
           cat /tmp/akisun-http.log
           exit 1
 
-      - name: Capture mobile hero
+      - name: Capture exact 390px mobile render and layout metrics
         run: |
+          mkdir -p qa
           google-chrome --headless=new --no-sandbox --disable-gpu --hide-scrollbars \
-            --window-size=390,1400 --screenshot=mobile-390.png \
-            http://127.0.0.1:4173/
-          test -s mobile-390.png
+            --remote-debugging-port=9222 --remote-debugging-address=127.0.0.1 \
+            about:blank > /tmp/chrome.log 2>&1 &
+          echo $! > /tmp/chrome.pid
 
-      - name: Capture mobile layout metrics
-        run: |
-          cp index.html /tmp/index.original.html
-          python3 - <<'PY'
-          from pathlib import Path
-          p = Path('index.html')
-          html = p.read_text()
-          script = r'''
-          <script>
-          window.addEventListener('load', () => {
-            setTimeout(() => {
-              const selectors = {
-                hero: '.hero', title: '.hero-copy h1', heroArt: '.hero-art',
-                radial: '.hero-art .ray-accent', mane: '.hero-art .mane', face: '.hero-art .face',
-                city: '.hero-art .city', sunflower: '.hero-art .sunflower', crows: '.hero-art .crows',
-                sign: '.hero-art .sign', skateboard: '.hero-art .skate', spray: '.hero-art .spray',
-                orange: '.hero-art .orange', smiley: '.hero-art .smiley', stars: '.hero-art .stars'
-              };
-              const out = {viewport:{width:innerWidth,height:innerHeight}, scrollHeight:document.documentElement.scrollHeight, elements:{}};
-              for (const [name, selector] of Object.entries(selectors)) {
-                const el = document.querySelector(selector);
-                if (!el) { out.elements[name] = null; continue; }
-                const r = el.getBoundingClientRect();
-                const s = getComputedStyle(el);
-                out.elements[name] = {
-                  x:+r.x.toFixed(1), y:+r.y.toFixed(1), width:+r.width.toFixed(1), height:+r.height.toFixed(1),
-                  right:+r.right.toFixed(1), bottom:+r.bottom.toFixed(1),
-                  display:s.display, visibility:s.visibility, opacity:s.opacity, zIndex:s.zIndex,
-                  transform:s.transform
-                };
-              }
-              document.body.innerHTML = '<pre id="qa-metrics">' + JSON.stringify(out, null, 2).replace(/&/g,'&amp;').replace(/</g,'&lt;') + '</pre>';
-            }, 1200);
+          for i in {1..30}; do
+            if curl -fsS http://127.0.0.1:9222/json/version >/dev/null; then break; fi
+            sleep 1
+          done
+          curl -fsS http://127.0.0.1:9222/json/version >/dev/null
+
+          cat > /tmp/mobile-qa.mjs <<'JS'
+          import fs from 'node:fs';
+
+          const sleep = ms => new Promise(r => setTimeout(r, ms));
+          const target = await fetch('http://127.0.0.1:9222/json/new?about:blank', {method:'PUT'}).then(r => r.json());
+          const ws = new WebSocket(target.webSocketDebuggerUrl);
+          await new Promise((resolve, reject) => {
+            ws.addEventListener('open', resolve, {once:true});
+            ws.addEventListener('error', reject, {once:true});
           });
-          </script>
-          '''
-          p.write_text(html.replace('</body>', script + '</body>'))
-          PY
 
-          google-chrome --headless=new --no-sandbox --disable-gpu --hide-scrollbars \
-            --window-size=390,1400 --virtual-time-budget=3000 --dump-dom \
-            http://127.0.0.1:4173/ > /tmp/mobile-dom.html
+          let seq = 0;
+          const pending = new Map();
+          const waiters = new Map();
+          ws.addEventListener('message', e => {
+            const msg = JSON.parse(e.data);
+            if (msg.id && pending.has(msg.id)) {
+              const {resolve, reject} = pending.get(msg.id);
+              pending.delete(msg.id);
+              if (msg.error) reject(new Error(JSON.stringify(msg.error)));
+              else resolve(msg.result);
+            }
+            if (msg.method && waiters.has(msg.method)) {
+              for (const resolve of waiters.get(msg.method)) resolve(msg.params || {});
+              waiters.delete(msg.method);
+            }
+          });
 
-          python3 - <<'PY'
-          from pathlib import Path
-          import html, re, json
-          text = Path('/tmp/mobile-dom.html').read_text()
-          m = re.search(r'<pre id="qa-metrics">(.*?)</pre>', text, re.S)
-          if not m:
-              raise SystemExit('qa metrics not found in dumped DOM')
-          data = json.loads(html.unescape(m.group(1)))
-          Path('qa').mkdir(exist_ok=True)
-          Path('qa/mobile-layout.json').write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n')
-          PY
+          const send = (method, params={}) => new Promise((resolve, reject) => {
+            const id = ++seq;
+            pending.set(id, {resolve, reject});
+            ws.send(JSON.stringify({id, method, params}));
+          });
+          const waitEvent = method => new Promise(resolve => {
+            const list = waiters.get(method) || [];
+            list.push(resolve);
+            waiters.set(method, list);
+          });
 
-          cp /tmp/index.original.html index.html
+          await send('Page.enable');
+          await send('Runtime.enable');
+          await send('Emulation.setDeviceMetricsOverride', {
+            width: 390,
+            height: 1400,
+            deviceScaleFactor: 1,
+            mobile: false,
+            screenWidth: 390,
+            screenHeight: 1400
+          });
+
+          const loaded = waitEvent('Page.loadEventFired');
+          await send('Page.navigate', {url:'http://127.0.0.1:4173/'});
+          await loaded;
+          await sleep(1800);
+
+          const expression = `(() => {
+            const selectors = {
+              hero: '.hero', title: '.hero-copy h1', heroArt: '.hero-art',
+              radial: '.hero-art .ray-accent', mane: '.hero-art .mane', face: '.hero-art .face',
+              city: '.hero-art .city', sunflower: '.hero-art .sunflower', crows: '.hero-art .crows',
+              sign: '.hero-art .sign', skateboard: '.hero-art .skate', spray: '.hero-art .spray',
+              orange: '.hero-art .orange', smiley: '.hero-art .smiley', stars: '.hero-art .stars'
+            };
+            const out = {viewport:{width:innerWidth,height:innerHeight}, scrollHeight:document.documentElement.scrollHeight, elements:{}};
+            for (const [name, selector] of Object.entries(selectors)) {
+              const el = document.querySelector(selector);
+              if (!el) { out.elements[name] = null; continue; }
+              const r = el.getBoundingClientRect();
+              const s = getComputedStyle(el);
+              out.elements[name] = {
+                x:+r.x.toFixed(1), y:+r.y.toFixed(1), width:+r.width.toFixed(1), height:+r.height.toFixed(1),
+                right:+r.right.toFixed(1), bottom:+r.bottom.toFixed(1), display:s.display,
+                visibility:s.visibility, opacity:s.opacity, zIndex:s.zIndex, transform:s.transform
+              };
+            }
+            return JSON.stringify(out);
+          })()`;
+          const evaluated = await send('Runtime.evaluate', {expression, returnByValue:true});
+          const data = JSON.parse(evaluated.result.value);
+          if (data.viewport.width !== 390) throw new Error(`Expected 390px CSS viewport, got ${data.viewport.width}`);
+          fs.writeFileSync('qa/mobile-layout.json', JSON.stringify(data, null, 2) + '\n');
+
+          const shot = await send('Page.captureScreenshot', {
+            format:'png',
+            captureBeyondViewport:false,
+            fromSurface:true
+          });
+          fs.writeFileSync('mobile-390.png', Buffer.from(shot.data, 'base64'));
+          ws.close();
+          JS
+
+          node /tmp/mobile-qa.mjs
+          test -s mobile-390.png
           test -s qa/mobile-layout.json
+          python3 - <<'PY'
+          import json
+          d=json.load(open('qa/mobile-layout.json'))
+          assert d['viewport']['width'] == 390, d['viewport']
+          print('Verified CSS viewport:', d['viewport'])
+          PY
 
       - uses: actions/upload-artifact@v4
         with:
@@ -114,5 +167,5 @@ jobs:
             echo "Layout metrics unchanged"
             exit 0
           fi
-          git commit -m "Update mobile hero QA metrics"
+          git commit -m "Update exact 390px mobile hero QA metrics"
           git push
