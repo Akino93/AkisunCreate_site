@@ -26,7 +26,7 @@ header:before{display:none!important}
 .hero-art .sunflower{width:var(--sunflower-size);left:var(--sunflower-x);right:auto;top:var(--sunflower-y);bottom:auto;z-index:7}
 .hero-art .glasses{display:block!important;width:var(--glasses-size);left:var(--glasses-x);right:auto;top:var(--glasses-y);bottom:auto;transform:rotate(-8deg);z-index:8}
 .hero-art .crows{width:var(--crows-size);left:var(--crows-x);right:auto;top:var(--crows-y);bottom:auto;z-index:8}
-.hero-art .flower{display:block!important;width:var(--flower-size);left:var(--flower-x);right:auto;top:var(--flower-y);bottom:auto;z-index:8}
-.hero-art .sign{width:var(--sign-size);left:var(--sign-x);right:auto;top:var(--sign-y);bottom:auto;z-index:9}
+.hero-art .flower{display:block!important;width:var(--flower-size);left:var(--flower-x);right:auto;top:var(--flower-y);bottom:auto;z-index:3}
+.hero-art .sign{width:var(--sign-size);left:var(--sign-x);right:auto;top:var(--sign-y);bottom:auto;z-index:4}
 .hero-art .skate{width:var(--skate-size);left:var(--skate-x);right:auto;top:var(--skate-y);bottom:auto;transform:translateX(-50%) rotate(-16deg);transform-origin:50% 50%;z-index:10}.hero-art .spray{width:var(--spray-size);left:var(--spray-x);right:auto;top:var(--spray-y);bottom:auto;z-index:11}.hero-art .orange{width:var(--orange-size);left:var(--orange-x);right:auto;top:var(--orange-y);bottom:auto;z-index:11}.hero-art .smiley{display:block;width:var(--smiley-size);left:var(--smiley-x);right:auto;top:var(--smiley-y);bottom:auto;z-index:12}
 }
