@@ -58,17 +58,17 @@
       "transform": "matrix(1, 0, 0, 1, -318.82, -299.672)"
     },
     "mane": {
-      "x": 153.8,
-      "y": 68.1,
-      "width": 294.9,
-      "height": 287.8,
-      "right": 448.7,
-      "bottom": 356,
+      "x": 154.2,
+      "y": 68.6,
+      "width": 294.2,
+      "height": 287,
+      "right": 448.4,
+      "bottom": 355.6,
       "display": "block",
       "visibility": "visible",
       "opacity": "1",
       "zIndex": "4",
-      "transform": "matrix(0.923887, 0.382665, -0.382665, 0.923887, -114.773, -108.234)"
+      "transform": "matrix(0.926367, 0.376623, -0.376623, 0.926367, -114.773, -108.234)"
     },
     "face": {
       "x": 220.5,
