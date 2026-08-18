@@ -28,23 +28,20 @@
     --poster-art-height: clamp(550px, 145vw, 640px);
     --title-width: 72%;
 
-    /* 1) Sun is the dominant upper-right mass and deliberately overlaps title. */
+    /* Sun group: same center, scaled down together. */
     --sun-x: 75%;
     --sun-y: 23%;
-    --radial-size: 150%;
-    --mane-size: 54%;
-    --face-size: 38%;
+    --radial-size: 120%;
+    --mane-size: 43%;
+    --face-size: 30%;
 
-    /* 2) City becomes a higher, thinner rear horizon like the reference. */
     --city-size: 50%;
     --city-y: 38%;
 
-    /* 3) Sunflower becomes a secondary bridge instead of a central wall. */
     --sunflower-size: 36%;
     --sunflower-x: 20%;
     --sunflower-y: 47%;
 
-    /* 4) Right-hand foreground follows a descending reference rhythm. */
     --crows-size: 13%;
     --crows-y: 31%;
     --sign-size: 25%;
@@ -61,162 +58,26 @@
     overflow: hidden;
   }
 
-  /* TITLE — readable, but visually interlocked with the poster field. */
-  .hero-copy {
-    position: relative;
-    z-index: 7;
-    max-width: none;
-  }
+  .hero-copy { position: relative; z-index: 7; max-width: none; }
+  .hero-copy .slogan { position: relative; z-index: 12; width: 58%; margin: 0 0 8px 2px; font-size: 12px; line-height: 1.45; }
+  .hero-copy h1 { position: relative; z-index: 12; width: var(--title-width); max-width: none; margin: 0 0 clamp(300px, 78vw, 350px); font-size: clamp(36px, 10vw, 44px); line-height: .98; letter-spacing: -.065em; }
+  .hero-copy h1 span,.hero-copy h1 em { white-space: nowrap; }
+  .hero-copy .lead,.hero-copy .actions { position: relative; z-index: 16; }
+  .hero-copy .lead { margin-top: 0; background: linear-gradient(to bottom, rgba(242,221,178,.98), rgba(242,221,178,.92)); }
 
-  .hero-copy .slogan {
-    position: relative;
-    z-index: 12;
-    width: 58%;
-    margin: 0 0 8px 2px;
-    font-size: 12px;
-    line-height: 1.45;
-  }
-
-  .hero-copy h1 {
-    position: relative;
-    z-index: 12;
-    width: var(--title-width);
-    max-width: none;
-    margin: 0 0 clamp(300px, 78vw, 350px);
-    font-size: clamp(36px, 10vw, 44px);
-    line-height: .98;
-    letter-spacing: -.065em;
-  }
-
-  .hero-copy h1 span,
-  .hero-copy h1 em { white-space: nowrap; }
-
-  .hero-copy .lead,
-  .hero-copy .actions {
-    position: relative;
-    z-index: 16;
-  }
-
-  .hero-copy .lead {
-    margin-top: 0;
-    background: linear-gradient(to bottom, rgba(242,221,178,.98), rgba(242,221,178,.92));
-  }
-
-  /* Shared poster field: intentionally overlaps the title area. */
-  .hero-art {
-    position: absolute;
-    left: -4.5vw;
-    right: -4.5vw;
-    top: 18px;
-    height: var(--poster-art-height);
-    min-height: 0;
-    margin: 0;
-    z-index: 2;
-    overflow: visible;
-    pointer-events: none;
-  }
-
-  /* SUN + RADIAL — exact shared center. */
-  .hero-art .mane,
-  .hero-art .face,
-  .hero-art .ray-accent {
-    left: var(--sun-x);
-    right: auto;
-    top: var(--sun-y);
-    transform: translate(-50%, -50%);
-    transform-origin: 50% 50%;
-  }
-
+  .hero-art { position: absolute; left: -4.5vw; right: -4.5vw; top: 18px; height: var(--poster-art-height); min-height: 0; margin: 0; z-index: 2; overflow: visible; pointer-events: none; }
+  .hero-art .mane,.hero-art .face,.hero-art .ray-accent { left: var(--sun-x); right: auto; top: var(--sun-y); transform: translate(-50%, -50%); transform-origin: 50% 50%; }
   .hero-art .rays { display: none !important; }
   .hero-art .ray-accent { width: var(--radial-size); z-index: 1; }
   .hero-art .mane { width: var(--mane-size); z-index: 4; }
   .hero-art .face { width: var(--face-size); z-index: 5; }
-
-  .hero-art .stars {
-    display: block;
-    width: 2.4%;
-    left: 43%;
-    right: auto;
-    top: 10%;
-    z-index: 6;
-  }
-
-  /* CITY — full-width rear horizon, raised so it sits under the sun. */
-  .hero-art .city {
-    width: var(--city-size);
-    left: 50%;
-    right: auto;
-    top: var(--city-y);
-    bottom: auto;
-    transform: translateX(-50%);
-    z-index: 2;
-  }
-
-  /* SUNFLOWER — smaller left/center bridge like the reference. */
-  .hero-art .sunflower {
-    width: var(--sunflower-size);
-    left: var(--sunflower-x);
-    right: auto;
-    top: var(--sunflower-y);
-    bottom: auto;
-    z-index: 7;
-  }
-
-  /* RIGHT CLUSTER — high crows, tall sign, then skateboard and small objects. */
-  .hero-art .crows {
-    width: var(--crows-size);
-    left: auto;
-    right: 12%;
-    top: var(--crows-y);
-    bottom: auto;
-    z-index: 8;
-  }
-
-  .hero-art .sign {
-    width: var(--sign-size);
-    left: auto;
-    right: -1%;
-    top: var(--sign-y);
-    bottom: auto;
-    z-index: 9;
-  }
-
-  .hero-art .skate {
-    width: var(--skate-size);
-    left: auto;
-    right: 8%;
-    top: var(--skate-y);
-    bottom: auto;
-    transform: rotate(-20deg);
-    transform-origin: 50% 50%;
-    z-index: 10;
-  }
-
-  .hero-art .spray {
-    width: var(--spray-size);
-    left: auto;
-    right: 0;
-    top: auto;
-    bottom: 5%;
-    z-index: 11;
-  }
-
-  .hero-art .orange {
-    width: var(--orange-size);
-    left: auto;
-    right: 23%;
-    top: auto;
-    bottom: 2.5%;
-    z-index: 11;
-  }
-
-  .hero-art .smiley {
-    display: block;
-    width: 4.5%;
-    left: auto;
-    right: 35%;
-    top: 66%;
-    bottom: auto;
-    z-index: 12;
-  }
+  .hero-art .stars { display: block; width: 2.4%; left: 43%; right: auto; top: 10%; z-index: 6; }
+  .hero-art .city { width: var(--city-size); left: 50%; right: auto; top: var(--city-y); bottom: auto; transform: translateX(-50%); z-index: 2; }
+  .hero-art .sunflower { width: var(--sunflower-size); left: var(--sunflower-x); right: auto; top: var(--sunflower-y); bottom: auto; z-index: 7; }
+  .hero-art .crows { width: var(--crows-size); left: auto; right: 12%; top: var(--crows-y); bottom: auto; z-index: 8; }
+  .hero-art .sign { width: var(--sign-size); left: auto; right: -1%; top: var(--sign-y); bottom: auto; z-index: 9; }
+  .hero-art .skate { width: var(--skate-size); left: auto; right: 8%; top: var(--skate-y); bottom: auto; transform: rotate(-20deg); transform-origin: 50% 50%; z-index: 10; }
+  .hero-art .spray { width: var(--spray-size); left: auto; right: 0; top: auto; bottom: 5%; z-index: 11; }
+  .hero-art .orange { width: var(--orange-size); left: auto; right: 23%; top: auto; bottom: 2.5%; z-index: 11; }
+  .hero-art .smiley { display: block; width: 4.5%; left: auto; right: 35%; top: 66%; bottom: auto; z-index: 12; }
 }
