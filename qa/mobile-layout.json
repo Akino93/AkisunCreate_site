@@ -58,17 +58,17 @@
       "transform": "matrix(1, 0, 0, 1, -255.055, -239.734)"
     },
     "mane": {
-      "x": 171.5,
-      "y": 92.3,
-      "width": 233.9,
-      "height": 228.2,
-      "right": 405.5,
-      "bottom": 320.5,
+      "x": 170.8,
+      "y": 91.5,
+      "width": 235.4,
+      "height": 229.9,
+      "right": 406.2,
+      "bottom": 321.3,
       "display": "block",
       "visibility": "visible",
       "opacity": "1",
       "zIndex": "4",
-      "transform": "matrix(0.927599, 0.373577, -0.373577, 0.927599, -91.3906, -86.1875)"
+      "transform": "matrix(0.921367, 0.388694, -0.388694, 0.921367, -91.3906, -86.1875)"
     },
     "face": {
       "x": 224.8,
@@ -84,17 +84,17 @@
       "transform": "matrix(1, 0, 0, 1, -63.7578, -64.625)"
     },
     "city": {
-      "x": 110,
+      "x": 195,
       "y": 302.5,
       "width": 212.5,
       "height": 103.7,
-      "right": 322.5,
+      "right": 407.5,
       "bottom": 406.2,
       "display": "block",
       "visibility": "visible",
       "opacity": "1",
       "zIndex": "2",
-      "transform": "matrix(1, 0, 0, 1, -106.273, 0)"
+      "transform": "none"
     },
     "sunflower": {
       "x": 25,
