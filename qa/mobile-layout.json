@@ -58,17 +58,17 @@
       "transform": "matrix(1, 0, 0, 1, -255.055, -239.734)"
     },
     "mane": {
-      "x": 170.8,
-      "y": 91.5,
-      "width": 235.4,
-      "height": 229.9,
-      "right": 406.2,
-      "bottom": 321.3,
+      "x": 171.1,
+      "y": 91.8,
+      "width": 234.8,
+      "height": 229.2,
+      "right": 405.9,
+      "bottom": 321,
       "display": "block",
       "visibility": "visible",
       "opacity": "1",
       "zIndex": "4",
-      "transform": "matrix(0.921367, 0.388694, -0.388694, 0.921367, -91.3906, -86.1875)"
+      "transform": "matrix(0.923887, 0.382667, -0.382667, 0.923887, -91.3906, -86.1875)"
     },
     "face": {
       "x": 224.8,
@@ -84,11 +84,11 @@
       "transform": "matrix(1, 0, 0, 1, -63.7578, -64.625)"
     },
     "city": {
-      "x": 195,
+      "x": 177.5,
       "y": 302.5,
       "width": 212.5,
       "height": 103.7,
-      "right": 407.5,
+      "right": 390,
       "bottom": 406.2,
       "display": "block",
       "visibility": "visible",
