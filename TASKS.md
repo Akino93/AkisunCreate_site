@@ -27,10 +27,20 @@
 - Self-check: selectors are scoped to `#about`; existing Services/Works rules remain unchanged; the only `index.html` edit is the `non-hero.css` cache key.
 - Hero lock check: verified the `index.html` commit changes only the non-hero stylesheet version; no hero stylesheet, selector, asset, markup, typography, spacing, placement, or animation changed.
 
+### Contact / CTA — 2026-08-19
+- Reworked the flat orange contact block into a high-impact editorial closing panel using the existing gold/orange/ink palette.
+- Added section folio treatment, oversized restrained arrow motif, asymmetric headline/supporting-copy composition, stamped AkisunCreate label, and a full-width mail action framed by ink rules.
+- Kept the Japanese headline, English supporting copy, email address, and mailto destination unchanged.
+- Mobile (~390px): collapses to a single reading flow, preserves a 66px+ mail target, uses `overflow-wrap:anywhere` for the email address, and avoids fixed-width elements that would force viewport overflow.
+- Tablet/desktop: two-column headline/supporting-copy composition with the mail action spanning the full section width.
+- Accessibility polish: visible `:focus-visible` treatment and readable foreground/background contrast using the existing ink/paper colors.
+- No images were generated or modified; all decoration is CSS-only.
+- Hero lock check: no hero stylesheet, hero selector, hero asset, hero markup, hero typography, hero spacing, hero placement, or hero animation changed. `index.html` only received a `non-hero.css` cache-key refresh.
+
 ## Next priority
-1. Contact/CTA — increase impact and polish without overpowering the page.
-2. Footer/navigation details.
-3. Cross-section responsive/accessibility QA, then final spacing/typography cleanup.
+1. Footer/navigation details.
+2. Cross-section responsive/accessibility QA.
+3. Final section-to-section spacing/typography cleanup.
 
 ## Guardrail
 The hero is locked. Do not modify `hero-mobile-refine.css`, `hero-fix.css`, `hero-small-desktop.css`, `hero-fluid-tablet.css`, hero assets, or `<section class="hero">...</section>`.
