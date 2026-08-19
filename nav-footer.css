@@ -1,5 +1,13 @@
 /* Navigation + footer polish. Intentionally does not alter header geometry or hero styles. */
 
+/* Keep in-page navigation targets clear of the sticky header without touching hero geometry. */
+#services,
+#works,
+#about,
+#contact{
+  scroll-margin-top:86px;
+}
+
 .brand:focus-visible,
 .nav a:focus-visible,
 .nav-toggle:focus-visible{
@@ -113,6 +121,12 @@ footer:after{
 }
 
 @media(max-width:560px){
+  #services,
+  #works,
+  #about,
+  #contact{
+    scroll-margin-top:74px;
+  }
   footer{
     padding:20px 4.5vw 22px;
     display:grid;
