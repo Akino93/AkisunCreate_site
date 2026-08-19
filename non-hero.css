@@ -1,0 +1,164 @@
+/* Non-hero visual system. Intentionally scoped away from .hero and hero assets. */
+
+.services{
+  position:relative;
+  padding:76px 5vw 72px;
+  gap:0;
+  counter-reset:service-card;
+  background:linear-gradient(180deg,rgba(239,173,44,.08),rgba(242,221,178,0) 34%);
+}
+.services:before{
+  content:"SERVICES / WHAT I DO";
+  grid-column:1/-1;
+  display:block;
+  margin:0 0 22px;
+  padding-bottom:10px;
+  border-bottom:2px solid var(--ink);
+  color:var(--orange);
+  font-family:'Archivo Black','Noto Sans JP',sans-serif;
+  font-size:12px;
+  letter-spacing:.16em;
+}
+.services article{
+  counter-increment:service-card;
+  min-height:330px;
+  padding:34px 32px 30px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  text-align:left;
+  background:rgba(245,226,184,.68);
+  border:0;
+  border-top:2px solid var(--ink);
+  border-bottom:2px solid var(--ink);
+  border-radius:0;
+}
+.services article+article{border-left:2px solid var(--ink)}
+.services article:before{
+  content:"";
+  position:absolute;
+  inset:8px;
+  border:1px solid rgba(23,20,14,.26);
+  pointer-events:none;
+}
+.services article:after{
+  content:"0" counter(service-card);
+  position:absolute;
+  top:22px;
+  right:24px;
+  color:rgba(23,20,14,.48);
+  font-family:'Archivo Black',sans-serif;
+  font-size:13px;
+  letter-spacing:.08em;
+}
+.services article:nth-of-type(2){
+  background:rgba(239,173,44,.18);
+  transform:translateY(18px);
+}
+.services article:nth-of-type(3){
+  background:rgba(80,109,99,.10);
+}
+.service-symbol{
+  width:68px;
+  height:68px;
+  display:grid;
+  place-items:center;
+  margin:0 0 28px;
+  border:2px solid var(--ink);
+  color:var(--teal);
+  background:rgba(242,221,178,.82);
+  box-shadow:4px 4px 0 var(--ink);
+  font-size:37px;
+  line-height:1;
+}
+.services article:nth-of-type(2) .service-symbol{transform:rotate(-3deg)}
+.services article:nth-of-type(3) .service-symbol{transform:rotate(2deg)}
+.services h2{
+  margin:0 0 14px;
+  max-width:12em;
+  font-size:clamp(24px,2.2vw,32px);
+  line-height:1.22;
+  letter-spacing:-.035em;
+}
+.services p{
+  margin:0 0 26px;
+  max-width:34em;
+  line-height:1.9;
+  font-size:15px;
+  font-weight:700;
+}
+.services a{
+  min-height:44px;
+  margin-top:auto;
+  padding:9px 0 6px;
+  display:inline-flex;
+  align-items:center;
+  border:0;
+  border-bottom:2px solid var(--ink);
+  border-radius:0;
+  color:inherit;
+  font-family:'Archivo Black','Noto Sans JP',sans-serif;
+  font-size:13px;
+  letter-spacing:.03em;
+  text-decoration:none;
+}
+.services a:focus-visible{
+  outline:3px solid var(--orange);
+  outline-offset:5px;
+}
+
+@media(max-width:900px){
+  .services{
+    padding:64px 5vw 66px;
+    gap:0;
+  }
+  .services article{
+    min-height:0;
+    padding:30px 28px 28px;
+    border:2px solid var(--ink);
+  }
+  .services article+article{
+    margin-top:-2px;
+    border-left:2px solid var(--ink);
+  }
+  .services article:nth-of-type(2){
+    transform:none;
+    margin-left:4vw;
+  }
+  .services article:nth-of-type(3){
+    margin-right:4vw;
+  }
+}
+
+@media(max-width:560px){
+  .services{
+    padding:54px 4.5vw 58px;
+  }
+  .services:before{
+    margin-bottom:16px;
+    font-size:10px;
+  }
+  .services article{
+    padding:26px 22px 24px;
+  }
+  .services article:nth-of-type(2){margin-left:3vw}
+  .services article:nth-of-type(3){margin-right:3vw}
+  .service-symbol{
+    width:58px;
+    height:58px;
+    margin-bottom:22px;
+    font-size:31px;
+    box-shadow:3px 3px 0 var(--ink);
+  }
+  .services h2{
+    font-size:25px;
+  }
+  .services p{
+    font-size:14px;
+    line-height:1.85;
+  }
+  .services a{
+    width:100%;
+    justify-content:space-between;
+  }
+}
