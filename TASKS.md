@@ -46,10 +46,18 @@
 - Mobile/tablet/desktop check by CSS review: no fixed content widths that should force viewport overflow; mobile navigation links remain 52px high.
 - Hero lock check: no hero stylesheet, hero selector, hero asset, hero markup, hero typography, hero spacing, hero placement, or hero animation changed. `index.html` only loads the new non-hero stylesheet.
 
+### Responsive / accessibility QA — mobile navigation — 2026-08-19
+- Hardened the existing mobile menu behavior without changing header geometry, safe-area rules, menu styling, or hero code.
+- Added dynamic accessible labels (`メニューを開く` / `メニューを閉じる`) synchronized with `aria-expanded`.
+- Added Escape-to-close with focus restoration to the menu button for keyboard users.
+- Added outside-tap/pointer close behavior on mobile so the sticky menu cannot remain stranded over page content.
+- Added breakpoint-state cleanup: when the viewport crosses above 900px, stale mobile `is-open` / `aria-expanded` state is reset before a later return to mobile.
+- Existing link-click close behavior remains intact.
+- Self-check: the functional change is isolated to `script.js`; `index.html` changed only the script cache key. Hero markup and all hero stylesheets remain byte-for-byte untouched by this cycle.
+
 ## Next priority
-1. Cross-section responsive/accessibility QA.
-2. Final section-to-section spacing/typography cleanup.
-3. Final no-regression pass; stop visual changes once clean.
+1. Final section-to-section spacing/typography cleanup.
+2. Final no-regression pass; stop visual changes once clean.
 
 ## Guardrail
 The hero is locked. Do not modify `hero-mobile-refine.css`, `hero-fix.css`, `hero-small-desktop.css`, `hero-fluid-tablet.css`, hero assets, or `<section class="hero">...</section>`.
