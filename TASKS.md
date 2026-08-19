@@ -55,9 +55,15 @@
 - Existing link-click close behavior remains intact.
 - Self-check: the functional change is isolated to `script.js`; `index.html` changed only the script cache key. Hero markup and all hero stylesheets remain byte-for-byte untouched by this cycle.
 
+### Final spacing / anchor navigation — 2026-08-19
+- Added section-local `scroll-margin-top` to Services, Works, About, and Contact so sticky-header navigation lands with the section content visible instead of tucked under the header.
+- Desktop/tablet target offset is 86px; small-mobile offset is 74px to match the shorter header footprint without changing header geometry or safe-area behavior.
+- The change is isolated to `nav-footer.css`; no hero selector, hero stylesheet, asset, markup, typography, spacing, placement, animation, or global variable was changed.
+- Refreshed only the `nav-footer.css` cache key in `index.html`; the hero markup remains unchanged.
+
 ## Next priority
-1. Final section-to-section spacing/typography cleanup.
-2. Final no-regression pass; stop visual changes once clean.
+1. Final no-regression pass across non-hero sections at mobile/tablet/desktop.
+2. If no real regression is found, stop visual changes and mark the non-hero polish complete.
 
 ## Guardrail
 The hero is locked. Do not modify `hero-mobile-refine.css`, `hero-fix.css`, `hero-small-desktop.css`, `hero-fluid-tablet.css`, hero assets, or `<section class="hero">...</section>`.
