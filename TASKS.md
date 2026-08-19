@@ -37,10 +37,19 @@
 - No images were generated or modified; all decoration is CSS-only.
 - Hero lock check: no hero stylesheet, hero selector, hero asset, hero markup, hero typography, hero spacing, hero placement, or hero animation changed. `index.html` only received a `non-hero.css` cache-key refresh.
 
+### Footer / Navigation — 2026-08-19
+- Added a dedicated `nav-footer.css` so navigation/footer polish remains isolated from hero styles and header geometry.
+- Navigation: added editorial underline interaction on desktop, 44px+ tap targets, visible focus rings, and a clearer vintage panel treatment for the mobile menu.
+- Menu button: kept its existing dimensions/placement while adding an expanded-state ink/orange treatment and a compact MENU label; no header padding or safe-area rules changed.
+- Footer: replaced the plain centered line with a dark ink closing strip, gold folio text, restrained circular arrow stamp, and responsive two-row mobile composition.
+- Accessibility: keyboard focus remains visible; motion transitions are disabled under `prefers-reduced-motion`.
+- Mobile/tablet/desktop check by CSS review: no fixed content widths that should force viewport overflow; mobile navigation links remain 52px high.
+- Hero lock check: no hero stylesheet, hero selector, hero asset, hero markup, hero typography, hero spacing, hero placement, or hero animation changed. `index.html` only loads the new non-hero stylesheet.
+
 ## Next priority
-1. Footer/navigation details.
-2. Cross-section responsive/accessibility QA.
-3. Final section-to-section spacing/typography cleanup.
+1. Cross-section responsive/accessibility QA.
+2. Final section-to-section spacing/typography cleanup.
+3. Final no-regression pass; stop visual changes once clean.
 
 ## Guardrail
 The hero is locked. Do not modify `hero-mobile-refine.css`, `hero-fix.css`, `hero-small-desktop.css`, `hero-fluid-tablet.css`, hero assets, or `<section class="hero">...</section>`.
