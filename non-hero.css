@@ -458,3 +458,184 @@
     font-size:10px;
   }
 }
+
+/* Contact: high-impact editorial closing panel, scoped entirely outside the hero. */
+#contact{
+  position:relative;
+  min-height:560px;
+  padding:72px 6vw 78px;
+  display:grid;
+  grid-template-columns:minmax(0,1.1fr) minmax(300px,.9fr);
+  grid-template-rows:auto 1fr auto;
+  column-gap:clamp(42px,7vw,120px);
+  align-items:start;
+  overflow:hidden;
+  background:
+    linear-gradient(135deg,rgba(239,173,44,.98) 0 58%,rgba(216,91,25,.92) 58% 100%);
+  border-top:3px double var(--ink);
+  border-bottom:3px double var(--ink);
+}
+#contact:before{
+  content:"CONTACT / 01";
+  grid-column:1/-1;
+  display:block;
+  margin:0 0 42px;
+  padding-bottom:10px;
+  border-bottom:2px solid var(--ink);
+  color:var(--ink);
+  font-family:'Archivo Black',sans-serif;
+  font-size:12px;
+  letter-spacing:.18em;
+}
+#contact:after{
+  content:"↗";
+  position:absolute;
+  right:5.5vw;
+  top:86px;
+  color:rgba(23,20,14,.18);
+  font-family:'Archivo Black',sans-serif;
+  font-size:clamp(100px,14vw,210px);
+  line-height:.75;
+  transform:rotate(-7deg);
+  pointer-events:none;
+}
+#contact>p{
+  grid-column:2;
+  grid-row:2;
+  align-self:start;
+  margin:8px 0 0;
+  padding:14px 0 14px 18px;
+  border-left:5px solid var(--ink);
+  max-width:24em;
+  font-family:'Archivo Black','Noto Sans JP',sans-serif;
+  font-size:clamp(13px,1.35vw,18px);
+  line-height:1.45;
+  letter-spacing:.08em;
+  position:relative;
+  z-index:1;
+}
+#contact h2{
+  grid-column:1;
+  grid-row:2;
+  align-self:start;
+  max-width:8.3em;
+  margin:0;
+  font-size:clamp(58px,7vw,104px);
+  line-height:.98;
+  letter-spacing:-.065em;
+  position:relative;
+  z-index:1;
+}
+#contact h2:after{
+  content:"AKISUNCREATE";
+  display:block;
+  width:max-content;
+  margin-top:30px;
+  padding:7px 10px 6px;
+  border:2px solid var(--ink);
+  font-family:'Archivo Black',sans-serif;
+  font-size:11px;
+  line-height:1;
+  letter-spacing:.14em;
+  transform:rotate(-2deg);
+}
+#contact>a{
+  grid-column:1/-1;
+  grid-row:3;
+  justify-self:stretch;
+  min-height:74px;
+  margin-top:56px;
+  padding:16px 0 12px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  border-top:3px solid var(--ink);
+  border-bottom:3px solid var(--ink);
+  color:inherit;
+  font-family:'Archivo Black','Noto Sans JP',sans-serif;
+  font-size:clamp(20px,3vw,42px);
+  line-height:1.2;
+  letter-spacing:-.035em;
+  text-decoration:none;
+  position:relative;
+  z-index:1;
+}
+#contact>a:after{
+  content:"SEND MAIL";
+  flex:0 0 auto;
+  color:rgba(23,20,14,.66);
+  font-size:11px;
+  letter-spacing:.14em;
+}
+#contact>a:hover{background:rgba(242,221,178,.20)}
+#contact>a:focus-visible{
+  outline:4px solid var(--paper);
+  outline-offset:5px;
+}
+
+@media(max-width:900px){
+  #contact{
+    min-height:0;
+    grid-template-columns:minmax(0,1.2fr) minmax(240px,.8fr);
+    padding:66px 5vw 70px;
+    column-gap:38px;
+  }
+  #contact:before{margin-bottom:34px}
+  #contact h2{font-size:clamp(54px,8.2vw,76px)}
+  #contact>p{font-size:13px}
+  #contact>a{margin-top:46px}
+}
+
+@media(max-width:560px){
+  #contact{
+    display:block;
+    min-height:0;
+    padding:54px 4.5vw 58px;
+    background:
+      linear-gradient(156deg,rgba(239,173,44,.98) 0 72%,rgba(216,91,25,.88) 72% 100%);
+  }
+  #contact:before{
+    margin:0 0 28px;
+    font-size:10px;
+  }
+  #contact:after{
+    right:-1vw;
+    top:90px;
+    font-size:108px;
+    opacity:.72;
+  }
+  #contact>p{
+    margin:0 0 18px;
+    max-width:23em;
+    padding:9px 0 9px 13px;
+    border-left-width:4px;
+    font-size:11px;
+    line-height:1.5;
+    letter-spacing:.06em;
+  }
+  #contact h2{
+    max-width:7.5em;
+    font-size:clamp(48px,13.2vw,58px);
+    line-height:1.01;
+  }
+  #contact h2:after{
+    margin-top:22px;
+    padding:6px 8px 5px;
+    font-size:9px;
+  }
+  #contact>a{
+    width:100%;
+    min-height:66px;
+    margin-top:42px;
+    padding:14px 0 11px;
+    display:block;
+    font-size:clamp(18px,5.7vw,24px);
+    overflow-wrap:anywhere;
+  }
+  #contact>a:after{
+    display:block;
+    margin-top:8px;
+    font-size:9px;
+  }
+}
