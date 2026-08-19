@@ -19,10 +19,18 @@
 - Kept all project copy intact and changed no business claims or destinations.
 - Hero lock check: no hero stylesheet, hero selector, asset, markup, layout, typography, spacing, placement, or animation changed. `index.html` only received a non-hero stylesheet cache-key refresh.
 
+### About — 2026-08-19
+- Reworked the plain stacked About block into an editorial profile spread while keeping all Japanese copy unchanged.
+- Desktop/tablet: split statement and body into an asymmetric two-column composition, with a section folio, ink-rule structure, numbered body paragraphs, and restrained teal/gold paper tints from the existing palette.
+- Mobile (~390px): collapses to a single readable flow with the headline first, then numbered body paragraphs; 14px body copy, no fixed widths, and no intentional horizontal overflow.
+- Kept decorative treatment typographic/CSS-only; no images were generated or modified.
+- Self-check: selectors are scoped to `#about`; existing Services/Works rules remain unchanged; the only `index.html` edit is the `non-hero.css` cache key.
+- Hero lock check: verified the `index.html` commit changes only the non-hero stylesheet version; no hero stylesheet, selector, asset, markup, typography, spacing, placement, or animation changed.
+
 ## Next priority
-1. About — create a stronger editorial composition while keeping the Japanese copy intact.
-2. Contact/CTA — increase impact and polish without overpowering the page.
-3. Footer/navigation details, then cross-section responsive/accessibility QA.
+1. Contact/CTA — increase impact and polish without overpowering the page.
+2. Footer/navigation details.
+3. Cross-section responsive/accessibility QA, then final spacing/typography cleanup.
 
 ## Guardrail
 The hero is locked. Do not modify `hero-mobile-refine.css`, `hero-fix.css`, `hero-small-desktop.css`, `hero-fluid-tablet.css`, hero assets, or `<section class="hero">...</section>`.
