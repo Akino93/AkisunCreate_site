@@ -1,0 +1,139 @@
+/* Navigation + footer polish. Intentionally does not alter header geometry or hero styles. */
+
+.brand:focus-visible,
+.nav a:focus-visible,
+.nav-toggle:focus-visible{
+  outline:3px solid var(--orange);
+  outline-offset:4px;
+}
+
+.nav a{
+  position:relative;
+  min-height:44px;
+  display:inline-flex;
+  align-items:center;
+  padding:0 2px;
+  font-family:'Archivo Black','Noto Sans JP',sans-serif;
+  letter-spacing:.06em;
+}
+.nav a:after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:7px;
+  height:2px;
+  background:var(--orange);
+  transform:scaleX(0);
+  transform-origin:left center;
+  transition:transform .18s ease;
+}
+.nav a:hover:after,
+.nav a:focus-visible:after{transform:scaleX(1)}
+
+.nav-toggle{
+  position:relative;
+  overflow:hidden;
+}
+.nav-toggle:after{
+  content:"MENU";
+  position:absolute;
+  right:7px;
+  bottom:3px;
+  font-family:'Archivo Black',sans-serif;
+  font-size:6px;
+  letter-spacing:.10em;
+  line-height:1;
+}
+.nav-toggle[aria-expanded="true"]{background:var(--orange)}
+.nav-toggle[aria-expanded="true"] i:first-child{transform:translateY(8px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] i:nth-child(2){opacity:0}
+.nav-toggle[aria-expanded="true"] i:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+.nav-toggle i{
+  transition:transform .18s ease,opacity .18s ease;
+  transform-origin:center;
+}
+
+footer{
+  position:relative;
+  padding:22px 5vw 24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:24px;
+  text-align:left;
+  background:rgba(23,20,14,.96);
+  color:var(--paper);
+  border-top:6px solid var(--orange);
+  font-family:'Archivo Black','Noto Sans JP',sans-serif;
+  font-size:12px;
+  letter-spacing:.08em;
+}
+footer:before{
+  content:"AKISUNCREATE / EST. 2019";
+  color:var(--gold);
+  font-size:9px;
+  letter-spacing:.16em;
+}
+footer:after{
+  content:"↗";
+  display:grid;
+  place-items:center;
+  flex:0 0 34px;
+  width:34px;
+  height:34px;
+  border:1px solid rgba(242,221,178,.55);
+  border-radius:50%;
+  color:var(--gold);
+  font-size:16px;
+  transform:rotate(-8deg);
+}
+
+@media(max-width:900px){
+  .nav{
+    gap:0;
+    padding:8px;
+    border:2px solid var(--ink);
+    box-shadow:5px 5px 0 var(--ink);
+    background:rgba(242,221,178,.98);
+  }
+  .nav a{
+    min-height:52px;
+    padding:0 14px;
+    border-bottom:1px solid rgba(23,20,14,.35);
+    font-size:13px;
+  }
+  .nav a:last-child{border-bottom:0}
+  .nav a:before{
+    content:"→";
+    margin-right:10px;
+    color:var(--orange);
+  }
+  .nav a:after{display:none}
+}
+
+@media(max-width:560px){
+  footer{
+    padding:20px 4.5vw 22px;
+    display:grid;
+    grid-template-columns:1fr auto;
+    row-gap:7px;
+    font-size:10px;
+    line-height:1.45;
+  }
+  footer:before{
+    grid-column:1;
+    grid-row:1;
+    font-size:8px;
+  }
+  footer:after{
+    grid-column:2;
+    grid-row:1 / span 2;
+    align-self:center;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .nav a:after,
+  .nav-toggle i{transition:none}
+}
