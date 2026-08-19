@@ -61,9 +61,15 @@
 - The change is isolated to `nav-footer.css`; no hero selector, hero stylesheet, asset, markup, typography, spacing, placement, animation, or global variable was changed.
 - Refreshed only the `nav-footer.css` cache key in `index.html`; the hero markup remains unchanged.
 
-## Next priority
-1. Final no-regression pass across non-hero sections at mobile/tablet/desktop.
-2. If no real regression is found, stop visual changes and mark the non-hero polish complete.
+### Final no-regression QA — 2026-08-19
+- Reviewed the completed non-hero styling and interaction paths for Services, Works, About, Contact, navigation, and footer at the mobile/tablet/desktop breakpoints defined in the current CSS.
+- Rechecked mobile menu state management: accessible labels stay synchronized, Escape restores focus, outside pointer interaction closes the menu, and crossing the 900px breakpoint clears stale mobile state.
+- Rechecked navigation/footer CSS for tap targets, focus visibility, reduced-motion handling, anchor offsets, responsive layout, and obvious fixed-width overflow risks.
+- No high-impact non-hero regression was found that justified another visual change.
+- Hero lock remains intact: no hero HTML, hero stylesheet, hero selector, hero asset, hero typography, hero spacing, hero placement, hero animation, or hero-affecting variable was modified during final QA.
+
+## Status
+Non-hero polish is complete and stable. Stop visual restyling unless a real regression or new owner instruction appears.
 
 ## Guardrail
 The hero is locked. Do not modify `hero-mobile-refine.css`, `hero-fix.css`, `hero-small-desktop.css`, `hero-fluid-tablet.css`, hero assets, or `<section class="hero">...</section>`.
