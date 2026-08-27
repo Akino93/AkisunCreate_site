@@ -89,12 +89,12 @@ The hero is locked. Do not modify `hero-mobile-refine.css`, `hero-fix.css`, `her
   - **Implementation:** `nav-footer.css` now applies `html{scroll-behavior:auto}` inside the existing reduced-motion media query.
   - **Review result:** Verified on current `main` and implementation commit `6650b44`. The override is inside the existing reduced-motion media query, while current focus, anchor-offset, and navigation rules remain unchanged. The product commit changes only `nav-footer.css`; no hero file/selector/asset/markup was modified.
 
-- [ ] **Medium — Services / link expectation clarity**
-  - **Problem:** All three service links are labeled `もっと見る`, but they navigate to different general-purpose sections (`#works` or `#about`) rather than service-specific detail. The identical label does not tell users what destination or content they will get, especially for screen-reader/link-list navigation.
+- [x] **Medium — Services / link expectation clarity**
+  - **Problem:** All three service links were labeled `もっと見る`, but they navigate to different general-purpose sections (`#works` or `#about`) rather than service-specific detail. The identical label did not tell users what destination or content they would get, especially for screen-reader/link-list navigation.
   - **Expected:** Service CTAs communicate their actual destination/purpose while preserving the one-page information architecture.
   - **Definition of Done:** Replace each generic CTA label with destination-specific wording (for example, a Works-oriented label for the UI/UX card and an About/approach-oriented label for the other cards) or provide an equally clear accessible name. Verify href destinations remain intentional and no business claims are changed.
   - **Implementation:** `index.html` now uses visible destination/purpose-specific CTA wording while preserving the existing hrefs: UI/UX → `実績を見る` (`#works`), AI活用支援 → `支援の考え方を見る` (`#about`), 業務設計・システム → `設計の考え方を見る` (`#about`).
-  - **Status:** Ready for review. Keep unchecked until the independent review agent verifies the labels and destinations.
+  - **Review result:** Verified on current `main` and implementation commit `e3b78f9`. The three visible labels now communicate destination/purpose directly, hrefs remain `#works`, `#about`, `#about`, and the implementation diff changes only the non-hero Services link text in `index.html`. No business claim, hero stylesheet, hero asset, or hero behavior was changed.
 
 ## Implementation Log
 
@@ -118,7 +118,7 @@ The hero is locked. Do not modify `hero-mobile-refine.css`, `hero-fix.css`, `her
 - Next candidate: **Services / link expectation clarity**.
 
 ### 2026-08-27 — Fix pass 01
-- Selected the highest-priority actionable review finding: Services semantic accessibility.
+- Selected the highest-priority actionable unchecked review finding: Services semantic accessibility.
 - Updated only `index.html`: `#services` now has `aria-labelledby="services-title"`, backed by a visually-hidden real `h2` (`サービス`). The three existing styled service-title `h2` elements now expose `aria-level="3"` while retaining their existing markup/CSS appearance.
 - Validation by commit diff: only `index.html` changed from review commit `da552f0`; no stylesheet, hero-specific file, asset, hero markup, layout, spacing, typography, or animation changed.
 - Mobile ~390px / desktop regression check by code path: the added heading is absolutely positioned at 1px and clipped, so it contributes no grid size or overflow; existing service cards, links, tap targets, and visual hierarchy remain governed by unchanged CSS.
@@ -152,3 +152,12 @@ The hero is locked. Do not modify `hero-mobile-refine.css`, `hero-fix.css`, `her
 - No deployed/reviewable URL is declared in repository metadata or README, so visual assertions remain code-based and no speculative visual finding was added.
 - Remaining actionable finding: **Services / link expectation clarity**.
 - **Next review focus:** verify the Services CTA wording/accessibility fix when it is marked ready for review; otherwise do not invent additional work.
+
+### 2026-08-27 — Independent QA pass 04
+- Reviewed implementation commit `e3b78f9`, current `index.html`, latest `TASKS.md`, and the newest automated QA artifact update.
+- **Closed:** Services / link expectation clarity. The three Services CTAs now have distinct visible labels tied to their actual destinations/purposes, while hrefs remain intentionally unchanged.
+- Commit diff confirms the product fix is limited to Services link text in `index.html`; no business claims or hero code/assets/behavior were changed.
+- The later `b3ea1f2` commit updates only `qa/mobile-layout.json`; it records measurements and does not alter the locked hero implementation.
+- Repository metadata confirms GitHub Pages is enabled, but no homepage URL is declared; a reliable deployed URL was not available for browser-level review in this pass, so no speculative visual finding was added.
+- All current review findings are closed. Non-hero code review remains stable with no new meaningful issue found.
+- **Next review focus:** only inspect new implementation changes or regressions; otherwise keep QA converged and do not invent work.
