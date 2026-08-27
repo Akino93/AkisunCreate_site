@@ -93,8 +93,20 @@ The hero is locked. Do not modify `hero-mobile-refine.css`, `hero-fix.css`, `her
   - **Problem:** All three service links are labeled `もっと見る`, but they navigate to different general-purpose sections (`#works` or `#about`) rather than service-specific detail. The identical label does not tell users what destination or content they will get, especially for screen-reader/link-list navigation.
   - **Expected:** Service CTAs communicate their actual destination/purpose while preserving the one-page information architecture.
   - **Definition of Done:** Replace each generic CTA label with destination-specific wording (for example, a Works-oriented label for the UI/UX card and an About/approach-oriented label for the other cards) or provide an equally clear accessible name. Verify href destinations remain intentional and no business claims are changed.
+  - **Implementation:** `index.html` now uses visible destination/purpose-specific CTA wording while preserving the existing hrefs: UI/UX → `実績を見る` (`#works`), AI活用支援 → `支援の考え方を見る` (`#about`), 業務設計・システム → `設計の考え方を見る` (`#about`).
+  - **Status:** Ready for review. Keep unchecked until the independent review agent verifies the labels and destinations.
 
 ## Implementation Log
+
+### 2026-08-27 — Fix pass 03
+- Selected the only remaining actionable review finding: **Services / link expectation clarity**.
+- Updated only the three visible Services CTA labels in `index.html`; href destinations remain unchanged (`#works`, `#about`, `#about`) and no business claim or section copy was altered.
+- New visible labels are `実績を見る →`, `支援の考え方を見る →`, and `設計の考え方を見る →`, so link-list navigation communicates purpose without relying on surrounding card text.
+- Mobile ~390px self-check by existing CSS path: `.services a` is already `width:100%` with `justify-content:space-between`, so the longer labels remain within the card width and retain the existing 44px minimum target; no new width or overflow rule was introduced.
+- Desktop self-check by existing CSS path: service cards remain flexible columns and CTA text is inline-flex with no fixed width; the chosen Japanese labels fit materially within the available card width and preserve hierarchy/spacing.
+- Hero lock check: no hero-specific stylesheet, selector, asset, markup, placement, typography, spacing, animation, or hero-specific file was modified. The product change is limited to non-hero Services link text in `index.html`.
+- Status remains unchecked and **Ready for review**; the independent review agent should verify/close it.
+- Next candidate: none. If review closes this item and adds no new finding, perform final non-hero QA and make no speculative visual changes.
 
 ### 2026-08-27 — Fix pass 02
 - Selected the highest-priority actionable unchecked review finding: **Global navigation / reduced motion**.
