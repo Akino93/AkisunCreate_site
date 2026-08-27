@@ -82,11 +82,12 @@ The hero is locked. Do not modify `hero-mobile-refine.css`, `hero-fix.css`, `her
   - **Definition of Done:** Add a real heading associated with `#services` (visible or visually-hidden as appropriate), maintain a logical heading outline, and verify the existing three service titles remain correctly nested/understood. No hero selectors/files changed.
   - **Review result:** Verified on current `main`. `#services` is now labelled by a real visually-hidden `h2` (`サービス`), and the three visible service headings are exposed at heading level 3. Commit diff confirms the change is isolated to `index.html` and does not alter hero styling/assets/behavior.
 
-- [ ] **Medium — Global navigation / reduced motion** — **Ready for review**
-  - **Problem:** `html{scroll-behavior:smooth}` remains active even when the user requests `prefers-reduced-motion: reduce`. `nav-footer.css` disables navigation transitions, but anchor navigation can still animate the page scroll.
+- [x] **Medium — Global navigation / reduced motion**
+  - **Problem:** `html{scroll-behavior:smooth}` remained active even when the user requested `prefers-reduced-motion: reduce`. `nav-footer.css` disabled navigation transitions, but anchor navigation could still animate the page scroll.
   - **Expected:** Reduced-motion users can navigate Services/Works/About/Contact without animated smooth scrolling.
   - **Definition of Done:** Under `@media (prefers-reduced-motion: reduce)`, override page scroll behavior to `auto` (or equivalent), while retaining current navigation/focus behavior and leaving hero code untouched.
-  - **Implementation:** `nav-footer.css` now applies `html{scroll-behavior:auto}` inside the existing reduced-motion media query. Review agent should verify and close.
+  - **Implementation:** `nav-footer.css` now applies `html{scroll-behavior:auto}` inside the existing reduced-motion media query.
+  - **Review result:** Verified on current `main` and implementation commit `6650b44`. The override is inside the existing reduced-motion media query, while current focus, anchor-offset, and navigation rules remain unchanged. The product commit changes only `nav-footer.css`; no hero file/selector/asset/markup was modified.
 
 - [ ] **Medium — Services / link expectation clarity**
   - **Problem:** All three service links are labeled `もっと見る`, but they navigate to different general-purpose sections (`#works` or `#about`) rather than service-specific detail. The identical label does not tell users what destination or content they will get, especially for screen-reader/link-list navigation.
@@ -130,3 +131,12 @@ The hero is locked. Do not modify `hero-mobile-refine.css`, `hero-fix.css`, `her
 - No new finding was added in this pass. The remaining actionable findings are reduced-motion smooth scrolling and Services CTA destination clarity.
 - Public/deployed review URL is still not declared in repository metadata or README, so this verification remains code/diff-based rather than visual-browser-based.
 - **Next review focus:** verify the reduced-motion fix when it lands, then CTA label clarity and contact/footer semantics.
+
+### 2026-08-27 — Independent QA pass 03
+- Reviewed implementation commit `6650b44`, current `nav-footer.css`, `index.html`, and `TASKS.md`.
+- **Closed:** Global navigation / reduced motion. `html{scroll-behavior:auto}` is correctly scoped inside `@media(prefers-reduced-motion:reduce)`, so reduced-motion users no longer inherit global smooth anchor scrolling.
+- The implementation diff is limited to `nav-footer.css`; existing navigation focus styles, anchor offsets, mobile menu layout, and footer behavior are unchanged, and no hero code/assets were touched.
+- Re-inspected Contact/CTA and footer semantics in current `index.html`; no concrete functional, keyboard, or readability defect was found that warrants a new corrective finding from code review alone.
+- No deployed/reviewable URL is declared in repository metadata or README, so visual assertions remain code-based and no speculative visual finding was added.
+- Remaining actionable finding: **Services / link expectation clarity**.
+- **Next review focus:** verify the Services CTA wording/accessibility fix when it is marked ready for review; otherwise do not invent additional work.
