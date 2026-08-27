@@ -73,3 +73,31 @@ Non-hero polish is complete and stable. Stop visual restyling unless a real regr
 
 ## Guardrail
 The hero is locked. Do not modify `hero-mobile-refine.css`, `hero-fix.css`, `hero-small-desktop.css`, `hero-fluid-tablet.css`, hero assets, or `<section class="hero">...</section>`.
+
+## Review Findings / 修正ToDo
+
+- [ ] **Medium — Services / semantic accessibility**
+  - **Problem:** The Services section has no real section heading in the DOM. The visible `SERVICES / WHAT I DO` label is generated only by `.services:before`, while the three service titles are sibling `<h2>` elements. CSS generated content is not a reliable document heading, so heading/landmark navigation does not expose a clear Services section label.
+  - **Expected:** Services has a semantic section heading available to assistive technology without changing the approved visual composition or hero.
+  - **Definition of Done:** Add a real heading associated with `#services` (visible or visually-hidden as appropriate), maintain a logical heading outline, and verify the existing three service titles remain correctly nested/understood. No hero selectors/files changed.
+
+- [ ] **Medium — Global navigation / reduced motion**
+  - **Problem:** `html{scroll-behavior:smooth}` remains active even when the user requests `prefers-reduced-motion: reduce`. `nav-footer.css` disables navigation transitions, but anchor navigation can still animate the page scroll.
+  - **Expected:** Reduced-motion users can navigate Services/Works/About/Contact without animated smooth scrolling.
+  - **Definition of Done:** Under `@media (prefers-reduced-motion: reduce)`, override page scroll behavior to `auto` (or equivalent), while retaining current navigation/focus behavior and leaving hero code untouched.
+
+- [ ] **Medium — Services / link expectation clarity**
+  - **Problem:** All three service links are labeled `もっと見る`, but they navigate to different general-purpose sections (`#works` or `#about`) rather than service-specific detail. The identical label does not tell users what destination or content they will get, especially for screen-reader/link-list navigation.
+  - **Expected:** Service CTAs communicate their actual destination/purpose while preserving the one-page information architecture.
+  - **Definition of Done:** Replace each generic CTA label with destination-specific wording (for example, a Works-oriented label for the UI/UX card and an About/approach-oriented label for the other cards) or provide an equally clear accessible name. Verify href destinations remain intentional and no business claims are changed.
+
+## Review Log
+
+### 2026-08-27 — Independent QA pass 01
+- Reviewed current `main`, recent commits through `91f10d7`, `TASKS.md`, `index.html`, `styles.css`, `non-hero.css`, `nav-footer.css`, and `script.js`.
+- No implementation commits have landed since the previous 2026-08-19 final QA; no existing item was marked ready-for-review by the implementation agent.
+- Confirmed the mobile nav uses `display:none` while closed, synchronizes `aria-expanded`/labels, supports Escape focus restoration, closes on outside pointer interaction, and clears stale state above 900px.
+- Added three Medium corrective findings: Services semantic heading, reduced-motion smooth scrolling, and destination clarity of generic `もっと見る` CTAs.
+- Deployed visual review URL was not discoverable from repository metadata/README during this pass, so visual assertions remain code-based; no speculative visual finding was added.
+- Hero remained review-locked; no hero redesign finding was created.
+- **Next review focus:** verify the implementation agent's fixes for the three findings, then inspect contact/footer semantics and keyboard/focus behavior for any remaining concrete issue.
