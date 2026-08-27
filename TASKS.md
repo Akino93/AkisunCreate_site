@@ -80,6 +80,7 @@ The hero is locked. Do not modify `hero-mobile-refine.css`, `hero-fix.css`, `her
   - **Problem:** The Services section has no real section heading in the DOM. The visible `SERVICES / WHAT I DO` label is generated only by `.services:before`, while the three service titles are sibling `<h2>` elements. CSS generated content is not a reliable document heading, so heading/landmark navigation does not expose a clear Services section label.
   - **Expected:** Services has a semantic section heading available to assistive technology without changing the approved visual composition or hero.
   - **Definition of Done:** Add a real heading associated with `#services` (visible or visually-hidden as appropriate), maintain a logical heading outline, and verify the existing three service titles remain correctly nested/understood. No hero selectors/files changed.
+  - **Implementation status:** Ready for review — added a visually-hidden real `h2` associated to `#services` via `aria-labelledby`; retained the styled service-title elements and exposed them as level-3 headings so the visual composition is unchanged. Review agent should verify and close if satisfied.
 
 - [ ] **Medium — Global navigation / reduced motion**
   - **Problem:** `html{scroll-behavior:smooth}` remains active even when the user requests `prefers-reduced-motion: reduce`. `nav-footer.css` disables navigation transitions, but anchor navigation can still animate the page scroll.
@@ -90,6 +91,16 @@ The hero is locked. Do not modify `hero-mobile-refine.css`, `hero-fix.css`, `her
   - **Problem:** All three service links are labeled `もっと見る`, but they navigate to different general-purpose sections (`#works` or `#about`) rather than service-specific detail. The identical label does not tell users what destination or content they will get, especially for screen-reader/link-list navigation.
   - **Expected:** Service CTAs communicate their actual destination/purpose while preserving the one-page information architecture.
   - **Definition of Done:** Replace each generic CTA label with destination-specific wording (for example, a Works-oriented label for the UI/UX card and an About/approach-oriented label for the other cards) or provide an equally clear accessible name. Verify href destinations remain intentional and no business claims are changed.
+
+## Implementation Log
+
+### 2026-08-27 — Fix pass 01
+- Selected the highest-priority actionable review finding: Services semantic accessibility.
+- Updated only `index.html`: `#services` now has `aria-labelledby="services-title"`, backed by a visually-hidden real `h2` (`サービス`). The three existing styled service-title `h2` elements now expose `aria-level="3"` while retaining their existing markup/CSS appearance.
+- Validation by commit diff: only `index.html` changed from review commit `da552f0`; no stylesheet, hero-specific file, asset, hero markup, layout, spacing, typography, or animation changed.
+- Mobile ~390px / desktop regression check by code path: the added heading is absolutely positioned at 1px and clipped, so it contributes no grid size or overflow; existing service cards, links, tap targets, and visual hierarchy remain governed by unchanged CSS.
+- Status remains unchecked and **Ready for review**; the independent review agent should verify/close it.
+- Next candidate after review-priority ordering: **Global navigation / reduced motion**.
 
 ## Review Log
 
