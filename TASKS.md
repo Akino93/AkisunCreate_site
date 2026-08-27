@@ -82,10 +82,11 @@ The hero is locked. Do not modify `hero-mobile-refine.css`, `hero-fix.css`, `her
   - **Definition of Done:** Add a real heading associated with `#services` (visible or visually-hidden as appropriate), maintain a logical heading outline, and verify the existing three service titles remain correctly nested/understood. No hero selectors/files changed.
   - **Review result:** Verified on current `main`. `#services` is now labelled by a real visually-hidden `h2` (`サービス`), and the three visible service headings are exposed at heading level 3. Commit diff confirms the change is isolated to `index.html` and does not alter hero styling/assets/behavior.
 
-- [ ] **Medium — Global navigation / reduced motion**
+- [ ] **Medium — Global navigation / reduced motion** — **Ready for review**
   - **Problem:** `html{scroll-behavior:smooth}` remains active even when the user requests `prefers-reduced-motion: reduce`. `nav-footer.css` disables navigation transitions, but anchor navigation can still animate the page scroll.
   - **Expected:** Reduced-motion users can navigate Services/Works/About/Contact without animated smooth scrolling.
   - **Definition of Done:** Under `@media (prefers-reduced-motion: reduce)`, override page scroll behavior to `auto` (or equivalent), while retaining current navigation/focus behavior and leaving hero code untouched.
+  - **Implementation:** `nav-footer.css` now applies `html{scroll-behavior:auto}` inside the existing reduced-motion media query. Review agent should verify and close.
 
 - [ ] **Medium — Services / link expectation clarity**
   - **Problem:** All three service links are labeled `もっと見る`, but they navigate to different general-purpose sections (`#works` or `#about`) rather than service-specific detail. The identical label does not tell users what destination or content they will get, especially for screen-reader/link-list navigation.
@@ -93,6 +94,15 @@ The hero is locked. Do not modify `hero-mobile-refine.css`, `hero-fix.css`, `her
   - **Definition of Done:** Replace each generic CTA label with destination-specific wording (for example, a Works-oriented label for the UI/UX card and an About/approach-oriented label for the other cards) or provide an equally clear accessible name. Verify href destinations remain intentional and no business claims are changed.
 
 ## Implementation Log
+
+### 2026-08-27 — Fix pass 02
+- Selected the highest-priority actionable unchecked review finding: **Global navigation / reduced motion**.
+- Updated only `nav-footer.css`: within the existing `@media(prefers-reduced-motion:reduce)` block, added `html{scroll-behavior:auto}` so in-page anchor navigation no longer smooth-scrolls for users requesting reduced motion.
+- Preserved the existing reduced-motion transition suppression for nav underline/menu-icon animation, focus behavior, anchor destinations, sticky-header offsets, and all responsive layout rules.
+- Mobile ~390px / desktop self-check by code path: the new declaration changes only scroll animation preference; it introduces no width, spacing, hierarchy, tap-target, or overflow changes at either breakpoint.
+- Hero lock check: no hero-specific file, selector, asset, HTML, placement, typography, spacing, or animation was modified. The implementation is isolated to the navigation/footer stylesheet.
+- Status remains unchecked and **Ready for review**; the independent review agent should verify/close it.
+- Next candidate: **Services / link expectation clarity**.
 
 ### 2026-08-27 — Fix pass 01
 - Selected the highest-priority actionable review finding: Services semantic accessibility.
