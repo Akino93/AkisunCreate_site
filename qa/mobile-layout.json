@@ -3,7 +3,7 @@
     "width": 390,
     "height": 1400
   },
-  "scrollHeight": 3729,
+  "scrollHeight": 4079,
   "elements": {
     "hero": {
       "x": 0,
@@ -58,17 +58,17 @@
       "transform": "matrix(1, 0, 0, 1, -242.297, -227.742)"
     },
     "mane": {
-      "x": 185.4,
-      "y": 109.3,
-      "width": 206.2,
-      "height": 201,
-      "right": 391.6,
-      "bottom": 310.3,
+      "x": 184.2,
+      "y": 108,
+      "width": 208.5,
+      "height": 203.7,
+      "right": 392.8,
+      "bottom": 311.7,
       "display": "block",
       "visibility": "visible",
       "opacity": "1",
       "zIndex": "4",
-      "transform": "matrix(0.930026, 0.367494, -0.367494, 0.930026, -80.7656, -76.1641)"
+      "transform": "matrix(0.918795, 0.394735, -0.394735, 0.918795, -80.7656, -76.1641)"
     },
     "face": {
       "x": 231.1,
