@@ -76,11 +76,11 @@ The hero is locked. Do not modify `hero-mobile-refine.css`, `hero-fix.css`, `her
 
 ## Review Findings / 修正ToDo
 
-- [ ] **Medium — Services / semantic accessibility**
-  - **Problem:** The Services section has no real section heading in the DOM. The visible `SERVICES / WHAT I DO` label is generated only by `.services:before`, while the three service titles are sibling `<h2>` elements. CSS generated content is not a reliable document heading, so heading/landmark navigation does not expose a clear Services section label.
+- [x] **Medium — Services / semantic accessibility**
+  - **Problem:** The Services section had no real section heading in the DOM. The visible `SERVICES / WHAT I DO` label is generated only by `.services:before`, while the service titles were sibling `<h2>` elements.
   - **Expected:** Services has a semantic section heading available to assistive technology without changing the approved visual composition or hero.
   - **Definition of Done:** Add a real heading associated with `#services` (visible or visually-hidden as appropriate), maintain a logical heading outline, and verify the existing three service titles remain correctly nested/understood. No hero selectors/files changed.
-  - **Implementation status:** Ready for review — added a visually-hidden real `h2` associated to `#services` via `aria-labelledby`; retained the styled service-title elements and exposed them as level-3 headings so the visual composition is unchanged. Review agent should verify and close if satisfied.
+  - **Review result:** Verified on current `main`. `#services` is now labelled by a real visually-hidden `h2` (`サービス`), and the three visible service headings are exposed at heading level 3. Commit diff confirms the change is isolated to `index.html` and does not alter hero styling/assets/behavior.
 
 - [ ] **Medium — Global navigation / reduced motion**
   - **Problem:** `html{scroll-behavior:smooth}` remains active even when the user requests `prefers-reduced-motion: reduce`. `nav-footer.css` disables navigation transitions, but anchor navigation can still animate the page scroll.
@@ -112,3 +112,11 @@ The hero is locked. Do not modify `hero-mobile-refine.css`, `hero-fix.css`, `her
 - Deployed visual review URL was not discoverable from repository metadata/README during this pass, so visual assertions remain code-based; no speculative visual finding was added.
 - Hero remained review-locked; no hero redesign finding was created.
 - **Next review focus:** verify the implementation agent's fixes for the three findings, then inspect contact/footer semantics and keyboard/focus behavior for any remaining concrete issue.
+
+### 2026-08-27 — Independent QA pass 02
+- Reviewed implementation commits `669f34e` and `563230a`, current `index.html`, and the first ready-for-review finding.
+- **Closed:** Services / semantic accessibility. The section now has a real labelled heading and its card headings are exposed at level 3 without changing the approved visual composition.
+- Commit diff confirms the product change is isolated to `index.html`; hero-specific stylesheets/assets/behavior were not modified.
+- No new finding was added in this pass. The remaining actionable findings are reduced-motion smooth scrolling and Services CTA destination clarity.
+- Public/deployed review URL is still not declared in repository metadata or README, so this verification remains code/diff-based rather than visual-browser-based.
+- **Next review focus:** verify the reduced-motion fix when it lands, then CTA label clarity and contact/footer semantics.
