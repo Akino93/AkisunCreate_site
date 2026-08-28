@@ -96,6 +96,11 @@ The hero is locked. Do not modify `hero-mobile-refine.css`, `hero-fix.css`, `her
   - **Implementation:** `index.html` now uses visible destination/purpose-specific CTA wording while preserving the existing hrefs: UI/UX → `実績を見る` (`#works`), AI活用支援 → `支援の考え方を見る` (`#about`), 業務設計・システム → `設計の考え方を見る` (`#about`).
   - **Review result:** Verified on current `main` and implementation commit `e3b78f9`. The three visible labels now communicate destination/purpose directly, hrefs remain `#works`, `#about`, `#about`, and the implementation diff changes only the non-hero Services link text in `index.html`. No business claim, hero stylesheet, hero asset, or hero behavior was changed.
 
+- [ ] **Medium — Selected Works / 375–430px — faint inner keyline still visible**
+  - **Problem:** Fresh `Mobile Visual QA` screenshots for 375px, 390px, and 430px still show a thin light-gray rectangular perimeter around each Selected Works card. The owner explicitly identified this decorative line as unwanted; removing the earlier pseudo-element keyline did not fully remove the visible gray card outline.
+  - **Expected:** Selected Works keeps the strong black editorial section/divider rules, but no faint gray inner/per-card rectangle remains on smartphone layouts.
+  - **Definition of Done:** On a fresh successful `Mobile Visual QA` artifact from the fixing commit, `full-375.png`, `full-390.png`, and `full-430.png` show no thin gray rectangular outline around any of the three Works cards; black structural dividers remain aligned, text is not clipped, and `scrollWidth == clientWidth` at all three widths. Do not alter the locked hero.
+
 ## Implementation Log
 
 ### 2026-08-27 — Fix pass 03
@@ -171,3 +176,12 @@ The hero is locked. Do not modify `hero-mobile-refine.css`, `hero-fix.css`, `her
 - Owner-reported smartphone regression could not be reproduced in the approved current-main visual artifact. No new unchecked `Review Findings / 修正ToDo` item was added.
 - Hero remained locked; no hero redesign finding was created.
 - **Next review focus:** none until a new product commit or a reproducible visual regression appears.
+
+### 2026-08-28 — Independent visual QA pass 06
+- Reviewed current `main` at `adaa8ff4a2ea08b3a6f7242231e8b85ac3126887` and successful `Mobile Visual QA` run `33176901940`; artifact `responsive-visual-qa` was downloaded fresh and inspected in the same run.
+- Visually inspected `full-375.png`, `full-390.png`, `full-430.png`, and `nav-open-390.png`; spot-checked `full-768.png` and `full-1280.png`.
+- DOM metrics confirm no document-level horizontal overflow: 375/390/430/768/1280 all have `scrollWidth == clientWidth`. At 375/390/430 the three Services cards now share the same x-position and width, confirming the owner-reported card offset is fixed.
+- The former gear emoji is no longer rendered; the third Services symbol is now a monochrome grid-like `▦`, visually consistent with the other service symbols. Mobile nav, Contact email/CTA, footer, About, and breakpoint spot-checks show no clipping or overlap regression.
+- **Confirmed remaining issue:** Selected Works still shows a faint light-gray rectangular outline around each card at 375/390/430. This is visually reproducible in the fresh artifact and does not match the owner's request to remove the thin gray frame, so a Medium unchecked finding was added.
+- Hero remained locked; no hero redesign finding was created.
+- **Next review focus:** verify the Works keyline removal against a fresh artifact from the fixing commit; do not close the finding from implementation self-report or CSS inspection alone.
