@@ -1,4 +1,4 @@
-name: Mobile Hero Preview
+name: Mobile Visual QA
 
 on:
   workflow_dispatch:
@@ -8,11 +8,14 @@ on:
       - 'index.html'
       - 'styles.css'
       - 'hero-*.css'
+      - 'non-hero.css'
+      - 'nav-footer.css'
+      - 'script.js'
       - 'assets/**'
       - '.github/workflows/mobile-hero-preview.yml'
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   screenshot:
@@ -25,10 +28,9 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Start local site
+      - name: Start local site from current main
         run: |
           python3 -m http.server 4173 > /tmp/akisun-http.log 2>&1 &
-          echo $! > /tmp/akisun-http.pid
           for i in {1..20}; do
             if curl -fsS http://127.0.0.1:4173/ >/dev/null; then exit 0; fi
             sleep 1
@@ -36,13 +38,12 @@ jobs:
           cat /tmp/akisun-http.log
           exit 1
 
-      - name: Capture exact 390px mobile render and layout metrics
+      - name: Capture responsive renders and DOM metrics
         run: |
-          mkdir -p qa
+          mkdir -p qa/visual
           google-chrome --headless=new --no-sandbox --disable-gpu --hide-scrollbars \
             --remote-debugging-port=9222 --remote-debugging-address=127.0.0.1 \
             about:blank > /tmp/chrome.log 2>&1 &
-          echo $! > /tmp/chrome.pid
 
           for i in {1..30}; do
             if curl -fsS http://127.0.0.1:9222/json/version >/dev/null; then break; fi
@@ -52,7 +53,6 @@ jobs:
 
           cat > /tmp/mobile-qa.mjs <<'JS'
           import fs from 'node:fs';
-
           const sleep = ms => new Promise(r => setTimeout(r, ms));
           const target = await fetch('http://127.0.0.1:9222/json/new?about:blank', {method:'PUT'}).then(r => r.json());
           const ws = new WebSocket(target.webSocketDebuggerUrl);
@@ -60,7 +60,6 @@ jobs:
             ws.addEventListener('open', resolve, {once:true});
             ws.addEventListener('error', reject, {once:true});
           });
-
           let seq = 0;
           const pending = new Map();
           const waiters = new Map();
@@ -69,103 +68,80 @@ jobs:
             if (msg.id && pending.has(msg.id)) {
               const {resolve, reject} = pending.get(msg.id);
               pending.delete(msg.id);
-              if (msg.error) reject(new Error(JSON.stringify(msg.error)));
-              else resolve(msg.result);
+              msg.error ? reject(new Error(JSON.stringify(msg.error))) : resolve(msg.result);
             }
             if (msg.method && waiters.has(msg.method)) {
               for (const resolve of waiters.get(msg.method)) resolve(msg.params || {});
               waiters.delete(msg.method);
             }
           });
-
           const send = (method, params={}) => new Promise((resolve, reject) => {
-            const id = ++seq;
-            pending.set(id, {resolve, reject});
+            const id = ++seq; pending.set(id, {resolve, reject});
             ws.send(JSON.stringify({id, method, params}));
           });
           const waitEvent = method => new Promise(resolve => {
-            const list = waiters.get(method) || [];
-            list.push(resolve);
-            waiters.set(method, list);
+            const list = waiters.get(method) || []; list.push(resolve); waiters.set(method, list);
           });
-
           await send('Page.enable');
           await send('Runtime.enable');
-          await send('Emulation.setDeviceMetricsOverride', {
-            width: 390,
-            height: 1400,
-            deviceScaleFactor: 1,
-            mobile: false,
-            screenWidth: 390,
-            screenHeight: 1400
-          });
 
-          const loaded = waitEvent('Page.loadEventFired');
-          await send('Page.navigate', {url:'http://127.0.0.1:4173/'});
-          await loaded;
-          await sleep(1800);
-
-          const expression = `(() => {
-            const selectors = {
-              hero: '.hero', title: '.hero-copy h1', heroArt: '.hero-art',
-              radial: '.hero-art .ray-accent', mane: '.hero-art .mane', face: '.hero-art .face',
-              city: '.hero-art .city', sunflower: '.hero-art .sunflower', crows: '.hero-art .crows',
-              sign: '.hero-art .sign', skateboard: '.hero-art .skate', spray: '.hero-art .spray',
-              orange: '.hero-art .orange', smiley: '.hero-art .smiley', stars: '.hero-art .stars'
-            };
-            const out = {viewport:{width:innerWidth,height:innerHeight}, scrollHeight:document.documentElement.scrollHeight, elements:{}};
-            for (const [name, selector] of Object.entries(selectors)) {
-              const el = document.querySelector(selector);
-              if (!el) { out.elements[name] = null; continue; }
-              const r = el.getBoundingClientRect();
-              const s = getComputedStyle(el);
-              out.elements[name] = {
-                x:+r.x.toFixed(1), y:+r.y.toFixed(1), width:+r.width.toFixed(1), height:+r.height.toFixed(1),
-                right:+r.right.toFixed(1), bottom:+r.bottom.toFixed(1), display:s.display,
-                visibility:s.visibility, opacity:s.opacity, zIndex:s.zIndex, transform:s.transform
-              };
+          const widths = [375, 390, 430, 768, 1280];
+          const all = {};
+          for (const width of widths) {
+            const height = width <= 430 ? 844 : (width === 768 ? 1024 : 900);
+            await send('Emulation.setDeviceMetricsOverride', {
+              width, height, deviceScaleFactor:1, mobile:width <= 430,
+              screenWidth:width, screenHeight:height
+            });
+            const loaded = waitEvent('Page.loadEventFired');
+            await send('Page.navigate', {url:'http://127.0.0.1:4173/'});
+            await loaded; await sleep(1200);
+            const expression = `(() => {
+              const selectors=['header','#services','#works','#about','#contact','footer','.services article','.works article','#contact>a','.nav'];
+              const out={viewport:{width:innerWidth,height:innerHeight},clientWidth:document.documentElement.clientWidth,scrollWidth:document.documentElement.scrollWidth,scrollHeight:document.documentElement.scrollHeight,elements:{}};
+              for(const selector of selectors){
+                out.elements[selector]=[...document.querySelectorAll(selector)].map((el,i)=>{const r=el.getBoundingClientRect();const s=getComputedStyle(el);return {i,x:+r.x.toFixed(1),y:+r.y.toFixed(1),width:+r.width.toFixed(1),height:+r.height.toFixed(1),right:+r.right.toFixed(1),bottom:+r.bottom.toFixed(1),display:s.display,overflowX:s.overflowX,whiteSpace:s.whiteSpace,text:(el.textContent||'').trim().slice(0,160)}});
+              }
+              return JSON.stringify(out);
+            })()`;
+            const evaluated=await send('Runtime.evaluate',{expression,returnByValue:true});
+            const data=JSON.parse(evaluated.result.value);
+            if(data.viewport.width!==width) throw new Error(`Expected ${width}px viewport, got ${data.viewport.width}`);
+            all[width]=data;
+            const shot=await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:true,fromSurface:true});
+            fs.writeFileSync(`qa/visual/full-${width}.png`,Buffer.from(shot.data,'base64'));
+            if(width===390){
+              await send('Runtime.evaluate',{expression:`document.querySelector('.nav-toggle')?.click()`});
+              await sleep(250);
+              const menuShot=await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false,fromSurface:true});
+              fs.writeFileSync('qa/visual/nav-open-390.png',Buffer.from(menuShot.data,'base64'));
             }
-            return JSON.stringify(out);
-          })()`;
-          const evaluated = await send('Runtime.evaluate', {expression, returnByValue:true});
-          const data = JSON.parse(evaluated.result.value);
-          if (data.viewport.width !== 390) throw new Error(`Expected 390px CSS viewport, got ${data.viewport.width}`);
-          fs.writeFileSync('qa/mobile-layout.json', JSON.stringify(data, null, 2) + '\n');
-
-          const shot = await send('Page.captureScreenshot', {
-            format:'png',
-            captureBeyondViewport:false,
-            fromSurface:true
-          });
-          fs.writeFileSync('mobile-390.png', Buffer.from(shot.data, 'base64'));
+          }
+          fs.writeFileSync('qa/visual/layout-metrics.json',JSON.stringify(all,null,2)+'\n');
           ws.close();
           JS
 
           node /tmp/mobile-qa.mjs
-          test -s mobile-390.png
-          test -s qa/mobile-layout.json
+          test -s qa/visual/full-375.png
+          test -s qa/visual/full-390.png
+          test -s qa/visual/full-430.png
+          test -s qa/visual/layout-metrics.json
+
+      - name: Assert no document-level horizontal overflow
+        run: |
           python3 - <<'PY'
           import json
-          d=json.load(open('qa/mobile-layout.json'))
-          assert d['viewport']['width'] == 390, d['viewport']
-          print('Verified CSS viewport:', d['viewport'])
+          d=json.load(open('qa/visual/layout-metrics.json'))
+          for w in ('375','390','430','768','1280'):
+              m=d[w]
+              if m['scrollWidth'] > m['clientWidth'] + 1:
+                  raise SystemExit(f"horizontal overflow at {w}px: scrollWidth={m['scrollWidth']} clientWidth={m['clientWidth']}")
+              print(w, 'OK', m['clientWidth'], m['scrollWidth'])
           PY
 
       - uses: actions/upload-artifact@v4
         with:
-          name: mobile-hero-preview
-          path: mobile-390.png
+          name: responsive-visual-qa
+          path: qa/visual/
           if-no-files-found: error
-          retention-days: 7
-
-      - name: Persist layout metrics
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add qa/mobile-layout.json
-          if git diff --cached --quiet; then
-            echo "Layout metrics unchanged"
-            exit 0
-          fi
-          git commit -m "Update exact 390px mobile hero QA metrics"
-          git push
+          retention-days: 14
