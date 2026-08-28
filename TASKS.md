@@ -161,3 +161,13 @@ The hero is locked. Do not modify `hero-mobile-refine.css`, `hero-fix.css`, `her
 - Repository metadata confirms GitHub Pages is enabled, but no homepage URL is declared; a reliable deployed URL was not available for browser-level review in this pass, so no speculative visual finding was added.
 - All current review findings are closed. Non-hero code review remains stable with no new meaningful issue found.
 - **Next review focus:** only inspect new implementation changes or regressions; otherwise keep QA converged and do not invent work.
+
+### 2026-08-28 — Independent visual QA pass 05
+- Reviewed current `main` at `dae556ad0f00c53d19782f88ca4abeaf3391fba1` and successful `Mobile Visual QA` run `33133188651`; artifact `responsive-visual-qa` was downloaded fresh and inspected in the same run.
+- Visually inspected `full-375.png`, `full-390.png`, `full-430.png`, and `nav-open-390.png`; spot-checked `full-768.png` and `full-1280.png`.
+- DOM metrics show no document-level horizontal overflow at any rendered width: 375/390/430/768/1280 each has `scrollWidth == clientWidth`.
+- Smartphone views 375/390/430: Services cards remain inside the viewport with intentional stagger only; Works cards do not clip; About text remains readable; Contact email/CTA remains inside its framed action; footer remains visible; mobile nav opens as a usable four-item panel without clipping or content collision.
+- 768/1280 spot-check found no clear non-hero regression that justifies a corrective finding. The 768 About statement wraps more aggressively than desktop, but remains fully visible/readable and does not overlap or clip, so no speculative task was created.
+- Owner-reported smartphone regression could not be reproduced in the approved current-main visual artifact. No new unchecked `Review Findings / 修正ToDo` item was added.
+- Hero remained locked; no hero redesign finding was created.
+- **Next review focus:** none until a new product commit or a reproducible visual regression appears.
