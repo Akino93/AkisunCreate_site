@@ -1,0 +1,33 @@
+/* Owner-reported mobile cleanup — 2026-08-28.
+   Non-hero only. Keep the approved hero untouched. */
+
+/* Card numbering must anchor to each service card. */
+.services article{
+  position:relative;
+  box-sizing:border-box;
+}
+
+/* Remove the faint inset frames that visually double the card borders. */
+.services article::before,
+#works .works article::after{
+  content:none;
+  display:none;
+}
+
+/* Keep the service symbols typographic/monochrome instead of emoji-rendered. */
+.service-symbol{
+  font-family:'Archivo Black','Noto Sans JP',sans-serif;
+  font-variant-emoji:text;
+}
+
+@media(max-width:900px){
+  /* Mobile/tablet cards should share one clean vertical axis. */
+  .services article,
+  .services article:nth-of-type(2),
+  .services article:nth-of-type(3){
+    width:100%;
+    margin-left:0;
+    margin-right:0;
+    transform:none;
+  }
+}
