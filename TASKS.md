@@ -96,13 +96,14 @@ The hero is locked. Do not modify `hero-mobile-refine.css`, `hero-fix.css`, `her
   - **Implementation:** `index.html` now uses visible destination/purpose-specific CTA wording while preserving the existing hrefs: UI/UX → `実績を見る` (`#works`), AI活用支援 → `支援の考え方を見る` (`#about`), 業務設計・システム → `設計の考え方を見る` (`#about`).
   - **Review result:** Verified on current `main` and implementation commit `e3b78f9`. The three visible labels now communicate destination/purpose directly, hrefs remain `#works`, `#about`, `#about`, and the implementation diff changes only the non-hero Services link text in `index.html`. No business claim, hero stylesheet, hero asset, or hero behavior was changed.
 
-- [ ] **Medium — Selected Works / 375–430px — faint inner keyline still visible**
+- [x] **Medium — Selected Works / 375–430px — faint inner keyline still visible**
   - **Problem:** Fresh `Mobile Visual QA` screenshots for 375px, 390px, and 430px still show a thin light-gray rectangular perimeter around each Selected Works card. The owner explicitly identified this decorative line as unwanted; removing the earlier pseudo-element keyline did not fully remove the visible gray card outline.
   - **Expected:** Selected Works keeps the strong black editorial section/divider rules, but no faint gray inner/per-card rectangle remains on smartphone layouts.
   - **Definition of Done:** On a fresh successful `Mobile Visual QA` artifact from the fixing commit, `full-375.png`, `full-390.png`, and `full-430.png` show no thin gray rectangular outline around any of the three Works cards; black structural dividers remain aligned, text is not clipped, and `scrollWidth == clientWidth` at all three widths. Do not alter the locked hero.
   - **Implementation:** `owner-mobile-fixes.css` now resets the legacy `right`, `bottom`, and `border` inherited by `#works .works article::before` from the global `.works article:before` rule. This preserves the visible `01/02/03` case numbers while removing the inherited rectangular keyline. `index.html` only refreshes the non-hero override cache key.
   - **Implementation validation:** `Mobile Visual QA` run `33234746002` completed successfully for commit `7f2c15b`; fresh `full-375.png`, `full-390.png`, and `full-430.png` were visually inspected and no faint gray per-card rectangle remains. Black structural dividers and case numbers remain intact. The run's overflow assertion passed at all widths, including 375/390/430 with `scrollWidth == clientWidth`.
-  - **Status:** Ready for independent review. Keep unchecked until the independent review loop verifies the fresh artifact.
+  - **Review result:** Independently verified from a fresh download of successful `Mobile Visual QA` run `33234746002` for rendered-product commit `7f2c15b`. `full-375.png`, `full-390.png`, and `full-430.png` show the unwanted faint gray per-card rectangles are gone while the black structural dividers and `01/02/03` labels remain. `layout-metrics.json` confirms `scrollWidth == clientWidth` at 375/390/430/768/1280. `nav-open-390.png` is usable without clipping, and 768/1280 spot-checks show no related regression. Current `main` (`28db636`) is one documentation-only commit ahead of `7f2c15b`; commit comparison shows the only changed file is `TASKS.md`, so the reviewed artifact is render-equivalent to current main. Hero remained locked.
+  - **Status:** Closed after independent visual verification.
 
 ## Implementation Log
 
@@ -196,3 +197,12 @@ The hero is locked. Do not modify `hero-mobile-refine.css`, `hero-fix.css`, `her
 - **Confirmed remaining issue:** Selected Works still shows a faint light-gray rectangular outline around each card at 375/390/430. This is visually reproducible in the fresh artifact and does not match the owner's request to remove the thin gray frame, so a Medium unchecked finding was added.
 - Hero remained locked; no hero redesign finding was created.
 - **Next review focus:** verify the Works keyline removal against a fresh artifact from the fixing commit; do not close the finding from implementation self-report or CSS inspection alone.
+
+### 2026-08-29 — Independent visual QA pass 07
+- Reviewed current `main` at `28db636e146607f2043720168650736fa60e7be1`, recent fix commits `3bc6004` / `7f2c15b`, current `TASKS.md`, and successful `Mobile Visual QA` run `33234746002` for `7f2c15b`.
+- Current main is one documentation-only commit ahead of the visual run; compare `7f2c15b...28db636` shows `TASKS.md` is the only changed file, so the freshly downloaded artifact is render-equivalent to current main. The workflow does not trigger on `TASKS.md`-only changes.
+- Freshly downloaded and inspected `responsive-visual-qa`: `full-375.png`, `full-390.png`, `full-430.png`, `nav-open-390.png`, plus spot-checks of `full-768.png` and `full-1280.png`; parsed `layout-metrics.json` in the same run.
+- **Closed:** Selected Works / faint inner keyline. The unwanted light-gray per-card rectangle is no longer visible at 375/390/430. Black structural rules, case numbering, and content remain intact and unclipped.
+- Metrics confirm no document-level horizontal overflow at 375/390/430/768/1280 (`scrollWidth == clientWidth`). Services cards are aligned on mobile; Contact email/CTA remains within the viewport; footer placement is intact; the 390px open nav is fully usable without clipping or overlap. 768/1280 spot-checks show no related regression.
+- No new confirmed non-hero finding was identified. Hero remains owner-approved/locked and was not redesigned.
+- **Next review focus:** only a new product commit or a new reproducible owner-reported regression; do not invent additional work.
