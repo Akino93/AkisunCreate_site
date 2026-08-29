@@ -100,8 +100,19 @@ The hero is locked. Do not modify `hero-mobile-refine.css`, `hero-fix.css`, `her
   - **Problem:** Fresh `Mobile Visual QA` screenshots for 375px, 390px, and 430px still show a thin light-gray rectangular perimeter around each Selected Works card. The owner explicitly identified this decorative line as unwanted; removing the earlier pseudo-element keyline did not fully remove the visible gray card outline.
   - **Expected:** Selected Works keeps the strong black editorial section/divider rules, but no faint gray inner/per-card rectangle remains on smartphone layouts.
   - **Definition of Done:** On a fresh successful `Mobile Visual QA` artifact from the fixing commit, `full-375.png`, `full-390.png`, and `full-430.png` show no thin gray rectangular outline around any of the three Works cards; black structural dividers remain aligned, text is not clipped, and `scrollWidth == clientWidth` at all three widths. Do not alter the locked hero.
+  - **Implementation:** `owner-mobile-fixes.css` now resets the legacy `right`, `bottom`, and `border` inherited by `#works .works article::before` from the global `.works article:before` rule. This preserves the visible `01/02/03` case numbers while removing the inherited rectangular keyline. `index.html` only refreshes the non-hero override cache key.
+  - **Implementation validation:** `Mobile Visual QA` run `33234746002` completed successfully for commit `7f2c15b`; fresh `full-375.png`, `full-390.png`, and `full-430.png` were visually inspected and no faint gray per-card rectangle remains. Black structural dividers and case numbers remain intact. The run's overflow assertion passed at all widths, including 375/390/430 with `scrollWidth == clientWidth`.
+  - **Status:** Ready for independent review. Keep unchecked until the independent review loop verifies the fresh artifact.
 
 ## Implementation Log
+
+### 2026-08-29 — Fix pass 04
+- Selected the only actionable unchecked visual finding: **Selected Works / 375–430px — faint inner keyline still visible**.
+- Root cause: the legacy global `.works article:before` rule in `styles.css` contributes `inset:6px` and a faint border. The later Selected Works counter rule repurposes the same pseudo-element for `01/02/03` but did not reset inherited `right`, `bottom`, or `border`, leaving the unwanted rectangle even after the separate `article::after` keyline was disabled.
+- Implemented the minimal non-hero override in `owner-mobile-fixes.css`: keep the counter pseudo-element, reset only `right:auto`, `bottom:auto`, and `border:0`.
+- Refreshed only the `owner-mobile-fixes.css` cache key in `index.html`; hero markup and hero-specific files remain unchanged.
+- `Mobile Visual QA` run `33234746002` completed successfully on commit `7f2c15b`; inspected `full-375.png`, `full-390.png`, and `full-430.png`. The faint gray Works rectangles are gone, black dividers remain aligned, copy is unclipped, and the workflow overflow assertion passed for 375/390/430/768/1280.
+- Status is **Ready for review**, not complete. Independent review should verify and close the finding from the fresh artifact.
 
 ### 2026-08-27 — Fix pass 03
 - Selected the only remaining actionable review finding: **Services / link expectation clarity**.
