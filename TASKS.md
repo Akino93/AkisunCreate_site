@@ -40,7 +40,7 @@ Navigation target: **Services / Works / Products / About / Contact**.
 - Products should strengthen the parent brand rather than turn the homepage into a single-product LP.
 
 ## Phase status
-Previous non-hero stabilization is complete. **Content/positioning phase is active.** Content, IA, section order, copy hierarchy, navigation labels, and non-hero presentation may change when serving the positioning above.
+Previous non-hero stabilization is complete. **Content/positioning phase is active.**
 
 ## Guardrails
 - Preserve current visual identity rather than replacing it with a generic SaaS/corporate template.
@@ -51,32 +51,36 @@ Previous non-hero stabilization is complete. **Content/positioning phase is acti
 
 ## Content Review / 修正ToDo
 
-### Initial owner-approved requirements
+### Owner-approved requirements
 - [ ] **High — Corporate positioning / whole site**: make Akisun Create read as a product partner supporting company product development while building its own products, not merely a design portfolio.
 - [ ] **High — Information architecture**: evolve toward Services / Works / Products / About / Contact and ensure the narrative remains coherent.
 - [ ] **High — PM/PdM discoverability and conversion**: external PM/PdM/product-support prospects should understand that they can consult Akisun Create and have a clear low-friction path to Contact.
-- [ ] **High — Products foundation**: create a natural Products presence ready for **ぺぇジェント (AI SNS Auto)** and future dedicated product pages; do not invent product claims not supported by current project facts.
+- [x] **High — Products foundation**: create a natural Products presence ready for **ぺぇジェント (AI SNS Auto)** and future dedicated product pages.
+  - **Review result 2026-09-03:** Verified in current site and successful `Mobile Visual QA` run `33663853258` for implementation SHA `12a5bc5`. Navigation now follows `Services / Works / Products / About / Contact`; `#products` is a first-class section between Works and About; `ぺぇジェント` is shown with `AI SNS Auto` as its subtitle, not as a second product. The product-index pattern is reusable for future products. 375/390/430/768/1280 all report `scrollWidth == clientWidth`, and 390/1280 screenshots show the section fits the established editorial identity without disrupting the prior mobile layout.
 - [ ] **Medium — Corporate trust / vendor due diligence**: strengthen copy and evidence so a contractor/vendor evaluator gets “信頼できそう / まともそう / 頼みやすそう”.
 - [ ] **Medium — Works storytelling**: improve problem/context/role/value storytelling using only supported facts.
 - [ ] **Medium — Copy hierarchy / CTA**: rewrite vague/generic text and CTAs so the site is easy to scan, concrete, and consultation-friendly.
-- [ ] **Medium — Brand consistency**: preserve the distinctive current visual identity while making content feel professional and deliberate.
+- [x] **Medium — Brand consistency / Products addition**: preserve the distinctive current visual identity while adding Products.
+  - **Review result 2026-09-03:** Current 390px and 1280px rendered screenshots show the new Products block uses the same paper, ink-rule, numbered editorial language as the rest of the site rather than introducing a generic SaaS card style.
 
 ### Independent review findings — 2026-09-03
 
-- [ ] **High — First-view visible copy still does not say “product partner / PM-PdM support”**
-  - **Problem:** Title/meta were improved, but the actual visible hero still leads with `UI/UXデザイン、業務設計、AI活用を横断して` beneath the abstract slogan/headline. Search metadata now says product partner, while a human landing on the page still sees the old capability-led definition. A PM/PdM buyer must scroll to Services to discover the relevant offer.
-  - **Expected:** First meaningful visible reading sequence tells a prospect that Akisun Create helps move company product development forward, including before requirements are fixed. UI/UX/AI should read as methods beneath that promise.
-  - **Recommended direction:** Rewrite hero copy only; preserve approved hero visual composition/assets/layout. Keep the personality of the current headline but make product partnership/upstream support explicit in the lead or adjacent copy.
-  - **DoD:** Visible first view clearly communicates product-development partnership/upstream support; PM/PdM/product support is discoverable without scrolling; no unsupported claim; hero visual composition remains unchanged.
+- [x] **High — First-view visible copy still does not say “product partner / PM-PdM support”**
+  - **Original problem:** The visible hero led with the old capability trio, requiring PM/PdM buyers to scroll before recognizing the offer.
+  - **Review result:** Closed. Current hero says `企業のプロダクトづくりを、要件が固まる前の課題整理から支援。` and explicitly exposes `PM / PdM・UX設計・AI活用・実装連携` in the first view. The 390px and 1280px screenshots from successful `Mobile Visual QA` run `33663853258` confirm the copy is visibly present, readable, and integrated without changing the approved hero visual composition. It now communicates upstream product support before scrolling.
 
-- [ ] **High — Products is absent from page structure and navigation**
-  - **Problem:** Current nav remains `SERVICES / WORKS / ABOUT / CONTACT`; no Products section exists. The page therefore still structurally describes a service portfolio and cannot communicate the owner-approved dual identity “client product partner + own-product maker.”
-  - **Expected:** Products has a first-class, natural place and nav entry. ぺぇジェント is the first product and AI SNS Auto is not presented as a separate product.
-  - **Recommended direction:** Add a scalable product-index section rather than a one-off promo block. Use only verified product facts and keep the corporate homepage distinct from the eventual product detail page.
-  - **DoD:** Nav/page support `Services / Works / Products / About / Contact`; Products truthfully presents `ぺぇジェント`; structure can accommodate future products; mobile/desktop anchor navigation remains usable.
+- [x] **High — Products is absent from page structure and navigation**
+  - **Original problem:** Nav was `SERVICES / WORKS / ABOUT / CONTACT`; no Products section existed, so the site could not express the dual identity of client support + own-product development.
+  - **Review result:** Closed. Current navigation and page include `PRODUCTS`, the section is first-class, and ぺぇジェント / AI SNS Auto is correctly represented as one product. Responsive QA passed with no document-level overflow at all workflow viewports.
+
+- [ ] **Medium — Products establishes ownership but still does not explain the product’s value**
+  - **Problem:** The new Products section successfully creates the structural home for ぺぇジェント, but its descriptive copy only says `Akisun Createが開発する自社プロダクト。今後のプロダクトも、このProductsから案内していきます。` A corporate visitor learns that the product exists, but not what problem it addresses or why they should care. `AI SNS Auto` is a subtitle rather than a plain-language value explanation.
+  - **Expected:** The homepage gives a compact, truthful reason to understand or explore ぺぇジェント while remaining a corporate homepage rather than turning into a product LP.
+  - **Recommended direction:** Add one short plain-language product description and, once an actual product page exists, a clear product-detail CTA. Source wording from verified ぺぇジェント / AI SNS Auto project facts; do not invent release status, supported SNS channels, automation behavior, pricing, adoption, or metrics unless verified.
+  - **DoD:** A first-time visitor can state in plain language what category/problem ぺぇジェント addresses; copy stays concise and factual; `ぺぇジェント = AI SNS Auto` remains one product; no unsupported feature/release/pricing claim; mobile section remains scannable.
 
 - [ ] **Medium — Works still reads as portfolio captions rather than procurement evidence**
-  - **Problem:** Each case is category + title + one sentence. The current `社員食堂メニューアンケート`, `Akky Design System`, and `組織へのAI活用導入` show breadth but do not reveal enough context, Akisun Create's role/action, or value for a vendor evaluator to understand what was actually owned and solved.
+  - **Problem:** Each case remains category + title + one sentence. The current `社員食堂メニューアンケート`, `Akky Design System`, and `組織へのAI活用導入` show breadth but do not reveal enough context, Akisun Create's role/action, or value for a vendor evaluator to understand what was actually owned and solved.
   - **Expected:** Works demonstrates the positioning: Akisun Create can understand a messy problem and move it forward. Each featured case should communicate problem/context plus role/action; outcomes only where supported.
   - **Recommended direction:** Convert cards into compact case summaries using verified facts. If metrics are unavailable, state qualitative delivered change/value without inventing numbers.
   - **DoD:** Every visible Work explains context/problem and Akisun Create's role/action; at least one demonstrates upstream/product/project thinking; no invented client/metric/outcome; summaries remain mobile-scannable.
@@ -95,39 +99,33 @@ Previous non-hero stabilization is complete. **Content/positioning phase is acti
 
 ## Implementation evidence
 
-### 2026-09-03 — Products IA foundation pass — Ready for Review
-- Added **PRODUCTS** to the primary navigation, yielding the owner-approved order **Services / Works / Products / About / Contact**.
-- Added a first-class `#products` section between Works and About, implemented as a reusable product-index structure rather than a one-off promotional block.
-- Presented **ぺぇジェント** with **AI SNS Auto** as its subtitle so they read as one product, not two separate products.
-- Limited copy to supported facts: Akisun Create develops its own products and ぺぇジェント is the first product. No product metrics, feature promises, release claims or unsupported capabilities were added.
-- Added a dedicated `products.css` scoped to the new non-hero section, with mobile/tablet/desktop layouts and anchor offset handling. Hero files and hero visual composition were not changed.
-- Existing mobile stabilization styles remain in place; navigation still uses the existing responsive menu behavior and the new `#products` anchor is handled by the same link-close logic.
-- **Status:** Ready for independent review. Review-owned Products finding remains unchecked until Review Agent verification.
+### 2026-09-03 — Products IA foundation pass — Reviewed / Closed
+- Added PRODUCTS to primary navigation and a reusable `#products` section.
+- Presented **ぺぇジェント** with **AI SNS Auto** as subtitle, correctly as one product.
+- Independent responsive review completed against `Mobile Visual QA` run `33663853258`; no overflow regression at 375/390/430/768/1280.
 
-### 2026-09-03 — Hero first-view positioning pass — Ready for Review
-- Rewrote only the hero lead copy; hero visual composition, assets, CSS, typography structure, spacing and animation remain unchanged.
-- First view now states that Akisun Create supports **企業のプロダクトづくり** from **要件が固まる前の課題整理**.
-- Made **PM / PdM** explicitly visible without scrolling, with UX design, AI use and implementation collaboration positioned as methods that support moving product work forward.
-- Preserved the existing headline and low-friction hero CTAs.
-- No unsupported client, metric, team-size or capability claims added.
-- **Status:** Ready for independent review. Review-owned finding remains unchecked until Review Agent verification.
+### 2026-09-03 — Hero first-view positioning pass — Reviewed / Closed
+- Hero lead now states company product-development support from the pre-requirements problem-definition stage and explicitly exposes PM/PdM.
+- Independent rendered review completed at 390px and 1280px from run `33663853258`; approved hero art remains visually intact.
 
-### 2026-09-03 — Services positioning pass — Ready for Review
-- Reframed Services into **プロダクト・UX設計 / PM・PdM・プロジェクト推進 / AI・業務改善・実装連携**.
-- Made early-stage engagement explicit with **要件が固まる前の課題整理** and clarified PM/PdM support as stakeholder alignment, requirements/priorities, and moving product work forward.
-- PM/PdM CTA now uses **相談してみる → Contact**.
-- Updated title/meta from the old capability trio to product-development partner positioning.
-- Hero visual code and prior mobile stabilization were not changed.
-- **Independent content review:** Services taxonomy and PM/PdM discoverability are materially improved and align with owner direction. However the visible hero remains old capability-led copy, so whole-site positioning/PM-PdM conversion requirements are not yet closed. Runtime responsive verification remains required after the larger content pass.
+### 2026-09-03 — Services positioning pass — Ready / direction accepted
+- Services taxonomy is now **プロダクト・UX設計 / PM・PdM・プロジェクト推進 / AI・業務改善・実装連携**.
+- PM/PdM CTA uses `相談してみる → Contact`.
+- Direction aligns with owner positioning. Whole-site owner requirements remain open until Works/About/Contact complete the story.
 
 ## Review Log
 
+### 2026-09-03 — Hero + Products acceptance review
+- Reviewed current `index.html`, `products.css`, and fresh successful `Mobile Visual QA` artifact from run `33663853258` (implementation SHA `12a5bc5`).
+- Inspected `full-390.png` and `full-1280.png`; checked layout metrics for 375/390/430/768/1280.
+- Closed the first-view positioning finding: the visible hero now communicates product-development support, pre-requirements engagement, and PM/PdM without scrolling.
+- Closed the Products IA finding and owner Products foundation requirement: nav/section are present, ぺぇジェント and AI SNS Auto are correctly one product, and responsive layout remains stable.
+- Added one new non-duplicate Products content finding: the section currently proves ownership/existence but does not yet explain the product's practical value in plain language.
+- Existing Works/About/Contact findings remain valid and are higher-value next fixes than additional visual polish.
+
 ### 2026-09-03 — End-to-end positioning / IA review
-- Reviewed current `index.html` after the first Fix Agent Services pass.
-- Accepted the direction of the new Services taxonomy: a PM/PdM buyer can now identify a relevant service directly, and `相談してみる` creates a low-friction Contact path.
-- Confirmed remaining structural gaps: visible hero still uses the old capability-led message; Products/nav are absent; Works lacks role/context evidence; About remains capability-led; Contact does not explicitly welcome ambiguous/early product consultation.
-- Added five concrete findings. No site implementation performed by Review Agent.
-- Next acceptance focus: review the next integrated positioning/IA implementation as a full reading sequence, then inspect responsive rendering/copy density before closing owner requirements.
+- Accepted the direction of the new Services taxonomy and identified five initial content gaps: hero, Products, Works, About, Contact.
+- Hero and Products gaps are now independently closed; Works/About/Contact remain open.
 
 ## Historical stabilization summary
 Before this phase, Services, Selected Works, About, Contact/CTA, footer/navigation and mobile responsive behavior were stabilized and independently reviewed. Owner-reported mobile card offsets, unwanted Works inner keylines, and emoji-style service symbol were resolved. Treat those fixes as regression guardrails.
