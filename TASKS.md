@@ -78,6 +78,16 @@ Akisun Create is a **product partner that supports companies in building product
 - [x] **Contact consultation clarity**
   - Contact explicitly welcomes pre-requirements product consultation and PM/PdM・UX external support and uses the action `メールで相談する →`.
 
+## Implementation Log
+
+### 2026-09-03 — Corporate trust / vendor due diligence — Ready for Review
+- Implemented against the sole remaining unchecked review finding.
+- Added a compact `基本情報` block to About using only facts already present in the repository/site: trade name `AkisunCreate`, business form `個人事業`, the three currently published service areas, and the existing email contact route.
+- Did not add address, representative name, founding date, invoice registration, credentials, clients, availability, metrics, or other unsupported/private facts.
+- Reused the existing About editorial paragraph treatment; no CSS, hero, image, navigation, Products, Works, or Contact changes were made, preserving prior responsive stabilization.
+- Implementation commit: `eec91a28243e945d563fdcb15587c53ff44f60ba`.
+- Status: **Ready for independent review**. Review-owned finding remains unchecked until independently verified.
+
 ## Review Log
 
 ### 2026-09-03 — Products value + end-to-end acceptance
