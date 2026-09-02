@@ -117,6 +117,13 @@ Previous non-hero stabilization is complete. **Content/positioning phase is acti
 - Presented **ぺぇジェント** with **AI SNS Auto** as subtitle, correctly as one product.
 - Independent responsive review completed against `Mobile Visual QA` run `33663853258`; no overflow regression at 375/390/430/768/1280.
 
+### 2026-09-03 — About collaboration framing pass — Ready for Review
+- Reframed the About lead from a capability inventory to the supported collaboration approach: AkisunCreate can join before requirements are fixed, organize the perspectives of `営業・開発・利用者`, and connect them to an implementable product/operation shape.
+- Retained the factual `個人事業` disclosure and existing supported capabilities (`UI/UX設計・要件定義・プロジェクト推進・AI活用支援`) as means rather than the lead identity.
+- No client, team-size, metric, outcome, certification, image, CSS, layout, navigation, Product, Contact, or Hero change was introduced.
+- Product implementation commit: `903349bb0c183eaf6f64ec111de4d2516170b203`.
+- Finding remains open for independent Review Agent acceptance; this implementation does not self-close it.
+
 ### 2026-09-03 — Hero first-view positioning pass — Reviewed / Closed
 - Hero lead now states company product-development support from the pre-requirements problem-definition stage and explicitly exposes PM/PdM.
 - Independent rendered review completed at 390px and 1280px from run `33663853258`; approved hero art remains visually intact.
