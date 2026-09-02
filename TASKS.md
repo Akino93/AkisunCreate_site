@@ -60,6 +60,7 @@ Previous non-hero stabilization is complete. **Content/positioning phase is acti
 - [ ] **Medium — Corporate trust / vendor due diligence**: strengthen copy and evidence so a contractor/vendor evaluator gets “信頼できそう / まともそう / 頼みやすそう”.
 - [ ] **Medium — Works storytelling**: improve problem/context/role/value storytelling using only supported facts.
   - **Review status 2026-09-03:** Partially improved, not yet closed. `Akky Design System` now communicates purpose + role, and `組織へのAI活用導入` communicates problem + role clearly. `社員食堂メニューアンケート` still uses `対象：社員食堂メニューアンケート`, which repeats the title rather than explaining the underlying context/problem. The owner-level requirement remains open until all visible cases meet the same evidence standard.
+  - **Implementation status 2026-09-03:** Ready for independent review. Lead case now uses a compact `課題 / 担当` pattern. The new problem line is limited to facts already stated by the existing role sentence: differences in update frequency/categories needed to be organized so usage tendencies could be read more easily. Implementation SHA `e138339cb2c325fca4f7505555fce4dd918742bf`; `Mobile Visual QA` run `33687878813` completed successfully.
 - [ ] **Medium — Copy hierarchy / CTA**: rewrite vague/generic text and CTAs so the site is easy to scan, concrete, and consultation-friendly.
 - [x] **Medium — Brand consistency / Products addition**: preserve the distinctive current visual identity while adding Products.
   - **Review result 2026-09-03:** Current 390px and 1280px rendered screenshots show the new Products block uses the same paper, ink-rule, numbered editorial language as the rest of the site rather than introducing a generic SaaS card style.
@@ -86,6 +87,7 @@ Previous non-hero stabilization is complete. **Content/positioning phase is acti
   - **Recommended direction:** Keep the current compact `目的/課題/担当` pattern, but replace the first case's title-repeating `対象` line with a verified problem/context statement from the underlying project facts. Do not invent users, client identity, metrics, or outcomes.
   - **DoD:** Every visible Work explains context/problem and Akisun Create's role/action; at least one demonstrates upstream/product/project thinking; no invented client/metric/outcome; summaries remain mobile-scannable.
   - **Independent visual check:** `Mobile Visual QA` run `33676305063` for the exact implementation SHA completed successfully. Fresh artifact inspection confirms `scrollWidth == clientWidth` at 375/390/430/768/1280. `full-390.png` and `full-1280.png` show the revised labels/copy are readable, unclipped, and retain the existing editorial hierarchy. No responsive regression was found in Works; the remaining issue is content completeness, not layout.
+  - **Implementation status 2026-09-03:** Ready for independent review at SHA `e138339cb2c325fca4f7505555fce4dd918742bf`. `対象` was replaced with `課題：更新頻度やカテゴリの違いを整理し、利用傾向を読み取りやすくすること。`; existing `担当` copy remains intact. No CSS, image, layout, navigation, Product, About, Contact, or Hero change was introduced. `Mobile Visual QA` run `33687878813` succeeded.
 
 - [x] **Medium — About still frames Akisun Create mainly as an individual capability inventory**
   - **Original problem:** `UI/UXデザインを軸に、業務設計・要件定義・プロジェクト推進・AI活用支援を行う個人事業です` was transparent but read as “freelancer with several skills.” The stronger differentiator—connecting sales, development and users—appeared only afterward, with no explanation of how/when to involve Akisun Create.
@@ -96,6 +98,13 @@ Previous non-hero stabilization is complete. **Content/positioning phase is acti
   - **Review result 2026-09-03:** Closed against implementation SHA `4c92d7e`. Current Contact explicitly says `要件が固まっていない段階のプロダクト相談や、PM / PdM・UX設計を含む外部支援のご相談も歓迎しています。まずは今の状況をお聞かせください。` and changes the visible mail action to `メールで相談する →` while preserving the existing `mailto:` channel. This directly satisfies the early-stage consultation and PM/PdM self-identification goals without adding response-time, availability, or other unsupported promises. Commit comparison from the previously reviewed content state shows the implementation changes only `index.html` (1 line replaced in the minified file), so there is no CSS/layout/hero change introduced by this pass; current main is only a TASKS.md documentation commit ahead of the implementation.
 
 ## Implementation evidence
+
+### 2026-09-03 — Works lead-case context fix — Ready for Review
+- Replaced the title-repeating `対象：社員食堂メニューアンケート` line with `課題：更新頻度やカテゴリの違いを整理し、利用傾向を読み取りやすくすること。`.
+- Grounding is limited to facts already present in the existing `担当` sentence (`更新頻度とカテゴリを整理` / `利用傾向を読み取りやすい情報構造へ再設計`); no client, user, metric, outcome, or capability was invented.
+- Kept the existing role/action sentence intact and changed no CSS, image, layout, hero, navigation, Product, About, or Contact content.
+- Product implementation commit: `e138339cb2c325fca4f7505555fce4dd918742bf`.
+- `Mobile Visual QA` run `33687878813` completed successfully for the exact implementation SHA. Finding remains open for independent Review Agent acceptance.
 
 ### 2026-09-03 — Works storytelling pass — Reviewed / Partial
 - Updated only the three existing Works summaries; no new client, metric, outcome, capability, image, layout, or hero claim was added.
