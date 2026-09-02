@@ -87,11 +87,9 @@ Previous non-hero stabilization is complete. **Content/positioning phase is acti
   - **DoD:** Every visible Work explains context/problem and Akisun Create's role/action; at least one demonstrates upstream/product/project thinking; no invented client/metric/outcome; summaries remain mobile-scannable.
   - **Independent visual check:** `Mobile Visual QA` run `33676305063` for the exact implementation SHA completed successfully. Fresh artifact inspection confirms `scrollWidth == clientWidth` at 375/390/430/768/1280. `full-390.png` and `full-1280.png` show the revised labels/copy are readable, unclipped, and retain the existing editorial hierarchy. No responsive regression was found in Works; the remaining issue is content completeness, not layout.
 
-- [ ] **Medium — About still frames Akisun Create mainly as an individual capability inventory**
-  - **Problem:** `UI/UXデザインを軸に、業務設計・要件定義・プロジェクト推進・AI活用支援を行う個人事業です` is transparent but reads as “freelancer with several skills.” The stronger differentiator—connecting sales, development and users—is present only afterward, and there is no explanation of how/when to involve Akisun Create.
-  - **Expected:** Preserve truthful sole-proprietor disclosure while explaining collaboration value and working approach: ambiguity is acceptable, stakeholder perspectives are organized, and work moves toward an implementable product/operation.
-  - **Recommended direction:** Shift the lead from capability inventory to approach/collaboration; retain factual business form and the supported `営業・開発・利用者` cross-functional concept. Do not imply a larger team.
-  - **DoD:** About accurately identifies business form while making clear why/when to work with Akisun Create; reinforces product partnership/cross-functional coordination without duplicating Services; no team-size inflation.
+- [x] **Medium — About still frames Akisun Create mainly as an individual capability inventory**
+  - **Original problem:** `UI/UXデザインを軸に、業務設計・要件定義・プロジェクト推進・AI活用支援を行う個人事業です` was transparent but read as “freelancer with several skills.” The stronger differentiator—connecting sales, development and users—appeared only afterward, with no explanation of how/when to involve Akisun Create.
+  - **Review result 2026-09-03:** Closed against implementation SHA `903349bb0c183eaf6f64ec111de4d2516170b203`. Current About now leads with `要件が固まっていない段階から、営業・開発・利用者それぞれの認識を整理し、実装できるプロダクトや業務の形へつなげる個人事業です。` This keeps the sole-proprietor disclosure explicit while moving the collaboration value and appropriate engagement timing ahead of the capability inventory. The second paragraph correctly reframes `UI/UX設計、要件定義、プロジェクト推進、AI活用支援` as means for turning complex work into a reproducible system rather than the business identity itself. No larger-team implication, client/metric/outcome claim, or duplicated Services taxonomy was introduced. Commit comparison confirms this pass changes only `index.html`; no CSS/layout/hero/product/navigation file changed.
 
 - [x] **Medium — Contact does not yet remove enough consultation uncertainty**
   - **Original problem:** `その課題、一緒に整理しませんか。` was friendly, but the only action was a raw email address and the section did not explicitly say that pre-requirements/ambiguous product consultations or external PM/PdM/product support inquiries were welcome.
@@ -110,19 +108,18 @@ Previous non-hero stabilization is complete. **Content/positioning phase is acti
 - Kept the low-pressure `その課題、一緒に整理しませんか。` headline and existing `mailto:` channel.
 - Replaced the generic kicker/raw-address presentation with concrete copy that explicitly welcomes product consultation before requirements are fixed and names PM/PdM・UX design external support.
 - Changed the visible mail CTA from the raw email address to `メールで相談する →`, so the action is clear without adding response-time or availability claims.
-- Independent review verified current `index.html` and the implementation diff for SHA `4c92d7e`; the product change is isolated to the Contact HTML text/action and introduces no CSS, hero, asset, navigation, or layout change.
+- Independent review verified current `index.html` and the implementation diff for `4c92d7e`; the product change is isolated to the Contact HTML text/action and introduces no CSS, hero, asset, navigation, or layout change.
 
 ### 2026-09-03 — Products IA foundation pass — Reviewed / Closed
 - Added PRODUCTS to primary navigation and a reusable `#products` section.
 - Presented **ぺぇジェント** with **AI SNS Auto** as subtitle, correctly as one product.
 - Independent responsive review completed against `Mobile Visual QA` run `33663853258`; no overflow regression at 375/390/430/768/1280.
 
-### 2026-09-03 — About collaboration framing pass — Ready for Review
+### 2026-09-03 — About collaboration framing pass — Reviewed / Closed
 - Reframed the About lead from a capability inventory to the supported collaboration approach: AkisunCreate can join before requirements are fixed, organize the perspectives of `営業・開発・利用者`, and connect them to an implementable product/operation shape.
 - Retained the factual `個人事業` disclosure and existing supported capabilities (`UI/UX設計・要件定義・プロジェクト推進・AI活用支援`) as means rather than the lead identity.
-- No client, team-size, metric, outcome, certification, image, CSS, layout, navigation, Product, Contact, or Hero change was introduced.
-- Product implementation commit: `903349bb0c183eaf6f64ec111de4d2516170b203`.
-- Finding remains open for independent Review Agent acceptance; this implementation does not self-close it.
+- Independent review accepted the implementation at `903349bb0c183eaf6f64ec111de4d2516170b203`: current copy makes engagement timing and cross-functional value clear without implying a team, inventing evidence, or duplicating Services.
+- Commit comparison against the preceding review state confirms only `index.html` changed; no CSS/layout/hero/product/navigation regression path was introduced by this pass.
 
 ### 2026-09-03 — Hero first-view positioning pass — Reviewed / Closed
 - Hero lead now states company product-development support from the pre-requirements problem-definition stage and explicitly exposes PM/PdM.
@@ -134,6 +131,14 @@ Previous non-hero stabilization is complete. **Content/positioning phase is acti
 - Direction aligns with owner positioning. Whole-site owner requirements remain open until Works/About complete the story.
 
 ## Review Log
+
+### 2026-09-03 — About collaboration framing acceptance review
+- Reviewed current `TASKS.md`, current `index.html`, latest commit history, and implementation SHA `903349bb0c183eaf6f64ec111de4d2516170b203`.
+- Closed the About finding. The section now starts from how Akisun Create collaborates and when to involve it, rather than presenting a list of capabilities as the business identity.
+- The factual `個人事業` disclosure remains explicit; `営業・開発・利用者` is used as a cross-functional coordination frame, not as a claim that Akisun Create employs those roles.
+- The second paragraph positions UI/UX, requirements definition, project facilitation, and AI support as means, which is coherent with Services without simply repeating its card taxonomy.
+- Commit comparison confirms the implementation is isolated to `index.html`, so no new responsive/layout regression vector was introduced. No new finding was added.
+- Highest-value remaining content gaps are the first Works case context and the plain-language value explanation for ぺぇジェント.
 
 ### 2026-09-03 — Works storytelling acceptance review
 - Reviewed current `index.html`, current `TASKS.md`, implementation SHA `9c2de3817bbf8633cee47ff3c33077330f8e4a04`, and fresh successful `Mobile Visual QA` artifact from run `33676305063`.
