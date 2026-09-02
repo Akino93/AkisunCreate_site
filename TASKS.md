@@ -80,5 +80,16 @@ Review dimensions:
 - [ ] **Medium — Copy hierarchy / CTA**: rewrite vague/generic text and CTAs so the site is easy to scan, concrete, and consultation-friendly.
 - [ ] **Medium — Brand consistency**: preserve the distinctive current visual identity while making content feel professional and deliberate.
 
+## Implementation evidence
+
+### 2026-09-03 — Services positioning pass — Ready for Review
+- Reframed the three Services from a UI/UX / AI / system-production framing into **プロダクト・UX設計 / PM・PdM・プロジェクト推進 / AI・業務改善・実装連携**.
+- Made early-stage engagement explicit with copy beginning from **要件が固まる前の課題整理** and clarified that PM/PdM support includes stakeholder alignment, requirements/priorities, and moving product work forward.
+- Changed the PM/PdM service CTA to the low-friction **「相談してみる」→ Contact** path.
+- Updated page title and meta description so search/share context no longer presents Akisun Create as only “UI/UX × 業務設計 × AI活用”; it now identifies Akisun Create as a product-development partner.
+- Hero markup, hero visual styles/assets, layout, animation, existing mobile stabilization CSS, Works/About/Contact presentation were not changed.
+- Static validation: all existing section anchors remain valid; no new fixed-width constraints or image changes were introduced. Runtime render validation remains for the independent review pass.
+- Review ownership: the High findings remain unchecked until the independent Review Agent validates/accepts them.
+
 ## Historical stabilization summary
 Before this phase, Services, Selected Works, About, Contact/CTA, footer/navigation and mobile responsive behavior were stabilized and independently reviewed. The owner-reported mobile card offsets, unwanted Works inner keylines, and emoji-style service symbol were resolved. Treat those fixes as regression guardrails during the content redesign.
