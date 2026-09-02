@@ -59,6 +59,7 @@ Previous non-hero stabilization is complete. **Content/positioning phase is acti
   - **Review result 2026-09-03:** Verified in current site and successful `Mobile Visual QA` run `33663853258` for implementation SHA `12a5bc5`. Navigation now follows `Services / Works / Products / About / Contact`; `#products` is a first-class section between Works and About; `ぺぇジェント` is shown with `AI SNS Auto` as its subtitle, not as a second product. The product-index pattern is reusable for future products. 375/390/430/768/1280 all report `scrollWidth == clientWidth`, and 390/1280 screenshots show the section fits the established editorial identity without disrupting the prior mobile layout.
 - [ ] **Medium — Corporate trust / vendor due diligence**: strengthen copy and evidence so a contractor/vendor evaluator gets “信頼できそう / まともそう / 頼みやすそう”.
 - [ ] **Medium — Works storytelling**: improve problem/context/role/value storytelling using only supported facts.
+  - **Review status 2026-09-03:** Partially improved, not yet closed. `Akky Design System` now communicates purpose + role, and `組織へのAI活用導入` communicates problem + role clearly. `社員食堂メニューアンケート` still uses `対象：社員食堂メニューアンケート`, which repeats the title rather than explaining the underlying context/problem. The owner-level requirement remains open until all visible cases meet the same evidence standard.
 - [ ] **Medium — Copy hierarchy / CTA**: rewrite vague/generic text and CTAs so the site is easy to scan, concrete, and consultation-friendly.
 - [x] **Medium — Brand consistency / Products addition**: preserve the distinctive current visual identity while adding Products.
   - **Review result 2026-09-03:** Current 390px and 1280px rendered screenshots show the new Products block uses the same paper, ink-rule, numbered editorial language as the rest of the site rather than introducing a generic SaaS card style.
@@ -80,10 +81,11 @@ Previous non-hero stabilization is complete. **Content/positioning phase is acti
   - **DoD:** A first-time visitor can state in plain language what category/problem ぺぇジェント addresses; copy stays concise and factual; `ぺぇジェント = AI SNS Auto` remains one product; no unsupported feature/release/pricing claim; mobile section remains scannable.
 
 - [ ] **Medium — Works still reads as portfolio captions rather than procurement evidence**
-  - **Problem:** Each case remains category + title + one sentence. The current `社員食堂メニューアンケート`, `Akky Design System`, and `組織へのAI活用導入` show breadth but do not reveal enough context, Akisun Create's role/action, or value for a vendor evaluator to understand what was actually owned and solved.
+  - **Problem:** The implementation at SHA `9c2de3817bbf8633cee47ff3c33077330f8e4a04` meaningfully improves the cards, but acceptance is incomplete. `Akky Design System` now states `目的：UIの一貫性と実装連携を支えること` + `担当：再利用可能なデザイン基盤として設計`, and `組織へのAI活用導入` now states a real `課題` + `担当`. By contrast, the lead case still says `対象：社員食堂メニューアンケート`, which is effectively the title repeated and does not explain what situation/problem prompted the redesign. Its `担当` sentence explains the action, but not enough context for a procurement evaluator to understand what was being solved.
   - **Expected:** Works demonstrates the positioning: Akisun Create can understand a messy problem and move it forward. Each featured case should communicate problem/context plus role/action; outcomes only where supported.
-  - **Recommended direction:** Convert cards into compact case summaries using verified facts. If metrics are unavailable, state qualitative delivered change/value without inventing numbers.
+  - **Recommended direction:** Keep the current compact `目的/課題/担当` pattern, but replace the first case's title-repeating `対象` line with a verified problem/context statement from the underlying project facts. Do not invent users, client identity, metrics, or outcomes.
   - **DoD:** Every visible Work explains context/problem and Akisun Create's role/action; at least one demonstrates upstream/product/project thinking; no invented client/metric/outcome; summaries remain mobile-scannable.
+  - **Independent visual check:** `Mobile Visual QA` run `33676305063` for the exact implementation SHA completed successfully. Fresh artifact inspection confirms `scrollWidth == clientWidth` at 375/390/430/768/1280. `full-390.png` and `full-1280.png` show the revised labels/copy are readable, unclipped, and retain the existing editorial hierarchy. No responsive regression was found in Works; the remaining issue is content completeness, not layout.
 
 - [ ] **Medium — About still frames Akisun Create mainly as an individual capability inventory**
   - **Problem:** `UI/UXデザインを軸に、業務設計・要件定義・プロジェクト推進・AI活用支援を行う個人事業です` is transparent but reads as “freelancer with several skills.” The stronger differentiator—connecting sales, development and users—is present only afterward, and there is no explanation of how/when to involve Akisun Create.
@@ -97,13 +99,12 @@ Previous non-hero stabilization is complete. **Content/positioning phase is acti
 
 ## Implementation evidence
 
-### 2026-09-03 — Works storytelling pass — Ready for Review
+### 2026-09-03 — Works storytelling pass — Reviewed / Partial
 - Updated only the three existing Works summaries; no new client, metric, outcome, capability, image, layout, or hero claim was added.
-- `社員食堂メニューアンケート` now separates the work target from the action: the existing facts about update-frequency/category organization and information-structure redesign are presented as `対象 / 担当`.
-- `Akky Design System` now states the existing purpose (UI consistency and implementation collaboration) and the existing action (designing a reusable design foundation) as `目的 / 担当`.
-- `組織へのAI活用導入` now states the existing issue (not leaving AI use as individual technique) and the existing action (organizing a reproducible process and supporting adoption/use) as `課題 / 担当`.
+- `Akky Design System` and `組織へのAI活用導入` now satisfy the intended compact evidence pattern by making purpose/problem and role/action explicit.
+- `社員食堂メニューアンケート` is improved but not accepted yet because `対象：社員食堂メニューアンケート` repeats the case name rather than supplying context/problem. Keep the finding open and revise only from verified project facts.
 - Product implementation commit: `9c2de3817bbf8633cee47ff3c33077330f8e4a04`.
-- The existing Mobile Visual QA workflow was triggered for that SHA as run `33676305063`; at documentation time it was still in progress, so independent visual acceptance remains with the Review Agent.
+- `Mobile Visual QA` run `33676305063` completed successfully for that exact SHA. Fresh review artifact: no horizontal overflow at 375/390/430/768/1280; 390/1280 rendered Works copy is readable and unclipped.
 
 ### 2026-09-03 — Contact consultation clarity pass — Reviewed / Closed
 - Kept the low-pressure `その課題、一緒に整理しませんか。` headline and existing `mailto:` channel.
@@ -126,6 +127,13 @@ Previous non-hero stabilization is complete. **Content/positioning phase is acti
 - Direction aligns with owner positioning. Whole-site owner requirements remain open until Works/About complete the story.
 
 ## Review Log
+
+### 2026-09-03 — Works storytelling acceptance review
+- Reviewed current `index.html`, current `TASKS.md`, implementation SHA `9c2de3817bbf8633cee47ff3c33077330f8e4a04`, and fresh successful `Mobile Visual QA` artifact from run `33676305063`.
+- Inspected `full-390.png` and `full-1280.png`; checked `layout-metrics.json` at 375/390/430/768/1280. All workflow widths have `scrollWidth == clientWidth`; revised Works copy is readable and unclipped.
+- Accepted the second and third case-summary direction: both now expose purpose/problem and Akisun Create's role/action without unsupported outcome claims.
+- Did not close the Works finding because the lead `社員食堂メニューアンケート` case still lacks an actual context/problem line: `対象` simply repeats the case title. This is a content gap rather than a visual defect.
+- No new duplicate finding added. Next fix should be narrowly limited to replacing that first-case context line from verified project facts.
 
 ### 2026-09-03 — Contact consultation clarity acceptance review
 - Reviewed current `index.html`, current `TASKS.md`, latest commits, and the implementation diff for `4c92d7e`.
