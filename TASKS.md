@@ -99,6 +99,13 @@ Previous non-hero stabilization is complete. **Content/positioning phase is acti
 
 ## Implementation evidence
 
+### 2026-09-03 — Contact consultation clarity pass — Ready for Review
+- Kept the low-pressure `その課題、一緒に整理しませんか。` headline and existing `mailto:` channel.
+- Replaced the generic kicker/raw-address presentation with concrete copy that explicitly welcomes product consultation before requirements are fixed and names PM/PdM・UX design external support.
+- Changed the visible mail CTA from the raw email address to `メールで相談する →`, so the action is clear without adding response-time or availability claims.
+- No CSS, hero, asset, navigation, or layout changes; prior mobile stabilization remains untouched.
+- `Mobile Visual QA` was automatically triggered for implementation SHA `4c92d7e`; final rendered acceptance remains owned by the independent Review Agent.
+
 ### 2026-09-03 — Products IA foundation pass — Reviewed / Closed
 - Added PRODUCTS to primary navigation and a reusable `#products` section.
 - Presented **ぺぇジェント** with **AI SNS Auto** as subtitle, correctly as one product.
