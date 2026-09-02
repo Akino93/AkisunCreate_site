@@ -91,20 +91,17 @@ Previous non-hero stabilization is complete. **Content/positioning phase is acti
   - **Recommended direction:** Shift the lead from capability inventory to approach/collaboration; retain factual business form and the supported `営業・開発・利用者` cross-functional concept. Do not imply a larger team.
   - **DoD:** About accurately identifies business form while making clear why/when to work with Akisun Create; reinforces product partnership/cross-functional coordination without duplicating Services; no team-size inflation.
 
-- [ ] **Medium — Contact does not yet remove enough consultation uncertainty**
-  - **Problem:** `その課題、一緒に整理しませんか。` is friendly, but the only action is a raw email address. It does not explicitly say that pre-requirements/ambiguous product consultations or external PM/PdM/product support inquiries are welcome.
-  - **Expected:** Visitor feels permitted to contact before scope is fixed and recognizes what kinds of conversations are appropriate, without hard-sell tone.
-  - **Recommended direction:** Keep the low-pressure headline; add one short concrete support line around early-stage product/PM/PdM/UX consultation and a clearer action label while preserving mailto if that remains the channel.
-  - **DoD:** Contact explicitly welcomes early/ambiguous product consultation; PM/PdM/product-support prospect recognizes themselves; CTA describes the action; no unsupported availability/response-time promise.
+- [x] **Medium — Contact does not yet remove enough consultation uncertainty**
+  - **Original problem:** `その課題、一緒に整理しませんか。` was friendly, but the only action was a raw email address and the section did not explicitly say that pre-requirements/ambiguous product consultations or external PM/PdM/product support inquiries were welcome.
+  - **Review result 2026-09-03:** Closed against implementation SHA `4c92d7e`. Current Contact explicitly says `要件が固まっていない段階のプロダクト相談や、PM / PdM・UX設計を含む外部支援のご相談も歓迎しています。まずは今の状況をお聞かせください。` and changes the visible mail action to `メールで相談する →` while preserving the existing `mailto:` channel. This directly satisfies the early-stage consultation and PM/PdM self-identification goals without adding response-time, availability, or other unsupported promises. Commit comparison from the previously reviewed content state shows the implementation changes only `index.html` (1 line replaced in the minified file), so there is no CSS/layout/hero change introduced by this pass; current main is only a TASKS.md documentation commit ahead of the implementation.
 
 ## Implementation evidence
 
-### 2026-09-03 — Contact consultation clarity pass — Ready for Review
+### 2026-09-03 — Contact consultation clarity pass — Reviewed / Closed
 - Kept the low-pressure `その課題、一緒に整理しませんか。` headline and existing `mailto:` channel.
 - Replaced the generic kicker/raw-address presentation with concrete copy that explicitly welcomes product consultation before requirements are fixed and names PM/PdM・UX design external support.
 - Changed the visible mail CTA from the raw email address to `メールで相談する →`, so the action is clear without adding response-time or availability claims.
-- No CSS, hero, asset, navigation, or layout changes; prior mobile stabilization remains untouched.
-- `Mobile Visual QA` was automatically triggered for implementation SHA `4c92d7e`; final rendered acceptance remains owned by the independent Review Agent.
+- Independent review verified current `index.html` and the implementation diff for SHA `4c92d7e`; the product change is isolated to the Contact HTML text/action and introduces no CSS, hero, asset, navigation, or layout change.
 
 ### 2026-09-03 — Products IA foundation pass — Reviewed / Closed
 - Added PRODUCTS to primary navigation and a reusable `#products` section.
@@ -118,9 +115,16 @@ Previous non-hero stabilization is complete. **Content/positioning phase is acti
 ### 2026-09-03 — Services positioning pass — Ready / direction accepted
 - Services taxonomy is now **プロダクト・UX設計 / PM・PdM・プロジェクト推進 / AI・業務改善・実装連携**.
 - PM/PdM CTA uses `相談してみる → Contact`.
-- Direction aligns with owner positioning. Whole-site owner requirements remain open until Works/About/Contact complete the story.
+- Direction aligns with owner positioning. Whole-site owner requirements remain open until Works/About complete the story.
 
 ## Review Log
+
+### 2026-09-03 — Contact consultation clarity acceptance review
+- Reviewed current `index.html`, current `TASKS.md`, latest commits, and the implementation diff for `4c92d7e`.
+- Closed the Contact finding: the section now explicitly welcomes pre-requirements product consultation and PM/PdM・UX external support, and the action is clearly labeled `メールで相談する →`.
+- No unsupported availability/response-time claim was introduced.
+- The implementation diff is isolated to `index.html`; no CSS or structural layout files changed, so this pass does not introduce a new visual-layout risk beyond the already stabilized Contact component.
+- Next highest-value content gaps remain Works storytelling, About collaboration framing, and the practical value explanation for ぺぇジェント.
 
 ### 2026-09-03 — Hero + Products acceptance review
 - Reviewed current `index.html`, `products.css`, and fresh successful `Mobile Visual QA` artifact from run `33663853258` (implementation SHA `12a5bc5`).
@@ -132,7 +136,7 @@ Previous non-hero stabilization is complete. **Content/positioning phase is acti
 
 ### 2026-09-03 — End-to-end positioning / IA review
 - Accepted the direction of the new Services taxonomy and identified five initial content gaps: hero, Products, Works, About, Contact.
-- Hero and Products gaps are now independently closed; Works/About/Contact remain open.
+- Hero and Products gaps are now independently closed; Works/About remain open.
 
 ## Historical stabilization summary
 Before this phase, Services, Selected Works, About, Contact/CTA, footer/navigation and mobile responsive behavior were stabilized and independently reviewed. Owner-reported mobile card offsets, unwanted Works inner keylines, and emoji-style service symbol were resolved. Treat those fixes as regression guardrails.
