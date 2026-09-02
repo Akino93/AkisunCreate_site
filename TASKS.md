@@ -80,6 +80,7 @@ Previous non-hero stabilization is complete. **Content/positioning phase is acti
   - **Expected:** The homepage gives a compact, truthful reason to understand or explore ぺぇジェント while remaining a corporate homepage rather than turning into a product LP.
   - **Recommended direction:** Add one short plain-language product description and, once an actual product page exists, a clear product-detail CTA. Source wording from verified ぺぇジェント / AI SNS Auto project facts; do not invent release status, supported SNS channels, automation behavior, pricing, adoption, or metrics unless verified.
   - **DoD:** A first-time visitor can state in plain language what category/problem ぺぇジェント addresses; copy stays concise and factual; `ぺぇジェント = AI SNS Auto` remains one product; no unsupported feature/release/pricing claim; mobile section remains scannable.
+  - **Implementation status 2026-09-03:** Ready for independent review. Replaced the generic ownership sentence with a one-sentence value explanation grounded in the source `AI_SNS_Auto` project README: AI prepares SNS post drafts, while a person reviews the content and chooses `投稿 / 編集 / スキップ`. No release status, pricing, adoption, metrics, or additional channel claim was added. Implementation SHA `43a8ffd5d6292d6111a3e9b954ffacaef2d66dfd`.
 
 - [ ] **Medium — Works still reads as portfolio captions rather than procurement evidence**
   - **Problem:** The implementation at SHA `9c2de3817bbf8633cee47ff3c33077330f8e4a04` meaningfully improves the cards, but acceptance is incomplete. `Akky Design System` now states `目的：UIの一貫性と実装連携を支えること` + `担当：再利用可能なデザイン基盤として設計`, and `組織へのAI活用導入` now states a real `課題` + `担当`. By contrast, the lead case still says `対象：社員食堂メニューアンケート`, which is effectively the title repeated and does not explain what situation/problem prompted the redesign. Its `担当` sentence explains the action, but not enough context for a procurement evaluator to understand what was being solved.
@@ -98,6 +99,13 @@ Previous non-hero stabilization is complete. **Content/positioning phase is acti
   - **Review result 2026-09-03:** Closed against implementation SHA `4c92d7e`. Current Contact explicitly says `要件が固まっていない段階のプロダクト相談や、PM / PdM・UX設計を含む外部支援のご相談も歓迎しています。まずは今の状況をお聞かせください。` and changes the visible mail action to `メールで相談する →` while preserving the existing `mailto:` channel. This directly satisfies the early-stage consultation and PM/PdM self-identification goals without adding response-time, availability, or other unsupported promises. Commit comparison from the previously reviewed content state shows the implementation changes only `index.html` (1 line replaced in the minified file), so there is no CSS/layout/hero change introduced by this pass; current main is only a TASKS.md documentation commit ahead of the implementation.
 
 ## Implementation evidence
+
+### 2026-09-03 — Products value explanation pass — Ready for Review
+- Replaced the generic `Akisun Createが開発する自社プロダクト。今後のプロダクトも、このProductsから案内していきます。` sentence with: `AIがSNSの投稿案を準備し、人が内容を確認して「投稿・編集・スキップ」を判断しながら、SNS運用を続けやすくするプロダクトです。`
+- Grounding source: `Akino93/AI_SNS_Auto` README states that AI prepares recurring SNS post drafts and the human reviews them and chooses `投稿 / 編集 / スキップ`; Human-in-the-Loop is the project concept.
+- Kept `ぺぇジェント` + `AI SNS Auto` as one product and added no product-detail CTA because no product detail page exists in the corporate-site repository yet.
+- No release status, pricing, adoption, metrics, image, CSS, layout, hero, navigation, Works, About, or Contact change was introduced.
+- Product implementation commit: `43a8ffd5d6292d6111a3e9b954ffacaef2d66dfd`. Finding remains open for independent Review Agent acceptance.
 
 ### 2026-09-03 — Works lead-case context fix — Ready for Review
 - Replaced the title-repeating `対象：社員食堂メニューアンケート` line with `課題：更新頻度やカテゴリの違いを整理し、利用傾向を読み取りやすくすること。`.
