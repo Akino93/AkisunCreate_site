@@ -97,6 +97,14 @@ Previous non-hero stabilization is complete. **Content/positioning phase is acti
 
 ## Implementation evidence
 
+### 2026-09-03 — Works storytelling pass — Ready for Review
+- Updated only the three existing Works summaries; no new client, metric, outcome, capability, image, layout, or hero claim was added.
+- `社員食堂メニューアンケート` now separates the work target from the action: the existing facts about update-frequency/category organization and information-structure redesign are presented as `対象 / 担当`.
+- `Akky Design System` now states the existing purpose (UI consistency and implementation collaboration) and the existing action (designing a reusable design foundation) as `目的 / 担当`.
+- `組織へのAI活用導入` now states the existing issue (not leaving AI use as individual technique) and the existing action (organizing a reproducible process and supporting adoption/use) as `課題 / 担当`.
+- Product implementation commit: `9c2de3817bbf8633cee47ff3c33077330f8e4a04`.
+- The existing Mobile Visual QA workflow was triggered for that SHA as run `33676305063`; at documentation time it was still in progress, so independent visual acceptance remains with the Review Agent.
+
 ### 2026-09-03 — Contact consultation clarity pass — Reviewed / Closed
 - Kept the low-pressure `その課題、一緒に整理しませんか。` headline and existing `mailto:` channel.
 - Replaced the generic kicker/raw-address presentation with concrete copy that explicitly welcomes product consultation before requirements are fixed and names PM/PdM・UX design external support.
