@@ -95,6 +95,15 @@ Previous non-hero stabilization is complete. **Content/positioning phase is acti
 
 ## Implementation evidence
 
+### 2026-09-03 — Products IA foundation pass — Ready for Review
+- Added **PRODUCTS** to the primary navigation, yielding the owner-approved order **Services / Works / Products / About / Contact**.
+- Added a first-class `#products` section between Works and About, implemented as a reusable product-index structure rather than a one-off promotional block.
+- Presented **ぺぇジェント** with **AI SNS Auto** as its subtitle so they read as one product, not two separate products.
+- Limited copy to supported facts: Akisun Create develops its own products and ぺぇジェント is the first product. No product metrics, feature promises, release claims or unsupported capabilities were added.
+- Added a dedicated `products.css` scoped to the new non-hero section, with mobile/tablet/desktop layouts and anchor offset handling. Hero files and hero visual composition were not changed.
+- Existing mobile stabilization styles remain in place; navigation still uses the existing responsive menu behavior and the new `#products` anchor is handled by the same link-close logic.
+- **Status:** Ready for independent review. Review-owned Products finding remains unchecked until Review Agent verification.
+
 ### 2026-09-03 — Hero first-view positioning pass — Ready for Review
 - Rewrote only the hero lead copy; hero visual composition, assets, CSS, typography structure, spacing and animation remain unchanged.
 - First view now states that Akisun Create supports **企業のプロダクトづくり** from **要件が固まる前の課題整理**.
