@@ -1,208 +1,84 @@
-# AkisunCreate non-hero polish
+# AkisunCreate — Corporate Site Content & Positioning Phase
 
-## Stable
+## Owner direction — 2026-09-02
 
-### Services — 2026-08-19
-- Reworked the section from generic centered cards into a vintage editorial three-panel composition.
-- Added a small section folio, numbered panels, inked borders, asymmetric middle-panel offset, stamp-like service symbols, and stronger type hierarchy.
-- Kept all Japanese copy and destinations unchanged.
-- Added 44px minimum link targets and visible keyboard focus treatment.
-- Mobile check by CSS review: one-column stack, controlled asymmetry, no intentional viewport overflow, readable 14px body copy, full-width links.
-- Tablet/desktop check by CSS review: three-panel grid preserved above 900px; section-local selectors only.
-- Hero lock check: no hero stylesheet, hero selector, hero asset, hero markup, hero typography, spacing, placement, or animation changed. `index.html` change is limited to loading `non-hero.css` in `<head>`.
+Akisun Create is evolving from a portfolio-like site into a credible corporate site for a small product/design business.
 
-### Selected Works — 2026-08-19
-- Reworked the generic equal-card grid into an editorial case index with a dominant lead project and two supporting projects.
-- Added case numbering, restrained inner keylines, category labels, stronger title hierarchy, and warm paper/teal/red tint variation using the existing palette.
-- Desktop: asymmetric 1.35fr/.9fr composition with the first case spanning two rows; no generic rounded cards or shadows.
-- Mobile/tablet: collapses cleanly to a single-column case list with consistent borders, 14px body copy, readable labels, and no intentional horizontal overflow.
-- Kept all project copy intact and changed no business claims or destinations.
-- Hero lock check: no hero stylesheet, hero selector, asset, markup, layout, typography, spacing, placement, or animation changed. `index.html` only received a non-hero stylesheet cache-key refresh.
+### Positioning
+Akisun Create is a **product partner that supports companies in building products while also developing its own products**.
 
-### About — 2026-08-19
-- Reworked the plain stacked About block into an editorial profile spread while keeping all Japanese copy unchanged.
-- Desktop/tablet: split statement and body into an asymmetric two-column composition, with a section folio, ink-rule structure, numbered body paragraphs, and restrained teal/gold paper tints from the existing palette.
-- Mobile (~390px): collapses to a single readable flow with the headline first, then numbered body paragraphs; 14px body copy, no fixed widths, and no intentional horizontal overflow.
-- Kept decorative treatment typographic/CSS-only; no images were generated or modified.
-- Self-check: selectors are scoped to `#about`; existing Services/Works rules remain unchanged; the only `index.html` edit is the `non-hero.css` cache key.
-- Hero lock check: verified the `index.html` commit changes only the non-hero stylesheet version; no hero stylesheet, selector, asset, markup, typography, spacing, placement, or animation changed.
+The company should NOT be positioned narrowly as a web/design production company or purely as an AI company. Its core value is helping move product work forward from an ambiguous starting point through problem definition, UX/product design, project/product management, implementation collaboration, and continuous improvement. UI/UX, PM/PdM, AI, and development are means to that end.
 
-### Contact / CTA — 2026-08-19
-- Reworked the flat orange contact block into a high-impact editorial closing panel using the existing gold/orange/ink palette.
-- Added section folio treatment, oversized restrained arrow motif, asymmetric headline/supporting-copy composition, stamped AkisunCreate label, and a full-width mail action framed by ink rules.
-- Kept the Japanese headline, English supporting copy, email address, and mailto destination unchanged.
-- Mobile (~390px): collapses to a single reading flow, preserves a 66px+ mail target, uses `overflow-wrap:anywhere` for the email address, and avoids fixed-width elements that would force viewport overflow.
-- Tablet/desktop: two-column headline/supporting-copy composition with the mail action spanning the full section width.
-- Accessibility polish: visible `:focus-visible` treatment and readable foreground/background contrast using the existing ink/paper colors.
-- No images were generated or modified; all decoration is CSS-only.
-- Hero lock check: no hero stylesheet, hero selector, hero asset, hero markup, hero typography, hero spacing, hero placement, or hero animation changed. `index.html` only received a `non-hero.css` cache-key refresh.
+### Primary audiences / success criteria
+The site must make these visitors feel:
+1. A company considering Akisun Create as a contractor/vendor: **“信頼できそう / まともそう / 頼みやすそう”**.
+2. A company looking for an external PM/PdM or product partner: **“一度問い合わせてみようかな”**.
+3. Any visitor: the design has **originality and personality**, without sacrificing clarity or professional credibility.
 
-### Footer / Navigation — 2026-08-19
-- Added a dedicated `nav-footer.css` so navigation/footer polish remains isolated from hero styles and header geometry.
-- Navigation: added editorial underline interaction on desktop, 44px+ tap targets, visible focus rings, and a clearer vintage panel treatment for the mobile menu.
-- Menu button: kept its existing dimensions/placement while adding an expanded-state ink/orange treatment and a compact MENU label; no header padding or safe-area rules changed.
-- Footer: replaced the plain centered line with a dark ink closing strip, gold folio text, restrained circular arrow stamp, and responsive two-row mobile composition.
-- Accessibility: keyboard focus remains visible; motion transitions are disabled under `prefers-reduced-motion`.
-- Mobile/tablet/desktop check by CSS review: no fixed content widths that should force viewport overflow; mobile navigation links remain 52px high.
-- Hero lock check: no hero stylesheet, hero selector, hero asset, hero markup, hero typography, hero spacing, hero placement, or hero animation changed. `index.html` only loads the new non-hero stylesheet.
+### Brand balance
+- Visual direction: preserve the current distinctive vintage editorial / retro print theme.
+- Content and information architecture: clear, concrete, calm, credible, easy to understand.
+- Desired contrast: **見た目は個性的、中身は堅実。**
+- Optimize for “話が通じそう / 相談しやすそう” rather than vague “すごそう” claims.
+- Avoid generic agency language, inflated claims, buzzword-heavy AI positioning, or copy that makes the business sound like a generic freelancer portfolio.
 
-### Responsive / accessibility QA — mobile navigation — 2026-08-19
-- Hardened the existing mobile menu behavior without changing header geometry, safe-area rules, menu styling, or hero code.
-- Added dynamic accessible labels (`メニューを開く` / `メニューを閉じる`) synchronized with `aria-expanded`.
-- Added Escape-to-close with focus restoration to the menu button for keyboard users.
-- Added outside-tap/pointer close behavior on mobile so the sticky menu cannot remain stranded over page content.
-- Added breakpoint-state cleanup: when the viewport crosses above 900px, stale mobile `is-open` / `aria-expanded` state is reset before a later return to mobile.
-- Existing link-click close behavior remains intact.
-- Self-check: the functional change is isolated to `script.js`; `index.html` changed only the script cache key. Hero markup and all hero stylesheets remain byte-for-byte untouched by this cycle.
+### Target information architecture
+Use this as the forward-looking site structure:
+- **Services** — corporate product-development support. Clarify support such as product/UX design, PM/PdM/project facilitation, AI/business-process improvement and implementation collaboration without overstating capabilities.
+- **Works** — evidence of how Akisun Create has solved problems and moved projects forward. Favor context/problem/role/outcome over a simple gallery.
+- **Products** — Akisun Create's own products. This section must be structurally ready for product growth. First product is **ぺぇジェント (AI SNS Auto)**. Product detail pages can be added as products mature.
+- **About** — explain the working philosophy, strengths, scope, and why a client can trust and collaborate with Akisun Create.
+- **Contact** — reduce psychological friction and make it obvious that early-stage/ambiguous consultations are welcome.
 
-### Final spacing / anchor navigation — 2026-08-19
-- Added section-local `scroll-margin-top` to Services, Works, About, and Contact so sticky-header navigation lands with the section content visible instead of tucked under the header.
-- Desktop/tablet target offset is 86px; small-mobile offset is 74px to match the shorter header footprint without changing header geometry or safe-area behavior.
-- The change is isolated to `nav-footer.css`; no hero selector, hero stylesheet, asset, markup, typography, spacing, placement, animation, or global variable was changed.
-- Refreshed only the `nav-footer.css` cache key in `index.html`; the hero markup remains unchanged.
+Navigation should ultimately support: **Services / Works / Products / About / Contact**.
 
-### Final no-regression QA — 2026-08-19
-- Reviewed the completed non-hero styling and interaction paths for Services, Works, About, Contact, navigation, and footer at the mobile/tablet/desktop breakpoints defined in the current CSS.
-- Rechecked mobile menu state management: accessible labels stay synchronized, Escape restores focus, outside pointer interaction closes the menu, and crossing the 900px breakpoint clears stale mobile state.
-- Rechecked navigation/footer CSS for tap targets, focus visibility, reduced-motion handling, anchor offsets, responsive layout, and obvious fixed-width overflow risks.
-- No high-impact non-hero regression was found that justified another visual change.
-- Hero lock remains intact: no hero HTML, hero stylesheet, hero selector, hero asset, hero typography, hero spacing, hero placement, hero animation, or hero-affecting variable was modified during final QA.
+### Product note
+**ぺぇジェント = AI SNS Auto.** Do not treat them as separate products.
 
-## Status
-Non-hero polish is complete and stable. Stop visual restyling unless a real regression or new owner instruction appears.
+### Content principles
+- Explain what Akisun Create does within the first meaningful reading sequence.
+- Communicate the process: **課題を整理する → 体験を設計する → 形にする → 改善する**.
+- Show that Akisun Create can engage before requirements are fully defined.
+- Make PM/PdM/product-development support discoverable, not hidden behind UI/UX-only language.
+- Use concrete evidence and real experience where already supported by repository/site content; never invent clients, metrics, outcomes, certifications, team size, or capabilities.
+- Keep copy concise enough to scan on mobile.
+- CTAs should describe the next step and feel low-pressure.
+- Products should strengthen the parent Akisun Create brand rather than make the corporate site look like a single-product landing page.
 
-## Guardrail
-The hero is locked. Do not modify `hero-mobile-refine.css`, `hero-fix.css`, `hero-small-desktop.css`, `hero-fluid-tablet.css`, hero assets, or `<section class="hero">...</section>`.
+## Phase status
+The previous non-hero layout stabilization phase is complete. **A new owner-requested content/positioning phase is now active.** Content, information architecture, section order, copy hierarchy, navigation labels, and non-hero presentation may be changed when they serve the positioning above.
 
-## Review Findings / 修正ToDo
+## Guardrails
+- Preserve the current vintage editorial / retro print visual identity; refine it rather than replacing it with a generic SaaS/corporate template.
+- Existing responsive/mobile fixes must not regress.
+- Do not generate or alter images unless the owner explicitly requests it.
+- Do not invent business facts or unsupported claims.
+- Hero visual composition/assets remain locked unless the owner explicitly unlocks them. **Hero copy may be reviewed as part of this content phase**, but any implementation that requires changing locked hero markup/styles must be separately justified and handled conservatively.
 
-- [x] **Medium — Services / semantic accessibility**
-  - **Problem:** The Services section had no real section heading in the DOM. The visible `SERVICES / WHAT I DO` label is generated only by `.services:before`, while the service titles were sibling `<h2>` elements.
-  - **Expected:** Services has a semantic section heading available to assistive technology without changing the approved visual composition or hero.
-  - **Definition of Done:** Add a real heading associated with `#services` (visible or visually-hidden as appropriate), maintain a logical heading outline, and verify the existing three service titles remain correctly nested/understood. No hero selectors/files changed.
-  - **Review result:** Verified on current `main`. `#services` is now labelled by a real visually-hidden `h2` (`サービス`), and the three visible service headings are exposed at heading level 3. Commit diff confirms the change is isolated to `index.html` and does not alter hero styling/assets/behavior.
+## Content Review / 修正ToDo
 
-- [x] **Medium — Global navigation / reduced motion**
-  - **Problem:** `html{scroll-behavior:smooth}` remained active even when the user requested `prefers-reduced-motion: reduce`. `nav-footer.css` disabled navigation transitions, but anchor navigation could still animate the page scroll.
-  - **Expected:** Reduced-motion users can navigate Services/Works/About/Contact without animated smooth scrolling.
-  - **Definition of Done:** Under `@media (prefers-reduced-motion: reduce)`, override page scroll behavior to `auto` (or equivalent), while retaining current navigation/focus behavior and leaving hero code untouched.
-  - **Implementation:** `nav-footer.css` now applies `html{scroll-behavior:auto}` inside the existing reduced-motion media query.
-  - **Review result:** Verified on current `main` and implementation commit `6650b44`. The override is inside the existing reduced-motion media query, while current focus, anchor-offset, and navigation rules remain unchanged. The product commit changes only `nav-footer.css`; no hero file/selector/asset/markup was modified.
+The independent Review Agent owns discovery and acceptance. It should review the actual current site as a corporate-site prospect would, then create prioritized findings here. The Fix Agent implements only concrete findings/requirements and marks them Ready for Review.
 
-- [x] **Medium — Services / link expectation clarity**
-  - **Problem:** All three service links were labeled `もっと見る`, but they navigate to different general-purpose sections (`#works` or `#about`) rather than service-specific detail. The identical label did not tell users what destination or content they would get, especially for screen-reader/link-list navigation.
-  - **Expected:** Service CTAs communicate their actual destination/purpose while preserving the one-page information architecture.
-  - **Definition of Done:** Replace each generic CTA label with destination-specific wording (for example, a Works-oriented label for the UI/UX card and an About/approach-oriented label for the other cards) or provide an equally clear accessible name. Verify href destinations remain intentional and no business claims are changed.
-  - **Implementation:** `index.html` now uses visible destination/purpose-specific CTA wording while preserving the existing hrefs: UI/UX → `実績を見る` (`#works`), AI活用支援 → `支援の考え方を見る` (`#about`), 業務設計・システム → `設計の考え方を見る` (`#about`).
-  - **Review result:** Verified on current `main` and implementation commit `e3b78f9`. The three visible labels now communicate destination/purpose directly, hrefs remain `#works`, `#about`, `#about`, and the implementation diff changes only the non-hero Services link text in `index.html`. No business claim, hero stylesheet, hero asset, or hero behavior was changed.
+Review dimensions:
+- Positioning clarity: what company is this, who is it for, what can I ask it to do?
+- Trust: credible, professional, specific, no unsupported overclaiming.
+- Conversion: does an external PM/PdM/product-support prospect want to contact Akisun Create?
+- Information architecture: Services / Works / Products / About / Contact tell a coherent story.
+- Products readiness: ぺぇジェント (AI SNS Auto) has a natural future home and path to a dedicated product page.
+- Copy quality: headings, body copy, labels, CTA wording, scanability, duplication, jargon.
+- Works quality: cases demonstrate problem-solving/role/value, not merely visuals.
+- Originality: current design personality remains visible and intentional.
+- Responsive presentation: revised content remains readable and attractive on mobile/tablet/desktop.
 
-- [x] **Medium — Selected Works / 375–430px — faint inner keyline still visible**
-  - **Problem:** Fresh `Mobile Visual QA` screenshots for 375px, 390px, and 430px still show a thin light-gray rectangular perimeter around each Selected Works card. The owner explicitly identified this decorative line as unwanted; removing the earlier pseudo-element keyline did not fully remove the visible gray card outline.
-  - **Expected:** Selected Works keeps the strong black editorial section/divider rules, but no faint gray inner/per-card rectangle remains on smartphone layouts.
-  - **Definition of Done:** On a fresh successful `Mobile Visual QA` artifact from the fixing commit, `full-375.png`, `full-390.png`, and `full-430.png` show no thin gray rectangular outline around any of the three Works cards; black structural dividers remain aligned, text is not clipped, and `scrollWidth == clientWidth` at all three widths. Do not alter the locked hero.
-  - **Implementation:** `owner-mobile-fixes.css` now resets the legacy `right`, `bottom`, and `border` inherited by `#works .works article::before` from the global `.works article:before` rule. This preserves the visible `01/02/03` case numbers while removing the inherited rectangular keyline. `index.html` only refreshes the non-hero override cache key.
-  - **Implementation validation:** `Mobile Visual QA` run `33234746002` completed successfully for commit `7f2c15b`; fresh `full-375.png`, `full-390.png`, and `full-430.png` were visually inspected and no faint gray per-card rectangle remains. Black structural dividers and case numbers remain intact. The run's overflow assertion passed at all widths, including 375/390/430 with `scrollWidth == clientWidth`.
-  - **Review result:** Independently verified from a fresh download of successful `Mobile Visual QA` run `33234746002` for rendered-product commit `7f2c15b`. `full-375.png`, `full-390.png`, and `full-430.png` show the unwanted faint gray per-card rectangles are gone while the black structural dividers and `01/02/03` labels remain. `layout-metrics.json` confirms `scrollWidth == clientWidth` at 375/390/430/768/1280. `nav-open-390.png` is usable without clipping, and 768/1280 spot-checks show no related regression. Current `main` (`28db636`) is one documentation-only commit ahead of `7f2c15b`; commit comparison shows the only changed file is `TASKS.md`, so the reviewed artifact is render-equivalent to current main. Hero remained locked.
-  - **Status:** Closed after independent visual verification.
+### Initial owner-approved requirements
+- [ ] **High — Corporate positioning / whole site**: make Akisun Create read as a product partner supporting company product development while building its own products, not merely a design portfolio.
+- [ ] **High — Information architecture**: evolve toward Services / Works / Products / About / Contact and ensure the narrative remains coherent.
+- [ ] **High — PM/PdM discoverability and conversion**: external PM/PdM/product-support prospects should understand that they can consult Akisun Create and have a clear low-friction path to Contact.
+- [ ] **High — Products foundation**: create a natural Products presence ready for **ぺぇジェント (AI SNS Auto)** and future dedicated product pages; do not invent product claims not supported by current project facts.
+- [ ] **Medium — Corporate trust / vendor due diligence**: strengthen copy and evidence so a contractor/vendor evaluator gets “信頼できそう / まともそう / 頼みやすそう”.
+- [ ] **Medium — Works storytelling**: review existing Works copy and improve problem/context/role/value storytelling using only supported facts.
+- [ ] **Medium — Copy hierarchy / CTA**: rewrite vague/generic text and CTAs so the site is easy to scan, concrete, and consultation-friendly.
+- [ ] **Medium — Brand consistency**: preserve the distinctive current visual identity while making content feel professional and deliberate.
 
-## Implementation Log
-
-### 2026-08-29 — Fix pass 04
-- Selected the only actionable unchecked visual finding: **Selected Works / 375–430px — faint inner keyline still visible**.
-- Root cause: the legacy global `.works article:before` rule in `styles.css` contributes `inset:6px` and a faint border. The later Selected Works counter rule repurposes the same pseudo-element for `01/02/03` but did not reset inherited `right`, `bottom`, or `border`, leaving the unwanted rectangle even after the separate `article::after` keyline was disabled.
-- Implemented the minimal non-hero override in `owner-mobile-fixes.css`: keep the counter pseudo-element, reset only `right:auto`, `bottom:auto`, and `border:0`.
-- Refreshed only the `owner-mobile-fixes.css` cache key in `index.html`; hero markup and hero-specific files remain unchanged.
-- `Mobile Visual QA` run `33234746002` completed successfully on commit `7f2c15b`; inspected `full-375.png`, `full-390.png`, and `full-430.png`. The faint gray Works rectangles are gone, black dividers remain aligned, copy is unclipped, and the workflow overflow assertion passed for 375/390/430/768/1280.
-- Status is **Ready for review**, not complete. Independent review should verify and close the finding from the fresh artifact.
-
-### 2026-08-27 — Fix pass 03
-- Selected the only remaining actionable review finding: **Services / link expectation clarity**.
-- Updated only the three visible Services CTA labels in `index.html`; href destinations remain unchanged (`#works`, `#about`, `#about`) and no business claim or section copy was altered.
-- New visible labels are `実績を見る →`, `支援の考え方を見る →`, and `設計の考え方を見る →`, so link-list navigation communicates purpose without relying on surrounding card text.
-- Mobile ~390px self-check by existing CSS path: `.services a` is already `width:100%` with `justify-content:space-between`, so the longer labels remain within the card width and retain the existing 44px minimum target; no new width or overflow rule was introduced.
-- Desktop self-check by existing CSS path: service cards remain flexible columns and CTA text is inline-flex with no fixed width; the chosen Japanese labels fit materially within the available card width and preserve hierarchy/spacing.
-- Hero lock check: no hero-specific stylesheet, selector, asset, markup, placement, typography, spacing, animation, or hero-specific file was modified. The product change is limited to non-hero Services link text in `index.html`.
-- Status remains unchecked and **Ready for review**; the independent review agent should verify/close it.
-- Next candidate: none. If review closes this item and adds no new finding, perform final non-hero QA and make no speculative visual changes.
-
-### 2026-08-27 — Fix pass 02
-- Selected the highest-priority actionable unchecked review finding: **Global navigation / reduced motion**.
-- Updated only `nav-footer.css`: within the existing `@media(prefers-reduced-motion:reduce)` block, added `html{scroll-behavior:auto}` so in-page anchor navigation no longer smooth-scrolls for users requesting reduced motion.
-- Preserved the existing reduced-motion transition suppression for nav underline/menu-icon animation, focus behavior, anchor destinations, sticky-header offsets, and all responsive layout rules.
-- Mobile ~390px / desktop self-check by code path: the new declaration changes only scroll animation preference; it introduces no width, spacing, hierarchy, tap-target, or overflow changes at either breakpoint.
-- Hero lock check: no hero-specific file, selector, asset, HTML, placement, typography, spacing, or animation was modified. The implementation is isolated to the navigation/footer stylesheet.
-- Status remains unchecked and **Ready for review**; the independent review agent should verify/close it.
-- Next candidate: **Services / link expectation clarity**.
-
-### 2026-08-27 — Fix pass 01
-- Selected the highest-priority actionable unchecked review finding: Services semantic accessibility.
-- Updated only `index.html`: `#services` now has `aria-labelledby="services-title"`, backed by a visually-hidden real `h2` (`サービス`). The three existing styled service-title `h2` elements now expose `aria-level="3"` while retaining their existing markup/CSS appearance.
-- Validation by commit diff: only `index.html` changed from review commit `da552f0`; no stylesheet, hero-specific file, asset, hero markup, layout, spacing, typography, or animation changed.
-- Mobile ~390px / desktop regression check by code path: the added heading is absolutely positioned at 1px and clipped, so it contributes no grid size or overflow; existing service cards, links, tap targets, and visual hierarchy remain governed by unchanged CSS.
-- Status remains unchecked and **Ready for review**; the independent review agent should verify/close it.
-- Next candidate after review-priority ordering: **Global navigation / reduced motion**.
-
-## Review Log
-
-### 2026-08-27 — Independent QA pass 01
-- Reviewed current `main`, recent commits through `91f10d7`, `TASKS.md`, `index.html`, `styles.css`, `non-hero.css`, `nav-footer.css`, and `script.js`.
-- No implementation commits have landed since the previous 2026-08-19 final QA; no existing item was marked ready-for-review by the implementation agent.
-- Confirmed the mobile nav uses `display:none` while closed, synchronizes `aria-expanded`/labels, supports Escape focus restoration, closes on outside pointer interaction, and clears stale state above 900px.
-- Added three Medium corrective findings: Services semantic heading, reduced-motion smooth scrolling, and destination clarity of generic `もっと見る` CTAs.
-- Deployed visual review URL was not discoverable from repository metadata/README during this pass, so visual assertions remain code-based; no speculative visual finding was added.
-- Hero remained review-locked; no hero redesign finding was created.
-- **Next review focus:** verify the implementation agent's fixes for the three findings, then inspect contact/footer semantics and keyboard/focus behavior for any remaining concrete issue.
-
-### 2026-08-27 — Independent QA pass 02
-- Reviewed implementation commits `669f34e` and `563230a`, current `index.html`, and the first ready-for-review finding.
-- **Closed:** Services / semantic accessibility. The section now has a real labelled heading and its card headings are exposed at level 3 without changing the approved visual composition.
-- Commit diff confirms the product change is isolated to `index.html`; hero-specific stylesheets/assets/behavior were not modified.
-- No new finding was added in this pass. The remaining actionable findings are reduced-motion smooth scrolling and Services CTA destination clarity.
-- Public/deployed review URL is still not declared in repository metadata or README, so this verification remains code/diff-based rather than visual-browser-based.
-- **Next review focus:** verify the reduced-motion fix when it lands, then CTA label clarity and contact/footer semantics.
-
-### 2026-08-27 — Independent QA pass 03
-- Reviewed implementation commit `6650b44`, current `nav-footer.css`, `index.html`, and `TASKS.md`.
-- **Closed:** Global navigation / reduced motion. `html{scroll-behavior:auto}` is correctly scoped inside `@media(prefers-reduced-motion:reduce)`, so reduced-motion users no longer inherit global smooth anchor scrolling.
-- The implementation diff is limited to `nav-footer.css`; existing navigation focus styles, anchor offsets, mobile menu layout, and footer behavior are unchanged, and no hero code/assets were touched.
-- Re-inspected Contact/CTA and footer semantics in current `index.html`; no concrete functional, keyboard, or readability defect was found that warrants a new corrective finding from code review alone.
-- No deployed/reviewable URL is declared in repository metadata or README, so visual assertions remain code-based and no speculative visual finding was added.
-- Remaining actionable finding: **Services / link expectation clarity**.
-- **Next review focus:** verify the Services CTA wording/accessibility fix when it is marked ready for review; otherwise do not invent additional work.
-
-### 2026-08-27 — Independent QA pass 04
-- Reviewed implementation commit `e3b78f9`, current `index.html`, latest `TASKS.md`, and the newest automated QA artifact update.
-- **Closed:** Services / link expectation clarity. The three Services CTAs now have distinct visible labels tied to their actual destinations/purposes, while hrefs remain intentionally unchanged.
-- Commit diff confirms the product fix is limited to Services link text in `index.html`; no business claims or hero code/assets/behavior were changed.
-- The later `b3ea1f2` commit updates only `qa/mobile-layout.json`; it records measurements and does not alter the locked hero implementation.
-- Repository metadata confirms GitHub Pages is enabled, but no homepage URL is declared; a reliable deployed URL was not available for browser-level review in this pass, so no speculative visual finding was added.
-- All current review findings are closed. Non-hero code review remains stable with no new meaningful issue found.
-- **Next review focus:** only inspect new implementation changes or regressions; otherwise keep QA converged and do not invent work.
-
-### 2026-08-28 — Independent visual QA pass 05
-- Reviewed current `main` at `dae556ad0f00c53d19782f88ca4abeaf3391fba1` and successful `Mobile Visual QA` run `33133188651`; artifact `responsive-visual-qa` was downloaded fresh and inspected in the same run.
-- Visually inspected `full-375.png`, `full-390.png`, `full-430.png`, and `nav-open-390.png`; spot-checked `full-768.png` and `full-1280.png`.
-- DOM metrics show no document-level horizontal overflow at any rendered width: 375/390/430/768/1280 each has `scrollWidth == clientWidth`.
-- Smartphone views 375/390/430: Services cards remain inside the viewport with intentional stagger only; Works cards do not clip; About text remains readable; Contact email/CTA remains inside its framed action; footer remains visible; mobile nav opens as a usable four-item panel without clipping or content collision.
-- 768/1280 spot-check found no clear non-hero regression that justifies a corrective finding. The 768 About statement wraps more aggressively than desktop, but remains fully visible/readable and does not overlap or clip, so no speculative task was created.
-- Owner-reported smartphone regression could not be reproduced in the approved current-main visual artifact. No new unchecked `Review Findings / 修正ToDo` item was added.
-- Hero remained locked; no hero redesign finding was created.
-- **Next review focus:** none until a new product commit or a reproducible visual regression appears.
-
-### 2026-08-28 — Independent visual QA pass 06
-- Reviewed current `main` at `adaa8ff4a2ea08b3a6f7242231e8b85ac3126887` and successful `Mobile Visual QA` run `33176901940`; artifact `responsive-visual-qa` was downloaded fresh and inspected in the same run.
-- Visually inspected `full-375.png`, `full-390.png`, `full-430.png`, and `nav-open-390.png`; spot-checked `full-768.png` and `full-1280.png`.
-- DOM metrics confirm no document-level horizontal overflow: 375/390/430/768/1280 all have `scrollWidth == clientWidth`. At 375/390/430 the three Services cards now share the same x-position and width, confirming the owner-reported card offset is fixed.
-- The former gear emoji is no longer rendered; the third Services symbol is now a monochrome grid-like `▦`, visually consistent with the other service symbols. Mobile nav, Contact email/CTA, footer, About, and breakpoint spot-checks show no clipping or overlap regression.
-- **Confirmed remaining issue:** Selected Works still shows a faint light-gray rectangular outline around each card at 375/390/430. This is visually reproducible in the fresh artifact and does not match the owner's request to remove the thin gray frame, so a Medium unchecked finding was added.
-- Hero remained locked; no hero redesign finding was created.
-- **Next review focus:** verify the Works keyline removal against a fresh artifact from the fixing commit; do not close the finding from implementation self-report or CSS inspection alone.
-
-### 2026-08-29 — Independent visual QA pass 07
-- Reviewed current `main` at `28db636e146607f2043720168650736fa60e7be1`, recent fix commits `3bc6004` / `7f2c15b`, current `TASKS.md`, and successful `Mobile Visual QA` run `33234746002` for `7f2c15b`.
-- Current main is one documentation-only commit ahead of the visual run; compare `7f2c15b...28db636` shows `TASKS.md` is the only changed file, so the freshly downloaded artifact is render-equivalent to current main. The workflow does not trigger on `TASKS.md`-only changes.
-- Freshly downloaded and inspected `responsive-visual-qa`: `full-375.png`, `full-390.png`, `full-430.png`, `nav-open-390.png`, plus spot-checks of `full-768.png` and `full-1280.png`; parsed `layout-metrics.json` in the same run.
-- **Closed:** Selected Works / faint inner keyline. The unwanted light-gray per-card rectangle is no longer visible at 375/390/430. Black structural rules, case numbering, and content remain intact and unclipped.
-- Metrics confirm no document-level horizontal overflow at 375/390/430/768/1280 (`scrollWidth == clientWidth`). Services cards are aligned on mobile; Contact email/CTA remains within the viewport; footer placement is intact; the 390px open nav is fully usable without clipping or overlap. 768/1280 spot-checks show no related regression.
-- No new confirmed non-hero finding was identified. Hero remains owner-approved/locked and was not redesigned.
-- **Next review focus:** only a new product commit or a new reproducible owner-reported regression; do not invent additional work.
+## Historical stabilization summary
+Before this phase, Services, Selected Works, About, Contact/CTA, footer/navigation and mobile responsive behavior were stabilized and independently reviewed. The owner-reported mobile card offsets, unwanted Works inner keylines, and emoji-style service symbol were resolved. Treat those fixes as regression guardrails during the content redesign.
