@@ -95,6 +95,14 @@ Previous non-hero stabilization is complete. **Content/positioning phase is acti
 
 ## Implementation evidence
 
+### 2026-09-03 — Hero first-view positioning pass — Ready for Review
+- Rewrote only the hero lead copy; hero visual composition, assets, CSS, typography structure, spacing and animation remain unchanged.
+- First view now states that Akisun Create supports **企業のプロダクトづくり** from **要件が固まる前の課題整理**.
+- Made **PM / PdM** explicitly visible without scrolling, with UX design, AI use and implementation collaboration positioned as methods that support moving product work forward.
+- Preserved the existing headline and low-friction hero CTAs.
+- No unsupported client, metric, team-size or capability claims added.
+- **Status:** Ready for independent review. Review-owned finding remains unchecked until Review Agent verification.
+
 ### 2026-09-03 — Services positioning pass — Ready for Review
 - Reframed Services into **プロダクト・UX設計 / PM・PdM・プロジェクト推進 / AI・業務改善・実装連携**.
 - Made early-stage engagement explicit with **要件が固まる前の課題整理** and clarified PM/PdM support as stakeholder alignment, requirements/priorities, and moving product work forward.
