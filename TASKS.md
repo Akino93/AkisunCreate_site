@@ -51,11 +51,8 @@ Akisun Create is a **product partner that supports companies in building product
   - **Review result 2026-09-03:** Hero explicitly includes `PM / PdM`; Services has a dedicated `PM / PdM・プロジェクト推進` card with `相談してみる →`; Contact explicitly welcomes PM/PdM・UX external-support inquiries before requirements are fixed.
 - [x] **High — Products foundation**
   - **Review result:** `ぺぇジェント` is represented with `AI SNS Auto` as its subtitle, correctly as one product, and the section pattern is reusable for future products.
-- [ ] **Medium — Corporate trust / vendor due diligence**
-  - **Problem:** The content now demonstrates capability and collaboration style, but a procurement/vendor evaluator still has very little factual business-profile information. About says AkisunCreate is a sole proprietorship and Contact provides email, but the page has no compact business-profile block that helps a company quickly confirm what the entity is and what it formally offers.
-  - **Expected:** Without turning the site into a legal-information dump, a company checking Akisun Create as a contractor can quickly verify the basic business identity and scope and feel that the site is maintained as a real business presence, not only a portfolio.
-  - **Recommended direction:** Add a restrained business-profile / basic-information block in About or footer using only verified facts already available to the owner/repository. Suitable fields may include trade name, business form (`個人事業`), main service scope, contact method, and other owner-approved factual basics. Do not invent address, representative name, founding date, invoice registration, credentials, client list, availability, or legal status. If a field is not verified, omit it.
-  - **DoD:** A procurement visitor can identify the business form, service scope, and contact route from one compact area; every field is verified; no privacy-sensitive or unsupported fact is introduced; visual treatment remains editorial and mobile-scannable.
+- [x] **Medium — Corporate trust / vendor due diligence**
+  - **Review result 2026-09-03:** Accepted against implementation SHA `eec91a28243e945d563fdcb15587c53ff44f60ba` and successful exact-SHA `Mobile Visual QA` run `33697187192`. About now contains one compact `基本情報` block with trade name `AkisunCreate`, business form `個人事業`, the currently published service scope, and the existing email contact route. No address, representative name, registration number, founding date, credentials, clients, availability, metrics, or other unsupported/private facts were added. Fresh 390px and 1280px screenshots show the block remains legible and consistent with the editorial About layout; `layout-metrics.json` reports `scrollWidth == clientWidth` at 375/390/430/768/1280.
 - [x] **Medium — Works storytelling**
   - **Review result 2026-09-03:** All three visible cases now expose compact problem/purpose + role/action evidence. The lead case now states the actual information-design problem instead of repeating its title. No unsupported client, metric, or outcome was added.
 - [x] **Medium — Copy hierarchy / CTA**
@@ -80,22 +77,29 @@ Akisun Create is a **product partner that supports companies in building product
 
 ## Implementation Log
 
-### 2026-09-03 — Corporate trust / vendor due diligence — Ready for Review
-- Implemented against the sole remaining unchecked review finding.
+### 2026-09-03 — Corporate trust / vendor due diligence — Accepted
+- Implemented against the final unchecked review finding.
 - Added a compact `基本情報` block to About using only facts already present in the repository/site: trade name `AkisunCreate`, business form `個人事業`, the three currently published service areas, and the existing email contact route.
 - Did not add address, representative name, founding date, invoice registration, credentials, clients, availability, metrics, or other unsupported/private facts.
 - Reused the existing About editorial paragraph treatment; no CSS, hero, image, navigation, Products, Works, or Contact changes were made, preserving prior responsive stabilization.
 - Implementation commit: `eec91a28243e945d563fdcb15587c53ff44f60ba`.
-- Status: **Ready for independent review**. Review-owned finding remains unchecked until independently verified.
+- Independent acceptance: exact-SHA `Mobile Visual QA` run `33697187192` succeeded; fresh 390px/1280px renders were visually inspected and all tested widths remained free of horizontal overflow.
 
 ## Review Log
+
+### 2026-09-03 — Corporate trust acceptance + phase convergence
+- Reviewed current `TASKS.md`, current `index.html`, implementation SHA `eec91a28243e945d563fdcb15587c53ff44f60ba`, successful exact-SHA `Mobile Visual QA` run `33697187192`, fresh `full-390.png`, `full-1280.png`, and `layout-metrics.json`.
+- The new business-profile block satisfies the final vendor due-diligence gap without introducing unsupported or privacy-sensitive facts. A procurement visitor can now identify the business form, service scope, and contact route from one compact area.
+- Responsive verification: 375/390/430/768/1280 all have `scrollWidth == clientWidth`; fresh 390px and 1280px renders show the About block is readable, aligned with the existing editorial visual language, and does not cause clipping or crowding.
+- Re-ran the owner success tests end to end. The current site now meets the approved corporate positioning, IA, PM/PdM discoverability, Works evidence, Products foundation/value explanation, About collaboration/trust framing, Contact clarity, copy hierarchy, and brand-consistency goals.
+- **No meaningful unchecked content findings remain. Content/corporate-site review phase is converged. Do not invent further work unless a new owner requirement, product change, factual update, or real regression appears.**
 
 ### 2026-09-03 — Products value + end-to-end acceptance
 - Reviewed current `TASKS.md`, current `index.html`, latest implementation SHA `43a8ffd5d6292d6111a3e9b954ffacaef2d66dfd`, successful `Mobile Visual QA` run `33692659324`, fresh `full-390.png`, `full-1280.png`, and `layout-metrics.json`.
 - Products value explanation is accepted. The revised paragraph is understandable without product-internal jargon, keeps Human-in-the-Loop visible, and remains concise enough for the corporate homepage.
 - Responsive verification: 375/390/430/768/1280 all have `scrollWidth == clientWidth`; 390px and 1280px screenshots show no clipping or visual regression in Products, Works, About, Contact, or navigation.
 - Re-ran the owner success tests end to end. Positioning, IA, PM/PdM discoverability, Works evidence, About framing, CTA clarity, and brand consistency now meet the approved direction.
-- One non-duplicate high-value gap remains: **vendor due-diligence trust**. The page is persuasive about work style, but still light on basic factual business-profile information. Added a narrow Medium finding for a verified business-profile block rather than inventing more marketing copy.
+- One non-duplicate high-value gap remained at that point: vendor due-diligence trust. It is now closed above.
 
 ### Prior accepted passes
 - Hero first-view positioning: reviewed / closed.
